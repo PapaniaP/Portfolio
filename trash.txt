@@ -1,0 +1,10 @@
+.menu-item::before {
+  content: ">";
+  margin-right: 10px; /* Add right margin for spacing */
+  opacity: 0; /* Initially hide the arrow */
+  transition: opacity 0.3s, transform 0.3s; /* Add transitions for opacity and transform */
+  transform: translateX(
+    -10px
+  ); /* Move the arrow to the left of the menu item by default */
+  animation: flicker 0.4s infinite; /* Apply the flickering animation */
+}
