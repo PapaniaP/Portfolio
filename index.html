@@ -30,35 +30,57 @@
 			href="/Assets/favicon_io/favicon-16x16.png"
 		/>
 		<link rel="manifest" href="/Assets/favicon_io/site.webmanifest" />
+		<!-- <link
+			href="https://unpkg.com/nes.icons@latest/css/nes-icons.min.css"
+			rel="stylesheet"
+		/> -->
+		<link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
 		<title>Paolo Papania | Portfolio</title>
 	</head>
 	<body>
 		<div class="background-container">
 			<div class="container">
-				<div class="heading">
-					<h1>Paolo Papania</h1>
-					<h2>Frontend Developer</h2>
+				<div class="navbar-container">
+					<nav class="navbar">
+						<a href="/index.html" class="nes-btn is-primary">Home</a>
+						<a href="/about.html" class="nes-btn">About</a>
+						<a href="/front-end.html" class="nes-btn">Projects</a>
+						<div class="icon-list social-desktop">
+							<i
+								class="nes-icon github is-medium navbar-social nes-pointer profile-link github-icon"
+							></i>
+							<a href="mailto:papaniap11@gmail.com">
+								<i
+									class="social nes-icon gmail is-medium navbar-social nes-pointer"
+								></i
+							></a>
+							<i
+								class="nes-icon linkedin is-medium navbar-social nes-pointer profile-link linkedin-icon"
+							></i>
+						</div>
+					</nav>
 				</div>
-				<div class="dialog-box">
-					<p id="dialog-text"></p>
-				</div>
-				<div class="game-screen">
-					<ul class="menu">
-						<li
-							class="menu-item"
-							onmouseenter="moveArrow(this)"
-							onmouseleave="leaveGameScreen()"
-						>
-							<a class="menu-link" href="ui-design.html">UX/UI Design</a>
-						</li>
-						<li
-							class="menu-item"
-							onmouseenter="moveArrow(this)"
-							onmouseleave="leaveGameScreen()"
-						>
-							<a class="menu-link" href="front-end.html">Front-End</a>
-						</li>
-					</ul>
+				<main class="main home">
+					<div class="heading">
+						<h1>Paolo Papania</h1>
+						<h2>Frontend Developer</h2>
+						<a href="front-end.html">- Click to Start -</a>
+					</div>
+				</main>
+				<div class="footer-container">
+					<div class="icon-list social-desktop">
+						<i
+							class="nes-icon github is-medium navbar-social nes-pointer profile-link github-icon"
+						></i>
+						<a href="mailto:papaniap11@gmail.com">
+							<i
+								class="social nes-icon gmail is-medium navbar-social nes-pointer"
+							></i
+						></a>
+						<i
+							class="nes-icon linkedin is-medium navbar-social nes-pointer profile-link linkedin-icon"
+						></i>
+					</div>
 				</div>
 			</div>
 		</div>
