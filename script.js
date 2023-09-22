@@ -6,11 +6,10 @@ function openProfile(profileUrl) {
 // Function to open a profile based on the icon clicked
 function openProfileByIcon(icon) {
 	if (icon.classList.contains("github-icon")) {
-		const githubProfileUrl = "https://github.com/your-github-username";
+		const githubProfileUrl = "https://github.com/PapaniaP";
 		openProfile(githubProfileUrl);
 	} else if (icon.classList.contains("linkedin-icon")) {
-		const linkedinProfileUrl =
-			"https://www.linkedin.com/in/your-linkedin-username/";
+		const linkedinProfileUrl = "https://www.linkedin.com/in//";
 		openProfile(linkedinProfileUrl);
 	}
 }

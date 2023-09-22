@@ -72,6 +72,10 @@ a {
 	gap: 12px;
 }
 
+.mobile {
+	display: none;
+}
+
 .nes-btn {
 	min-width: 152px;
 	font-size: 1rem;
@@ -213,6 +217,53 @@ a {
 	display: none;
 }
 
+.main-about,
+.about {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.about {
+	height: 100%;
+	flex-grow: 1;
+}
+
+.about-container {
+	font-size: 1.6rem;
+	max-width: 100%;
+	height: auto;
+	line-height: 1.5;
+	text-align: left;
+}
+
+.introduction-container {
+	display: flex;
+	text-shadow: -5px 5px #202020;
+	align-items: center;
+	justify-content: flex-start;
+	margin: 2rem;
+}
+
+.self-portrait {
+	object-fit: contain;
+	margin: 0;
+	border: 2px solid #fefefe;
+	max-width: 248px;
+	box-shadow: 5px 5px 0 #ebebeb, -5px -5px 0 #ebebeb, -15px 7px 5px #000,
+		-7px 15px 5px #000;
+}
+
+.introduction-self-portrait {
+	margin: 2rem;
+}
+
+.introduction-text--primary {
+	font-size: 2.5rem;
+	text-transform: uppercase;
+	text-align: center;
+	margin-top: 2rem;
+}
 @keyframes flash {
 	0% {
 		opacity: 1;
