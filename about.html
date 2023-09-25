@@ -38,10 +38,10 @@
 		<title>Paolo Papania | Portfolio</title>
 	</head>
 	<body>
-		<div class="background-container">
+		<div class="background-container-about">
 			<div class="container">
 				<div class="navbar-container">
-					<nav class="navbar nes-container is-dark is-rounded">
+					<nav class="navbar nes-container is-light is-rounded">
 						<a href="/index.html" class="nes-btn">Home</a>
 						<a href="/about.html" class="nes-btn is-primary">About</a>
 						<a href="/front-end.html" class="nes-btn">Projects</a>
@@ -59,7 +59,7 @@
 							></i>
 						</div>
 					</nav>
-					<nav class="mobile nes-container is-dark is-rounded">
+					<nav class="mobile nes-container is-light is-rounded">
 						<a class="nes-btn" href="index.html">Home</a
 						><a class="nes-btn is-primary" href="about.html">About</a
 						><a class="nes-btn" href="front-end.html">Projects</a>
@@ -77,13 +77,15 @@
 						</div>
 					</nav>
 				</div>
-				<main class="main main-about">
+				<main class="main main-about nes-container is-light is-rounded">
 					<div class="about">
 						<div class="about-container">
 							<div
-								class="introduction-container nes-container is-rounded is-dark"
+								class="introduction-container nes-container is-rounded is-light"
 							>
-								<div class="introduction-self-portrait">
+								<div
+									class="introduction-self-portrait nes-container is-light is-rounded"
+								>
 									<img
 										class="self-portrait"
 										src="/Assets/Images/avatar.png"
@@ -96,14 +98,21 @@
 										Hi! I'm Paolo, a 28-year-old South African studying
 										Multimedia Design student in Aarhus. I'm a man on a mission
 										to become a frontend developer, using my knowledge of UX
-										design and my love for tech and design. While I'm still
-										polishing up on my coding skills, I have many years
-										experience as a teacher, making me a pro at working with
-										people, communicating and working in a team. When I'm not
-										studying, coding, or designing you can find me playing video
-										games, cheering for my rugby team, or building mechanical
-										keyboards. I also have a zoo, which contains 2 dogs and 2
-										cats. I'm on a journey where pixels meet professionalism,
+										design and my love for tech and design.
+									</p>
+									<p class="introduction-paragraph">
+										While I'm still polishing up on my coding skills, I have
+										many years experience as a teacher, making me a pro at
+										working with people, communicating and working in a team.
+									</p>
+									<p class="introduction-paragraph">
+										When I'm not studying, coding, or designing you can find me
+										playing video games, cheering for my rugby team, or building
+										mechanical keyboards. I also have a zoo, which contains 2
+										dogs and 2 cats.
+									</p>
+									<p class="introduction-paragraph">
+										I'm on a journey where pixels meet professionalism,
 										innovation meets imagination and the art of frontend
 										development converges with the science of user experience
 										design.
@@ -112,34 +121,69 @@
 							</div>
 						</div>
 						<div
-							class="skills-container nes-container is-dark is-rounded with-title"
+							class="skills-container nes-container is-light is-rounded with-title"
 						>
 							<p class="title title-primary">Skills</p>
 							<div class="skills skills-fe">
 								<h2 class="skills-title">Front-End</h2>
-								<div class="flex">
+								<div class="flex-skill">
 									<img
-										src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAA3QAAAN0BcFOiBwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKvSURBVFiF7ZdfSNNRFMc/G1NT09+W0VILNZtZoTENsgTrSXoRIughMCj7h1EZmdSD9BCGQRpmFCSJ/TEIoqSIDAsfNCKCCvqjlv+2SlIC5xK11ebt4c7mcJsK24TwCxcO557L+fw45x5+FyU6fAAQc7GUhQyoAGEymVDGcsD+haDIBtaXkHgYNACKoqANUYM9OPmxAeHSVAcppVfNA8wDzAP8HwAny2Fk1N3X1AKHSiFnBxw4BQ+aAghw9Tb8GJT2+DjsLoY9J2B5LJQchJQVUFwG2/bDL5v7WY0/ACbrwjV41w7vm2CRVvrygMJ8yCuA0vNQUeKK92sPCAFl1XC90pV8QpERUFcJ1XUwPBIggM5eCAuF9NWe9xPiYVUyvG0LEMBMVHMO1qUGCMCQBLbfsge8aWMGKFEBAlCpoPSovAWDQzM74/cSHN8neyAtF8ovQ/MLsA4HEUCtlregrgK+foeSs6DPgOzt0NY5Nd7vc2BCuTlyAfyxw5WbEqL5DhhXBgFgskI0UFQAGg3sOgYfHrn2gnoNC/Ohrx+6J/18Twvw8KlsJl+yOyA0BEzfYOcR73FqNawxQEfPLAAWhMG9Ru/75j45/eL0oFOg4YmsuTd96gFD4iwANhjll7W+8rxfVQtbN0tbiYLMNNlwnlTfANpoMCS4+4XFYhGiL1EIMx5X/UVEnB7ReMPls3UhThchlsQg+l+7/B+fIbTRiEtnEI5el/9WFUKnIFruIsRnhKX23xNtegBhRtyvQegXS5AsIyIyArElC9HzfGrsm8eItSkSZFMmIkaHSE5wJje7A6icAGhHjWA3+SyHwwHtXXLApKdC/FLf5es2Q0e3rLkhSY5qAGww1Aq6vc45YLVaYWx8Rm/DZbFyAQz99B0bo4Ps9dJ2G8c2sI457bl+nv8FfwRrm6dMnjYAAAAASUVORK5CYII="
-										class="skill-icon JavaScript"
-										alt=""
-									/>
-									<p>JavaScript</p>
-								</div>
-								<div class="flex">
-									<img
-										src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAAGFAAABhQFFWZ5CAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAYlQTFRF//////8A/6pVzJlm2J1i3Zlm3Jdo3Zlm2pZp2JZp2pVl25hn15Vl2Jdk2pZm2Zdl2pdl2JZn2ZVl2pZn2pdm2JZn2Zdm2ZVm2pZl2JVm2JZl2Zdn2ZZm2JZm2ZVn2ZZm2ZZn2ZZm2JVm2ZZm2ZZm2ZZm2JZm2ZZm2ZZm2ZZm2ZZm2ZZm2ZZm2ZZm2ZZn2pdl2p1v2p1x25ll3Jpk3Ztk3aN63ptk3qqE3qqF35xj4J5j4Z9i4bWV4baX4qBh4rmc5KJh5MGn5aNg5caw5eXl5qRg5siz5ubm56Vf56Zf59C/59HA5+bm6Kdf6Obl6Ofm6ahe6dfL6dvR6dzS6dzT6d3U6d/X6eLc6eLd6eXi6ebk6uHc66pe7Ktd7axc7q5c769b8K9b8bBb8rFa87Na9LRZ9LVb9bhh9bhi9bpn9r9y9sJ49sR898eD98eE98qJ+NOd+dWh+dio+tuw+t61+t+5++K+++TC/OjM/OrP/OrR/e/b/fLj/fPl/vXq/vft//z4//37////HWFNEAAAAC10Uk5TAAEDBQ0PFh4iJzA5OkJLUVNcZWhud3+AiJGXmqOsrrS9xcbP2N3h6fDy+vz+EPAPzAAAAUxJREFUOI2FkUtLw0AUhb9OfMQWFApaLNSlUMS1/v+14MKF0IqFBqupLTS21iTziItk8pR4lnM/zp1zj2B826IxAkmLJALVBqgmcJ/r7m+gkPkP0GWgMxxkGmXq5g4SIHGb39tWUnSbP4jsigRAAGvf930vkyKCRCHQEiAGjutLkBpBukMBhw1AkQMxcNAGhIBTinlSB+rnUiAtIK1D9YwGkIXD3s/ked4GjMkunQNlCTC2qwIYDgbXGeCALgNSA7hFTAEaAtDpHxIF0IWfsw6A44CBEFSSdqDScti7Vzej3vnlEWibEkGWUwOEq7jvdlJcpoPc4UWfXtgbbD+/wRQOCkCvpk+B6PdksFxswgTiGgAQvj+/fnxF5a6qQKkK77G+ojp9eIuopWhMKaWYLoIcslMZLKbWgXA9n8yWO2Mhs/Nnk/k6xAKVtxr9C7xN4kGQUxhdAAAAAElFTkSuQmCC"
+										src="/Assets/Icons/html_icon.png"
 										class="skill-icon HTML5"
 										alt=""
 									/>
 									<p>HTML5</p>
 								</div>
-								<div class="flex">
+								<div class="flex-skill">
 									<img
-										src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAA3QAAAN0BcFOiBwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANQSURBVFiFvZe9b5tVFMZ/575OmmBHNDRNKjlDAaFK0FJGlLQDS5KpEjNiYUCiEwsLS/8A9iJVYURi6tKBpkuRSCrERsXQSGkLVQI4dtwqxPkw9j0MrxO/98Nvalp8Ft97fHyf556veyyqCsAbXzd2QIsMRKTx6LNiCcB0lVoZDLiLlSHA5uAIdLG6BITBeSCD1SWgAySQwSo4SnHtpopCwfBC0rJQaehzEDBs4tl9szDEW+Meqz5lta5cudl0lSaWA5EQPN1XX9W3bO1FztBYDtiQwLODF8Znay+itNEQaAUvCb76ucXifeGwWSnQWfrRQjXVCXDzw+Gjk2oxDxgNCehBuyInCo7dk23lyXZ/YRgbdq8RI6AH7TAEjz8/+QxoBtZ9yqsnXC9WdwOTZgcLyIYAQNhEmT7cJgZKQ5CIYCTdJ0K6zn4aKHT2b55067bqe0DcjusSSLPziMC7E4bvrgzlX/kYCULgVZtDV9V9kCq7L6MMPXwPwyFgjHHcs7mrQbb3I20Ne4mPEQvBkbQsfPL9PxgBtFt6fjlm1x+/kzB3Nr3X033FBvXqYoQEvM57b8PGr9dDPno7OVpHm1AugciT/OX7Bd6bTFn9vq188UMrl8BUZqaKNiHJIxAZSsZH4OJk6tLy2PEZcabYdWE95gEPwy3aduiBWuaQ8REhyXkcjcDkaNcg6oF2jgekoBX1fpN9zRKBxYUhltctKxuW1Xr63bnXhNmy4dK0IclcKUZACtqbwMNKqfb65I4l4xk/kWbKhpmyccidGo27JZKE9mGlVMsq3EZ0DYtSzer+bPTuBadGpSe4dn7rKat6Daes/CQ8nIymDrc//WGZ/bbJTFm4PG2YLRsmeoDW9pSVDcuP65Z7GxoOIyZM8pBAWqcXsqqtPeXWmnJrzSKkMb80ncYcYHndsrye5kRunUSmrjiBnExX4EFdeVBvs3i/nQf3XATCmVf+x39IkbMDAiKyRjhxvQzRztkeJ7/wgXM3/p5otc2cYudB5oAz/xH0L9A7glkqJPbO6qdjNd8gSsAxADl7vXERsfMGmVeYBYZ7mDcFViy6hJql364Wf9FjvHksAV/OX6+Wdhn5AJF5hYUOyduoLr3C/t1fr57e6ee8fwHzBWztiEvamQAAAABJRU5ErkJggg=="
+										src="/Assets/Icons/css_icon.png"
 										class="skill-icon CSS3"
 										alt=""
 									/>
 									<p>CSS3</p>
+								</div>
+								<div class="flex-skill">
+									<img
+										src="/Assets/Icons/js_icon.png"
+										class="skill-icon JavaScript"
+										alt=""
+									/>
+									<p>JavaScript</p>
+								</div>
+								<div class="flex-skill">
+									<img
+										src="/Assets/Icons/wordpress_icon.png"
+										class="skill-icon wordpress"
+										alt=""
+									/>
+									<p>WordPress</p>
+								</div>
+							</div>
+							<div class="skills skills-de">
+								<h2 class="skills-title">UX/UI Design</h2>
+								<div class="flex-skill">
+									<img
+										src="/Assets/Icons/html_icon.png"
+										class="skill-icon HTML5"
+										alt=""
+									/>
+									<p>HTML5</p>
+								</div>
+								<div class="flex-skill">
+									<img
+										src="/Assets/Icons/css_icon.png"
+										class="skill-icon CSS3"
+										alt=""
+									/>
+									<p>CSS3</p>
+								</div>
+								<div class="flex-skill">
+									<img
+										src="/Assets/Icons/js_icon.png"
+										class="skill-icon JavaScript"
+										alt=""
+									/>
+									<p>JavaScript</p>
 								</div>
 							</div>
 						</div>
