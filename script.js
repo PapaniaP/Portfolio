@@ -9,7 +9,7 @@ function openProfileByIcon(icon) {
 		const githubProfileUrl = "https://github.com/PapaniaP";
 		openProfile(githubProfileUrl);
 	} else if (icon.classList.contains("linkedin-icon")) {
-		const linkedinProfileUrl = "https://www.linkedin.com/in//";
+		const linkedinProfileUrl = "https://www.linkedin.com/in/papaniap/";
 		openProfile(linkedinProfileUrl);
 	}
 }

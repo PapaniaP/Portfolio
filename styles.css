@@ -45,10 +45,6 @@ a {
 }
 
 .background-container-about {
-	/* background-image: url(/Assets/bg/mountains_bg.jpg); */
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
 	background-color: #c3cfa1;
 	height: 100%;
 	text-align: center;
@@ -65,12 +61,19 @@ a {
 	min-height: 100vh;
 	background-color: #202020;
 	background-color: transparent;
+	@media (max-width: 742px) {
+		padding: 1rem;
+	}
 }
 
 .navbar-container {
 	display: flex;
 	width: 100%;
 	align-items: center;
+	@media (max-width: 742px) {
+		position: relative;
+		justify-content: center;
+	}
 }
 
 .navbar {
@@ -79,10 +82,64 @@ a {
 	width: 100%;
 	align-items: center;
 	gap: 12px;
+	@media (max-width: 742px) {
+		display: none;
+	}
 }
 
 .mobile {
 	display: none;
+	@media (max-width: 742px) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+		margin-top: 1rem;
+	}
+}
+
+.mobile-home {
+	display: none;
+	@media (max-width: 742px) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+		margin-top: 1rem;
+		padding: 8px;
+	}
+}
+
+.footer-container {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem 2rem;
+	@media (max-width: 742px) {
+		flex-direction: column-reverse;
+	}
+}
+
+.footer-copy p {
+	margin: auto;
+	@media (max-width: 742px) {
+		font-size: 0.6rem;
+		padding: 1rem;
+	}
+}
+
+.footer-copy-home p {
+	margin: auto;
+	color: #eee;
+	@media (max-width: 742px) {
+		font-size: 0.6rem;
+		padding: 1rem;
+	}
 }
 
 .nes-btn {
@@ -111,6 +168,10 @@ a {
 	color: #212529;
 	background-color: #fff;
 	padding: 8px;
+	@media (max-width: 742px) {
+		min-width: 100px;
+		font-size: 0.8rem;
+	}
 }
 
 .nes-container.is-rounded.is-light {
@@ -162,22 +223,22 @@ a {
 	display: flex;
 }
 
-.nes-icon.is-medium {
-	margin-right: 32px;
-	margin-bottom: 32px;
-	transform: scale(3);
+.social-mobile {
+	@media (max-width: 742px) {
+		display: none;
+	}
+}
+
+.social-desktop-footer {
+	display: none;
+	@media (max-width: 742px) {
+		display: flex;
+		margin: auto;
+	}
 }
 
 .nes-icon {
-	margin: 1rem;
-	position: relative;
-	display: inline-block;
-	width: 16px;
-	height: 16px;
-	margin-right: 16px;
-	margin-bottom: 16px;
-	transform: scale(2);
-	transform-origin: top left;
+	margin: 8px 16px;
 }
 
 .main {
@@ -195,6 +256,9 @@ a {
 	padding: 0 50px 60px 50px;
 	text-align: center;
 	justify-content: center;
+	@media (max-width: 742px) {
+		padding: 1rem;
+	}
 }
 
 .heading h1 {
@@ -207,16 +271,27 @@ a {
 	text-shadow: 5px 5px #fefefe, -5px -5px #fefefe, 5px -5px #fefefe,
 		-5px 5px #fefefe, 5px 0 #fefefe, -5px 0 #fefefe;
 	text-transform: uppercase;
+	width: auto;
+	@media (max-width: 742px) {
+		font-size: 2.5rem;
+		text-shadow: 3px 3px #fefefe, -3px -3px #fefefe, 3px -3px #fefefe,
+			-3px 3px #fefefe, 3px 0 #fefefe, -3px 0 #fefefe;
+		line-height: 3.5rem;
+	}
 }
 
 .heading h2 {
-	font-size: 1.2rem;
+	font-size: 1.1rem;
 	border-bottom: 3px solid #eee;
 	color: #eee;
 	padding-bottom: 2rem;
 	width: auto;
 	margin-top: 2rem;
 	margin-bottom: 0;
+	@media (max-width: 742px) {
+		font-size: 0.8rem;
+		/* line-height: 3.5rem; */
+	}
 }
 .heading a {
 	font-size: 1rem;
@@ -249,15 +324,25 @@ a {
 	}
 }
 
-.footer-container {
-	display: none;
-}
-
 .main-about,
 .about {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
+}
+
+.main-about.nes-container.is-light.is-rounded {
+	@media (max-width: 742px) {
+		padding: 0 !important;
+		border-image-width: 0;
+	}
+}
+
+.main-projects.nes-container.is-light.is-rounded {
+	@media (max-width: 742px) {
+		padding: 0 !important;
+		border-image-width: 0;
+	}
 }
 
 .about {
@@ -266,7 +351,7 @@ a {
 }
 
 .about-container {
-	font-size: 1.1rem;
+	font-size: 1rem;
 	max-width: 100%;
 	height: auto;
 	line-height: 1.2;
@@ -280,6 +365,9 @@ a {
 	justify-content: flex-start;
 	margin: 2rem;
 	color: #202020;
+	@media (max-width: 742px) {
+		flex-direction: column;
+	}
 }
 
 .self-portrait {
@@ -287,13 +375,22 @@ a {
 	margin: 0;
 	max-width: 248px;
 	padding: 8px;
+	box-shadow: 5px 5px 0 #ddecb4, -5px -5px 0 #ddecb4, -10px 7px 5px #889171,
+		-7px 10px 5px #889171;
 }
 
 .introduction-container .introduction-self-portrait {
 	margin: 2rem !important ;
+	@media (max-width: 742px) {
+		margin-bottom: 0 !important;
+	}
 }
 .introduction-self-portrait {
 	margin: 2rem;
+
+	@media (max-width: 742px) {
+		margin-bottom: 0 !important;
+	}
 }
 
 .introduction-text--primary {
@@ -301,26 +398,40 @@ a {
 	text-transform: uppercase;
 	text-align: center;
 	margin-top: 2rem;
+	@media (max-width: 742px) {
+		font-size: 1.5rem;
+	}
 }
 
 .introduction-text {
-	line-height: 1.3;
+	line-height: 1.2;
 	margin-left: 1rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: flex-start;
-	font-family: joystix monospace;
+	/* font-family: joystix monospace; */
+	@media (max-width: 742px) {
+		margin-bottom: 0;
+	}
 }
 
 .introduction-paragraph {
 	padding: 1rem;
 	margin: 0;
+	@media (max-width: 742px) {
+		/* text-align: center; */
+		font-size: 0.8rem;
+		padding: 8px 4px;
+	}
 }
 
 .nes-container.with-title > .title {
 	background-color: #c3cfa1 !important;
 	font-size: 1.2rem !important;
+	@media (max-width: 742px) {
+		font-size: 1rem !important;
+	}
 }
 
 .skills-container {
@@ -350,6 +461,9 @@ a {
 	width: 100%;
 	font-size: 1.3rem;
 	margin: 1rem;
+	@media (max-width: 742px) {
+		font-size: 1.1rem;
+	}
 }
 
 .flex-skill {
@@ -360,6 +474,9 @@ a {
 	align-items: center;
 	margin: 0.7rem 2.5rem;
 	padding: 8px;
+	@media (max-width: 742px) {
+		margin: 0.3rem 0.6rem;
+	}
 }
 .skill-icon {
 	-ms-interpolation-mode: nearest-neighbor;
@@ -378,6 +495,9 @@ a {
 .flex-skill p {
 	margin-top: 0.5rem;
 	font-size: 1rem;
+	@media (max-width: 742px) {
+		font-size: 0.9rem !important;
+	}
 }
 
 .skills-de {
@@ -421,14 +541,24 @@ a {
 	font-family: joystix monospace;
 	font-weight: 200;
 	line-height: 1.2;
+	max-width: 80%;
+	@media (max-width: 742px) {
+		font-size: 0.9rem;
+		line-height: 1.1;
+	}
 }
 
 .project-buttons {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-	min-width: 50%;
+	min-width: 35%;
 	padding: 1rem;
+	@media (max-width: 742px) {
+		/* flex-direction: column; */
+		padding: 1rem;
+		gap: 8px;
+	}
 }
 
 .modal-text {
