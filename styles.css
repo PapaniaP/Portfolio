@@ -534,6 +534,20 @@ a {
 	align-items: center;
 }
 
+.project-inner {
+	display: flex;
+	margin-bottom: 1rem !important;
+	align-items: center;
+	justify-content: center;
+	gap: 5rem;
+}
+
+.img-container {
+	display: flex;
+	flex-direction: column;
+	max-width: 50%;
+}
+
 .project-image {
 	box-shadow: 5px 5px 0 #ddecb4, -5px -5px 0 #ddecb4, -10px 7px 5px #889171,
 		-7px 10px 5px #889171;
@@ -544,25 +558,63 @@ a {
 	object-fit: cover;
 }
 
+.description-container {
+	display: flex;
+	flex-direction: column;
+	max-width: 50%;
+	gap: 1rem;
+}
+
+.tag-container {
+	display: flex;
+	width: 75%;
+	flex-wrap: wrap;
+
+	gap: 3rem;
+	margin-left: 1.5rem;
+	margin-bottom: 2rem;
+}
+
+.tag {
+	color: #212529;
+	text-align: center;
+	background-color: #f7d51d;
+	box-shadow: 0 0.3em #f7d51d, 0 -0.3em #f7d51d, 0.3em 0 #f7d51d,
+		-0.3em 0 #f7d51d;
+}
+
+.tag-text {
+	display: flex;
+	font-size: 12px;
+	align-items: center;
+	min-width: 5rem;
+	justify-content: center;
+	padding: 0.5em 0.5em;
+	font-family: joystix monospace;
+	font-weight: 500;
+}
+
 .project-description {
-	margin: 1rem;
+	margin: 1rem 1rem 0 1rem;
 	font-size: 1rem;
 	font-family: joystix monospace;
 	font-weight: 200;
 	line-height: 1.2;
-	max-width: 80%;
+	text-align: left;
 	@media (max-width: 742px) {
 		font-size: 0.9rem;
 		line-height: 1.1;
+		max-width: 80%;
 	}
 }
 
 .project-buttons {
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: left;
 	min-width: 35%;
 	padding: 1rem;
+	gap: 2rem;
 	@media (max-width: 742px) {
 		/* flex-direction: column; */
 		padding: 1rem;
