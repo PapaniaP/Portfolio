@@ -19,3 +19,29 @@ const profileIcons = document.querySelectorAll(".profile-link");
 profileIcons.forEach((icon) => {
 	icon.addEventListener("click", () => openProfileByIcon(icon));
 });
+
+// Function to adjust content based on screen width
+function adjustContent(className, contentAbove900px, contentBelow900px) {
+	var screenWidth = window.innerWidth;
+	var elements = document.getElementsByClassName(className);
+
+	for (var i = 0; i < elements.length; i++) {
+		if (screenWidth < 900) {
+			// Screen width is below 900px, set the content to contentBelow900px
+			elements[i].textContent = contentBelow900px;
+		} else {
+			// Screen width is 900px or more, set the content to contentAbove900px
+			elements[i].textContent = contentAbove900px;
+		}
+	}
+}
+
+// Call the adjustContent function for different classes and texts
+adjustContent("tag-js", "JavaScript", "JS");
+adjustContent("tag-wp", "WordPress", "WP");
+
+// Add an event listener to adjust the content when the window is resized
+window.addEventListener("resize", function () {
+	adjustContent("tag-js", "JavaScript", "JS");
+	adjustContent("tag-wp", "WordPress", "WP");
+});
