@@ -2,3 +2,4 @@ RewriteEngine On
 RewriteRule ^home$ index.html [L]
 RewriteRule ^projects$ front-end.html [L]
 RewriteRule ^about$ about.html [L]
+RewriteRule ^about$ /about.html [L]
