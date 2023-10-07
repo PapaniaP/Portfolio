@@ -149,6 +149,10 @@ a {
 	transition: transform 0.3s;
 }
 
+.burger:focus {
+	outline: none;
+}
+
 .burger-line {
 	display: block;
 	width: 30px;
