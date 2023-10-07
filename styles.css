@@ -18,6 +18,10 @@ body {
 	font-family: "Press Start 2P", sans-serif;
 	font-size: 16px;
 	-webkit-font-smoothing: antialiased;
+	@media (max-width: 742px) {
+		height: 100vh;
+		width: 100vw;
+	}
 }
 
 html {
@@ -27,6 +31,8 @@ html {
 	-webkit-text-size-adjust: 100%;
 	-ms-overflow-style: scrollbar;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	@media (max-width: 742px) {
+	}
 }
 
 a {
@@ -45,8 +51,9 @@ a {
 
 .background-container-about {
 	background-color: #c3cfa1;
-	height: 100%;
+
 	text-align: center;
+	width: 100%;
 }
 
 .container {
@@ -61,24 +68,47 @@ a {
 	background-color: #202020;
 	background-color: transparent;
 	@media (max-width: 742px) {
-		padding: 1rem 1rem 0 1rem;
+		padding: 0rem 1rem 0 1rem;
+		width: 100%;
 	}
 }
 
 .navbar-container {
 	display: flex;
-	width: 100%;
+	width: 100vw;
 	align-items: center;
 	@media (max-width: 742px) {
-		position: relative;
+		position: sticky;
+		top: 0px;
+		height: 5rem;
+		width: 100vw;
 		justify-content: center;
+		border-bottom: solid #212529;
+		z-index: 2000;
+		background-color: #c3cfa1;
 	}
 }
 
-.navbar {
+.navbar-container-home {
 	display: flex;
-	padding: 1rem 0;
+	width: 100vw;
+	align-items: center;
+	@media (max-width: 742px) {
+		position: sticky;
+		top: 0px;
+		height: 5rem;
+
+		position: relative;
+		justify-content: center;
+		border-bottom: solid #fff;
+	}
+}
+
+.desktop-nav {
+	display: flex;
+	padding: 2rem 1rem;
 	width: 100%;
+	margin: 8px 2.5rem !important;
 	align-items: center;
 	gap: 12px;
 	@media (max-width: 742px) {
@@ -86,17 +116,93 @@ a {
 	}
 }
 
-.mobile {
+.mobile-nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: transparent;
+	z-index: 999;
+	opacity: 0;
+	transform: translateY(-100%);
 	display: none;
-	@media (max-width: 742px) {
+}
+
+.mobile-nav .nes-avatar.logo {
+	position: fixed;
+	top: 1rem;
+	left: 2rem;
+	padding: 4px;
+}
+
+.burger {
+	position: fixed;
+	top: 1rem;
+	right: 2rem;
+	cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC)
+			14 0,
+		pointer;
+	background: none;
+	border: none;
+	padding: 8px;
+	z-index: 2001;
+	transition: transform 0.3s;
+}
+
+.burger-line {
+	display: block;
+	width: 30px;
+	height: 3px;
+	margin: 6px auto;
+	background-color: #212529; /* Adjust the color */
+	transition: 0.4s;
+}
+
+.burger-line-home {
+	display: block;
+	width: 30px;
+	height: 3px;
+	margin: 6px auto;
+	background-color: #eee; /* Adjust the color */
+	transition: 0.4s;
+}
+
+.menu {
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	height: 100vh;
+	padding: 7rem 5rem;
+	gap: 2rem;
+	backdrop-filter: blur(6px);
+	background-color: rgba(195, 207, 161, 0.793);
+}
+
+@media (max-width: 742px) {
+	.desktop-nav {
+		display: none;
+	}
+
+	.mobile-nav {
+		top: 0;
+		opacity: 1;
+		transform: translateY(0);
+		display: block; /* Show the menu */
+		backdrop-filter: blur(6px);
+		background-color: transparent;
+	}
+
+	.menu.open {
+		/* Animation styles for the open menu */
+		transform: translateY(0);
+		opacity: 1;
+		pointer-events: auto;
+		transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 		display: flex;
-		flex-wrap: wrap;
-		gap: 8px;
-		width: 100%;
-		justify-content: center;
-		align-items: center;
-		margin-top: 1rem;
-		box-shadow: 0 4px 0 0 #202020 !important;
+	}
+
+	.menu a {
+		width: 80%;
 	}
 }
 
@@ -384,15 +490,17 @@ a {
 	text-align: left;
 }
 
-.introduction-container {
+.intro-inner {
 	display: flex;
 	text-shadow: -2px 2px #ddecb4;
 	align-items: center;
 	justify-content: flex-start;
 	margin: 2rem;
 	color: #202020;
+	gap: 2rem;
 	@media (max-width: 742px) {
 		flex-direction: column;
+		margin: 8px;
 	}
 }
 
@@ -455,9 +563,15 @@ a {
 	background-color: #c3cfa1 !important;
 	font-size: 1.2rem !important;
 	@media (max-width: 742px) {
-		font-size: 1rem !important;
+		font-size: 1.2rem !important;
 		margin: 0 0 0.5rem 0 !important;
 	}
+}
+
+.introduction-container .title.title-primary {
+	align-self: flex-start;
+	margin-left: 1rem;
+	font-size: 1.5rem !important;
 }
 
 .skills-container {
@@ -481,6 +595,9 @@ a {
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
+	@media (max-width: 742px) {
+		margin-top: 1rem;
+	}
 }
 
 .skills-title {
@@ -488,7 +605,7 @@ a {
 	font-size: 1.3rem;
 	margin: 1rem;
 	@media (max-width: 742px) {
-		font-size: 1.1rem;
+		display: none;
 	}
 }
 

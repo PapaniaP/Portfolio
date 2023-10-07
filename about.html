@@ -56,7 +56,8 @@
 		<div class="background-container-about">
 			<div class="container">
 				<div class="navbar-container">
-					<nav class="navbar nes-container is-light is-rounded">
+					<!--Desktop Nav -->
+					<nav class="desktop-nav nes-container is-light is-rounded">
 						<a
 							href="/index.html"
 							class="nes-btn"
@@ -91,74 +92,100 @@
 							></i>
 						</div>
 					</nav>
-					<nav class="mobile nes-container is-light is-rounded">
-						<a
-							class="nes-btn"
-							href="index.html"
-							>Home</a
-						><a
-							class="nes-btn is-primary"
-							href="about.html"
-							>About</a
-						><a
-							class="nes-btn"
-							href="front-end.html"
-							>Projects</a
+					<!--Mobile Nav -->
+					<nav class="mobile-nav">
+						<a href="index.html">
+							<img
+								class="nes-avatar is-medium logo"
+								style="image-rendering: pixelated"
+								src="/Assets/Logo/Key_P_Logo.png"
+								alt=""
+						/></a>
+						<button
+							id="burger-button"
+							class="burger"
 						>
-						<a
-							class="nes-btn"
-							href="/Assets/cv_papaniap.pdf"
-							target="_blank"
-							rel="noopener noreferrer"
-							>CV</a
+							<span class="burger-line"></span>
+							<span class="burger-line"></span>
+							<span class="burger-line"></span>
+						</button>
+						<div
+							id="menu"
+							class="menu"
 						>
-						<div class="icon-list social-mobile">
-							<i
-								class="nes-icon github is-medium navbar-social nes-pointer profile-link github-icon"
-							></i
-							><a href="mailto:papaniap11@gmail.com"
+							<a
+								class="nes-btn"
+								href="index.html"
+								>Home</a
+							><a
+								class="nes-btn is-primary"
+								href="about.html"
+								>About</a
+							><a
+								class="nes-btn"
+								href="front-end.html"
+								>Projects</a
+							>
+							<a
+								class="nes-btn"
+								href="/Assets/cv_papaniap.pdf"
+								target="_blank"
+								rel="noopener noreferrer"
+								>CV</a
+							>
+							<div class="icon-list social-mobile">
+								<i
+									class="nes-icon github is-medium navbar-social nes-pointer profile-link github-icon"
+								></i
+								><a href="mailto:papaniap11@gmail.com"
+									><i
+										class="social nes-icon gmail is-medium navbar-social nes-pointer"
+									></i></a
 								><i
-									class="social nes-icon gmail is-medium navbar-social nes-pointer"
-								></i></a
-							><i
-								class="nes-icon linkedin is-medium navbar-social nes-pointer profile-link linkedin-icon"
-							></i>
+									class="nes-icon linkedin is-medium navbar-social nes-pointer profile-link linkedin-icon"
+								></i>
+							</div>
 						</div>
 					</nav>
 				</div>
 				<main class="main main-about nes-container is-light is-rounded">
 					<div class="about">
 						<div class="about-container">
-							<div class="introduction-container nes-container is-rounded is-light">
-								<div class="introduction-self-portrait is-light">
-									<img
-										class="self-portrait"
-										src="/Assets/Images/avatar.png"
-										alt="Paolo Papania"
-									/>
-									<p class="introduction-text--primary">Paolo</p>
-								</div>
-								<div class="introduction-text">
-									<p class="introduction-paragraph">
-										Hi! I'm Paolo, a 28-year-old South African studying Multimedia Design
-										in Aarhus. I'm on a mission to become a frontend developer, using my
-										knowledge of UX/UI design and my love for technology.
-									</p>
-									<p class="introduction-paragraph">
-										While I'm still polishing up on my coding skills, I have many years of
-										experience as a teacher. So I'm pro at working with people,
-										communicating and working in a team.
-									</p>
-									<p class="introduction-paragraph">
-										When I'm not studying, coding, or designing you can find me playing
-										video games, cheering for my rugby team, or building mechanical
-										keyboards. I also have a zoo, which contains 2 dogs and 2 cats.
-									</p>
-									<p class="introduction-paragraph">
-										You can find me where pixels meet professionalism, innovation meets
-										imagination and the art of frontend development converges with the
-										science of UX design.
-									</p>
+							<div
+								class="introduction-container nes-container is-rounded is-light with-title"
+							>
+								<p class="title title-primary">About</p>
+								<div class="intro-inner">
+									<div class="introduction-self-portrait is-light">
+										<img
+											class="self-portrait"
+											src="/Assets/Images/avatar.png"
+											alt="Paolo Papania"
+										/>
+										<p class="introduction-text--primary">Paolo</p>
+									</div>
+									<div class="introduction-text">
+										<p class="introduction-paragraph">
+											Hi! I'm Paolo, a 28-year-old South African studying Multimedia
+											Design in Aarhus. I'm on a mission to become a frontend developer,
+											using my knowledge of UX/UI design and my love for technology.
+										</p>
+										<p class="introduction-paragraph">
+											While I'm still polishing up on my coding skills, I have many years
+											of experience as a teacher. So I'm pro at working with people,
+											communicating and working in a team.
+										</p>
+										<p class="introduction-paragraph">
+											When I'm not studying, coding, or designing you can find me playing
+											video games, cheering for my rugby team, or building mechanical
+											keyboards. I also have a zoo, which contains 2 dogs and 2 cats.
+										</p>
+										<p class="introduction-paragraph">
+											You can find me where pixels meet professionalism, innovation meets
+											imagination and the art of frontend development converges with the
+											science of UX design.
+										</p>
+									</div>
 								</div>
 							</div>
 						</div>

@@ -57,7 +57,8 @@
 		<div class="background-container-about">
 			<div class="container">
 				<div class="navbar-container">
-					<nav class="navbar nes-container is-light is-rounded">
+					<!--Desktop Nav -->
+					<nav class="desktop-nav nes-container is-light is-rounded">
 						<a
 							href="/index.html"
 							class="nes-btn"
@@ -92,38 +93,59 @@
 							></i>
 						</div>
 					</nav>
-					<nav class="mobile nes-container is-light is-rounded">
-						<a
-							class="nes-btn"
-							href="index.html"
-							>Home</a
-						><a
-							class="nes-btn"
-							href="about.html"
-							>About</a
-						><a
-							class="nes-btn is-primary"
-							href="front-end.html"
-							>Projects</a
+					<!--Mobile Nav -->
+					<nav class="mobile-nav">
+						<a href="index.html">
+							<img
+								class="nes-avatar is-medium logo"
+								style="image-rendering: pixelated"
+								src="/Assets/Logo/Key_P_Logo.png"
+								alt=""
+						/></a>
+						<button
+							id="burger-button"
+							class="burger"
 						>
-						<a
-							class="nes-btn"
-							href="/Assets/cv_papaniap.pdf"
-							target="_blank"
-							rel="noopener noreferrer"
-							>CV</a
+							<span class="burger-line"></span>
+							<span class="burger-line"></span>
+							<span class="burger-line"></span>
+						</button>
+						<div
+							id="menu"
+							class="menu"
 						>
-						<div class="icon-list social-mobile">
-							<i
-								class="nes-icon github is-medium navbar-social nes-pointer profile-link github-icon"
-							></i
-							><a href="mailto:papaniap11@gmail.com"
+							<a
+								class="nes-btn"
+								href="index.html"
+								>Home</a
+							><a
+								class="nes-btn"
+								href="about.html"
+								>About</a
+							><a
+								class="nes-btn is-primary"
+								href="front-end.html"
+								>Projects</a
+							>
+							<a
+								class="nes-btn"
+								href="/Assets/cv_papaniap.pdf"
+								target="_blank"
+								rel="noopener noreferrer"
+								>CV</a
+							>
+							<div class="icon-list social-mobile">
+								<i
+									class="nes-icon github is-medium navbar-social nes-pointer profile-link github-icon"
+								></i
+								><a href="mailto:papaniap11@gmail.com"
+									><i
+										class="social nes-icon gmail is-medium navbar-social nes-pointer"
+									></i></a
 								><i
-									class="social nes-icon gmail is-medium navbar-social nes-pointer"
-								></i></a
-							><i
-								class="nes-icon linkedin is-medium navbar-social nes-pointer profile-link linkedin-icon"
-							></i>
+									class="nes-icon linkedin is-medium navbar-social nes-pointer profile-link linkedin-icon"
+								></i>
+							</div>
 						</div>
 					</nav>
 				</div>
