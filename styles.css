@@ -574,6 +574,17 @@ a {
 	font-size: 1.5rem !important;
 }
 
+.mobile-line {
+	display: none;
+	@media (max-width: 742px) {
+		display: block;
+		height: 4px;
+		width: 75%;
+		align-self: center;
+		background-color: #202020;
+		margin: 1rem;
+	}
+}
 .skills-container {
 	font-size: 1.8rem;
 	flex-grow: 1;
@@ -657,6 +668,9 @@ a {
 	flex-direction: column;
 	gap: 2rem;
 	flex-grow: 1;
+	@media (max-width: 742px) {
+		gap: 4px;
+	}
 }
 
 .project-container {
@@ -742,7 +756,7 @@ a {
 	@media (max-width: 742px) {
 		/* flex-direction: column; */
 		min-width: 85%;
-		padding: 1rem 0.5rem;
+		padding: 1rem;
 		justify-content: space-between;
 		gap: 12px;
 	}
