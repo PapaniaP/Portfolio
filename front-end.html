@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
 		<link
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
@@ -11,8 +13,14 @@
 		<style>
 			@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 		</style>
-		<link rel="stylesheet" href="styles.css" />
-		<script src="script.js" defer></script>
+		<link
+			rel="stylesheet"
+			href="styles.css"
+		/>
+		<script
+			src="script.js"
+			defer
+		></script>
 		<link
 			rel="apple-touch-icon"
 			sizes="180x180"
@@ -30,22 +38,41 @@
 			sizes="16x16"
 			href="/Assets/favicon_io/favicon-16x16.png"
 		/>
-		<link rel="manifest" href="/Assets/favicon_io/site.webmanifest" />
+		<link
+			rel="manifest"
+			href="/Assets/favicon_io/site.webmanifest"
+		/>
 		<!-- <link
 			href="https://unpkg.com/nes.icons@latest/css/nes-icons.min.css"
 			rel="stylesheet"
 		/> -->
-		<link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
+		<link
+			href="https://unpkg.com/nes.css/css/nes.css"
+			rel="stylesheet"
+		/>
 		<title>Paolo Papania | Portfolio</title>
 	</head>
 	<body>
 		<div class="background-container-about">
 			<div class="container">
 				<div class="navbar-container">
-					<nav class="navbar nes-container is-light is-rounded">
-						<a href="/index.html" class="nes-btn">Home</a>
-						<a href="/about.html" class="nes-btn">About</a>
-						<a href="/front-end.html" class="nes-btn is-primary">Projects</a>
+					<!--Desktop Nav -->
+					<nav class="desktop-nav nes-container is-light is-rounded">
+						<a
+							href="/home"
+							class="nes-btn"
+							>Home</a
+						>
+						<a
+							href="/about"
+							class="nes-btn"
+							>About</a
+						>
+						<a
+							href="/projects"
+							class="nes-btn is-primary"
+							>Projects</a
+						>
 						<a
 							class="nes-btn"
 							href="/Assets/cv_papaniap.pdf"
@@ -58,37 +85,66 @@
 								class="nes-icon github is-medium navbar-social nes-pointer profile-link github-icon"
 							></i>
 							<a href="mailto:papaniap11@gmail.com">
-								<i
-									class="social nes-icon gmail is-medium navbar-social nes-pointer"
-								></i
+								<i class="social nes-icon gmail is-medium navbar-social nes-pointer"></i
 							></a>
 							<i
 								class="nes-icon linkedin is-medium navbar-social nes-pointer profile-link linkedin-icon"
 							></i>
 						</div>
 					</nav>
-					<nav class="mobile nes-container is-light is-rounded">
-						<a class="nes-btn" href="index.html">Home</a
-						><a class="nes-btn" href="about.html">About</a
-						><a class="nes-btn is-primary" href="front-end.html">Projects</a>
-						<a
-							class="nes-btn"
-							href="/Assets/cv_papaniap.pdf"
-							target="_blank"
-							rel="noopener noreferrer"
-							>CV</a
+					<!--Mobile Nav -->
+					<nav class="mobile-nav">
+						<a href="/home">
+							<img
+								class="nes-avatar is-medium logo"
+								style="image-rendering: pixelated"
+								src="/Assets/Logo/Key_P_Logo.png"
+								alt=""
+						/></a>
+						<button
+							id="burger-button"
+							class="burger"
 						>
-						<div class="icon-list social-mobile">
-							<i
-								class="nes-icon github is-medium navbar-social nes-pointer profile-link github-icon"
-							></i
-							><a href="mailto:papaniap11@gmail.com"
+							<span class="burger-line"></span>
+							<span class="burger-line"></span>
+							<span class="burger-line"></span>
+						</button>
+						<div
+							id="menu"
+							class="menu"
+						>
+							<a
+								class="nes-btn"
+								href="/home"
+								>Home</a
+							><a
+								class="nes-btn"
+								href="/about"
+								>About</a
+							><a
+								class="nes-btn is-primary"
+								href="/projects"
+								>Projects</a
+							>
+							<a
+								class="nes-btn"
+								href="/Assets/cv_papaniap.pdf"
+								target="_blank"
+								rel="noopener noreferrer"
+								>CV</a
+							>
+							<div class="icon-list social-mobile">
+								<i
+									class="nes-icon github is-medium navbar-social nes-pointer profile-link github-icon"
+								></i
+								><a href="mailto:papaniap11@gmail.com"
+									><i
+										class="social nes-icon gmail is-medium navbar-social nes-pointer"
+									></i></a
 								><i
-									class="social nes-icon gmail is-medium navbar-social nes-pointer"
-								></i></a
-							><i
-								class="nes-icon linkedin is-medium navbar-social nes-pointer profile-link linkedin-icon"
-							></i>
+									class="nes-icon linkedin is-medium navbar-social nes-pointer profile-link linkedin-icon"
+								></i>
+							</div>
 						</div>
 					</nav>
 				</div>
@@ -97,15 +153,28 @@
 						class="project-container with-title is-centered nes-container is-rounded is-light"
 					>
 						<h2 class="project-title title">Weather App</h2>
-						<img
-							class="project-image"
-							src="/Assets/projects/weather/weather-app-4.png"
-							alt=""
-						/>
+						<div class="img-container">
+							<img
+								class="project-image"
+								src="/Assets/projects/weather/weather-app-4.png"
+								alt=""
+							/>
+						</div>
+						<div class="tag-container">
+							<div class="tag nes-container is-bright">
+								<span class="tag-text">HTML</span>
+							</div>
+							<div class="tag nes-container is-bright">
+								<span class="tag-text">CSS</span>
+							</div>
+							<div class="tag nes-container is-bright">
+								<span class="tag-text tag-js">JavaScript</span>
+							</div>
+						</div>
 						<h2 class="project-description">
-							A weather app project created to learn JavaScript and API
-							implementation. With this app, users can check the current weather
-							conditions for a location by entering the city name.
+							A weather app project created to learn JavaScript and API implementation.
+							With this app, users can check the current weather conditions for a location
+							by entering the city name.
 						</h2>
 						<div class="project-buttons">
 							<a
@@ -126,22 +195,38 @@
 							>
 						</div>
 					</div>
+					<div class="mobile-line"></div>
 					<div
 						class="project-container with-title is-centered nes-container is-rounded is-light"
 					>
 						<h2 class="project-title title">Hlousek &amp; Brokers</h2>
-						<img
-							class="project-image"
-							src="/Assets/projects/h&b/sk_home.png"
-							alt=""
-						/>
+						<div class="img-container">
+							<img
+								class="project-image"
+								src="/Assets/projects/h&b/sk_home.png"
+								alt=""
+							/>
+						</div>
+						<div class="tag-container">
+							<div class="tag nes-container is-bright">
+								<span class="tag-text tag-wp">WordPress</span>
+							</div>
+							<div class="tag nes-container is-bright">
+								<span class="tag-text">HTML</span>
+							</div>
+							<div class="tag nes-container is-bright">
+								<span class="tag-text">CSS</span>
+							</div>
+							<div class="tag nes-container is-bright">
+								<span class="tag-text tag-js">JavaScript</span>
+							</div>
+						</div>
 						<h2 class="project-description">
-							WIP - Designed and developed an online platform for a small
-							financial advisory business, providing them with a professional
-							website and an established digital presence. <br />
-							<br />This comprehensive project spanned from initial research to
-							the final implementation, ensuring a seamless transition to the
-							online world.
+							WIP - Designed and developed an online platform for a small financial
+							advisory business, providing them with a professional website and an
+							established digital presence. <br />
+							<br />This comprehensive project spanned from initial research to the final
+							implementation, ensuring a seamless transition to the online world.
 						</h2>
 						<div class="project-buttons">
 							<a
@@ -152,52 +237,43 @@
 								rel="noopener noreferrer"
 								>Project</a
 							>
-							<button
-								type="button"
+
+							<a
 								class="nes-btn is-primary"
-								onclick="document.getElementById('dialog-rounded').showModal();"
+								id="hb-code"
+								href="https://github.com/PapaniaP/H-B"
+								target="_blank"
+								rel="noopener noreferrer"
+								>Code</a
 							>
-								Code
-							</button>
-							<dialog
-								class="nes-dialog is-rounded is-light"
-								id="dialog-rounded"
-							>
-								<form method="dialog">
-									<p class="title">Hlousek &amp; Brokers</p>
-									<p class="modal-text">
-										This project was made using WordPress &amp; Elementor. The
-										code cannot be shown at the moment. You can still take a
-										look at the case study.
-									</p>
-									<menu class="dialog-menu">
-										<button class="nes-btn">Back</button>
-										<a
-											class="nes-btn is-primary"
-											id="hb-project2"
-											href="https://github.com/PapaniaP/H-B"
-											target="_blank"
-											rel="noopener noreferrer"
-											>Case Study</a
-										>
-									</menu>
-								</form>
-							</dialog>
 						</div>
 					</div>
+					<div class="mobile-line"></div>
 					<div
 						class="project-container with-title is-centered nes-container is-rounded is-light"
 					>
 						<h2 class="project-title title">Culture Cave</h2>
-						<img
-							class="project-image"
-							src="/Assets/projects/culture_cave/cc-22.png"
-							alt=""
-						/>
+						<div class="img-container">
+							<img
+								class="project-image"
+								src="/Assets/projects/culture_cave/cc-22.png"
+								alt=""
+							/>
+						</div>
+						<div class="tag-container">
+							<div class="tag nes-container is-bright">
+								<span class="tag-text">HTML</span>
+							</div>
+							<div class="tag nes-container is-bright">
+								<span class="tag-text">CSS</span>
+							</div>
+							<div class="tag nes-container is-bright">
+								<span class="tag-text tag-js">JavaScript</span>
+							</div>
+						</div>
 						<h2 class="project-description">
-							Designed and developed a solo project dedicated to uncovering
-							Verona's hidden gems, from food spots to wine shops and charming
-							bars.
+							Designed and developed a solo project dedicated to uncovering Verona's
+							hidden gems, from food spots to wine shops and charming bars.
 						</h2>
 						<div class="project-buttons">
 							<a
@@ -218,20 +294,34 @@
 							>
 						</div>
 					</div>
+					<div class="mobile-line"></div>
 					<div
 						class="project-container with-title is-centered nes-container is-rounded is-light"
 					>
 						<h2 class="project-title title">Ergo Boards</h2>
-						<img
-							class="project-image"
-							src="/Assets/projects/ergo/ergo_boards.jpeg"
-							alt=""
-						/>
+						<div class="img-container">
+							<img
+								class="project-image"
+								src="/Assets/projects/ergo/ergo_boards.jpeg"
+								alt=""
+							/>
+						</div>
+						<div class="tag-container">
+							<div class="tag nes-container is-bright">
+								<span class="tag-text tag-wp">WordPress</span>
+							</div>
+							<div class="tag nes-container is-bright">
+								<span class="tag-text">CSS</span>
+							</div>
+							<div class="tag nes-container is-bright">
+								<span class="tag-text tag-js">JavaScript</span>
+							</div>
+						</div>
 						<h2 class="project-description">
-							In a demanding 24-hour WordPress exam, I dedicated myself to
-							crafting a unique blog focused on ergonomic keyboards, showcasing
-							my interest for mechanical keyboards and delivering valuable
-							content and original design to a dedicated audience.
+							In a demanding 24-hour WordPress exam, I dedicated myself to crafting a
+							unique blog focused on ergonomic keyboards, showcasing my interest for
+							mechanical keyboards and delivering valuable content and original design to
+							a dedicated audience.
 						</h2>
 						<div class="project-buttons">
 							<a
@@ -262,9 +352,7 @@
 							class="nes-icon github is-medium navbar-social nes-pointer profile-link github-icon"
 						></i>
 						<a href="mailto:papaniap11@gmail.com">
-							<i
-								class="social nes-icon gmail is-medium navbar-social nes-pointer"
-							></i
+							<i class="social nes-icon gmail is-medium navbar-social nes-pointer"></i
 						></a>
 						<i
 							class="nes-icon linkedin is-medium navbar-social nes-pointer profile-link linkedin-icon"
