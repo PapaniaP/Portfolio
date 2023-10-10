@@ -133,6 +133,7 @@ a {
 	top: 1rem;
 	left: 2rem;
 	padding: 4px;
+	z-index: 1010;
 }
 
 .burger {
