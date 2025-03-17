@@ -1,0 +1,193 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// Define types in the frontmatter section
+interface ProjectLink {
+	text: string;
+	url: string;
+	primary: boolean;
+}
+
+interface Project {
+	title: string;
+	image: string;
+	description: string;
+	tags: string[];
+	links: ProjectLink[];
+}
+
+const projects: Project[] = [
+	{
+		title: 'Maxi Zoo Rewards',
+		image: '/Assets/projects/maxizoo/maxizoo.png',
+		description: 'A comprehensive UX case study focused on creating a digital concept for Maxi Zoo\'s loyalty program. The project involved extensive user research, competitive analysis, and iterative design to develop an engaging and user-friendly rewards system that enhances customer loyalty and satisfaction.',
+		tags: ['UX Research', 'UI Design', 'Figma', 'Prototyping'],
+		links: [
+			{
+				text: 'Case Study',
+				url: '/projects/maxizoo',
+				primary: false
+			},
+			{
+				text: 'Prototype',
+				url: '#',
+				primary: true
+			}
+		]
+	},
+	{
+		title: 'Levito Pharmacies',
+		image: '/Assets/projects/levito/levito.png',
+		description: 'Developed a comprehensive website for a chain of pharmacies in Slovakia, focusing on user-friendly navigation and clear presentation of services. The project involved creating a modern, accessible platform that serves both customers and healthcare professionals.',
+		tags: ['WordPress', 'HTML', 'CSS', 'JavaScript'],
+		links: [
+			{
+				text: 'View Project',
+				url: 'https://levito.dk/',
+				primary: true
+			}
+		]
+	},
+	{
+		title: 'Weather App',
+		image: '/Assets/projects/weather/weather-app-4.png',
+		description: 'A weather app project created to learn JavaScript and API implementation. With this app, users can check the current weather conditions for a location by entering the city name.',
+		tags: ['HTML', 'CSS', 'JavaScript'],
+		links: [
+			{
+				text: 'Project',
+				url: 'https://weather-app.papaniap.dk',
+				primary: false
+			},
+			{
+				text: 'Code',
+				url: 'https://github.com/PapaniaP/weather_app',
+				primary: true
+			}
+		]
+	},
+	{
+		title: 'Hlousek & Brokers',
+		image: '/Assets/projects/h&b/sk_home.png',
+		description: 'WIP - Designed and developed an online platform for a small financial advisory business, providing them with a professional website and an established digital presence. This comprehensive project spanned from initial research to the final implementation, ensuring a seamless transition to the online world.',
+		tags: ['WordPress', 'HTML', 'CSS', 'JavaScript'],
+		links: [
+			{
+				text: 'Project',
+				url: 'https://www.hlousekbrokers.sk/',
+				primary: false
+			},
+			{
+				text: 'Code',
+				url: 'https://github.com/PapaniaP/H-B',
+				primary: true
+			}
+		]
+	},
+	{
+		title: 'Culture Cave',
+		image: '/Assets/projects/culture_cave/cc-22.png',
+		description: 'Designed and developed a solo project dedicated to uncovering Verona\'s hidden gems, from food spots to wine shops and charming bars.',
+		tags: ['HTML', 'CSS', 'JavaScript'],
+		links: [
+			{
+				text: 'Project',
+				url: 'https://papaniap.github.io/CultureCave/',
+				primary: false
+			},
+			{
+				text: 'Code',
+				url: 'https://github.com/PapaniaP/CultureCave/',
+				primary: true
+			}
+		]
+	},
+	{
+		title: 'Portfolio Website',
+		image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=Portfolio+Website',
+		description: 'My personal portfolio website built with modern web technologies. Features a clean, accessible design with dark mode support and responsive layouts. The site showcases my projects and skills as a frontend developer and UX/UI designer.',
+		tags: ['Astro', 'TailwindCSS', 'TypeScript', 'Responsive Design'],
+		links: [
+			{
+				text: 'GitHub',
+				url: 'https://github.com/PapaniaP/Portfolio',
+				primary: false
+			}
+		]
+	}
+];
+---
+
+<Layout title="Projects">
+	<div class="container mx-auto px-4 py-20">
+		<div class="max-w-4xl">
+			<h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+				Projects
+			</h1>
+			<p class="text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-2xl">
+				A collection of my work in frontend development and UX/UI design. Each project represents a unique challenge and showcases different aspects of my skills and approach to problem-solving.
+			</p>
+		</div>
+
+		<div class="space-y-20">
+			{projects.map((project) => (
+				<article class="bg-white dark:bg-gray-800 rounded-xl shadow-lg mb-16">
+					<div class="grid md:grid-cols-2 gap-6">
+						<div class="order-2 md:order-1 p-6 md:p-8 flex flex-col justify-between">
+							<div>
+								<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+									{project.title}
+								</h2>
+								<p class="text-gray-600 dark:text-gray-300 mb-6">
+									{project.description}
+								</p>
+								<div class="flex flex-wrap gap-2 mb-6">
+									{project.tags.map((tag) => (
+										<span class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full">
+											{tag}
+										</span>
+									))}
+								</div>
+							</div>
+							<div class="flex gap-4">
+								{project.links.map((link) => (
+									<a
+										href={link.url}
+										class={`inline-flex items-center px-6 py-3 text-base font-medium rounded-lg transition-colors
+											${link.primary
+												? 'text-white bg-primary hover:bg-primary-dark'
+												: 'text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600'
+											}`}
+										target={link.url.startsWith('http') ? '_blank' : undefined}
+										rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+									>
+										{link.text}
+										{link.url.startsWith('http') && (
+											<svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+											</svg>
+										)}
+									</a>
+								))}
+							</div>
+						</div>
+						<div class="order-1 md:order-2">
+							<Image
+								src={project.image}
+								alt={`${project.title} Screenshot`}
+								width={800}
+								height={600}
+								class="w-full h-64 md:h-full object-cover"
+							/>
+						</div>
+					</div>
+				</article>
+			))}
+		</div>
+	</div>
+</Layout>
+
+<script>
+	import Layout from '../layouts/Layout.astro';
+</script>

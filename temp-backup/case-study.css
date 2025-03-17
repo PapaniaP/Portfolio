@@ -1,0 +1,273 @@
+/* Case Study Styles */
+:root {
+  --primary-color: #209cee;
+  --text-color: #212529;
+  --background-color: #c3cfa1;
+  --container-bg: #c3cfa1;
+  --section-spacing: 4rem;
+  --transition-speed: 0.3s;
+}
+
+/* WebGL Canvas */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.1;
+}
+
+/* Layout */
+.case-study-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--background-color);
+}
+
+/* Navigation */
+.case-study-nav {
+  padding: 2rem 0;
+}
+
+.back-btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  color: var(--text-color);
+  text-decoration: none;
+  border: 2px solid var(--text-color);
+  border-radius: 4px;
+  transition: all var(--transition-speed);
+}
+
+.back-btn:hover {
+  background: var(--text-color);
+  color: var(--background-color);
+}
+
+/* Hero Section */
+.case-study-hero {
+  text-align: center;
+  padding: var(--section-spacing) 0;
+}
+
+.case-study-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+.case-study-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: fadeIn 0.8s 0.3s forwards;
+}
+
+.case-study-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.meta-item {
+  opacity: 0;
+  animation: fadeIn 0.8s 0.6s forwards;
+  background: var(--container-bg) !important;
+}
+
+/* Sections */
+.case-study-section {
+  margin: var(--section-spacing) 0;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.case-study-section.visible {
+  animation: fadeInUp 0.8s forwards;
+}
+
+.case-study-section h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+/* Problem Statement */
+.problem-statement {
+  background: #f5f5f5;
+  padding: 2rem;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+/* Research Grid */
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.research-item {
+  transition: transform var(--transition-speed);
+  background: var(--container-bg) !important;
+}
+
+.research-item:hover {
+  transform: translateY(-5px);
+}
+
+/* Findings Grid */
+.findings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.finding-card {
+  text-align: center;
+  transition: transform var(--transition-speed);
+  background: var(--container-bg) !important;
+}
+
+.finding-card:hover {
+  transform: translateY(-5px);
+}
+
+.finding-card h3 {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+/* Process Timeline */
+.process-timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.process-step {
+  position: relative;
+  text-align: center;
+  background: var(--container-bg) !important;
+}
+
+.process-step i {
+  margin-bottom: 1rem;
+}
+
+/* Solution Showcase */
+.solution-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.solution-showcase .nes-container {
+  background: var(--container-bg) !important;
+}
+
+.solution-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform var(--transition-speed);
+}
+
+.solution-img:hover {
+  transform: scale(1.02);
+}
+
+/* Impact Metrics */
+.impact-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.metric {
+  text-align: center;
+  background: var(--container-bg) !important;
+}
+
+.metric h3 {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+}
+
+/* Next Steps */
+.next-steps {
+  list-style: none;
+  padding: 0;
+}
+
+.next-steps li {
+  margin-bottom: 1rem;
+  transition: transform var(--transition-speed);
+}
+
+.next-steps li:hover {
+  transform: translateX(10px);
+}
+
+/* Typewriter Effect */
+.typewriter-text {
+  opacity: 0;
+  visibility: hidden;
+  margin: 0;
+}
+
+.typewriter-text.typing {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .case-study-hero h1 {
+    font-size: 2rem;
+  }
+
+  .case-study-container {
+    padding: 1rem;
+  }
+
+  .case-study-section {
+    margin: calc(var(--section-spacing) / 2) 0;
+  }
+
+  .typewriter-text {
+    font-size: 0.9rem;
+  }
+}

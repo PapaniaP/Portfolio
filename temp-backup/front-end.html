@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="Paolo Papania's portfolio showcasing web development projects and skills"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+    </style>
+    <link
+      rel="stylesheet"
+      href="styles.css"
+    />
+    <script
+      src="script.js"
+      defer
+    ></script>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/Assets/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/Assets/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/Assets/favicon_io/favicon-16x16.png"
+    />
+    <link
+      rel="manifest"
+      href="/Assets/favicon_io/site.webmanifest"
+    />
+    <!-- <link
+			href="https://unpkg.com/nes.icons@latest/css/nes-icons.min.css"
+			rel="stylesheet"
+		/> -->
+    <link
+      href="https://unpkg.com/nes.css/css/nes.css"
+      rel="stylesheet"
+    />
+    <title>Paolo Papania | Portfolio</title>
+  </head>
+  <body>
+    <div class="background-container-about">
+      <div class="container">
+        <div class="navbar-container">
+          <!--Desktop Nav -->
+          <nav class="desktop-nav nes-container is-light is-rounded">
+            <a
+              href="/home"
+              class="nes-btn"
+              >Home</a
+            >
+            <a
+              href="/about"
+              class="nes-btn"
+              >About</a
+            >
+            <a
+              href="/projects"
+              class="nes-btn is-primary"
+              >Projects</a
+            >
+            <a
+              class="nes-btn"
+              href="/Assets/cv_papaniap.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              >CV</a
+            >
+            <div class="icon-list social-desktop">
+              <i
+                class="nes-icon github is-medium navbar-social nes-pointer profile-link github-icon"
+                aria-label="GitHub Profile"
+              ></i>
+              <a href="mailto:papaniap11@gmail.com">
+                <i
+                  class="social nes-icon gmail is-medium navbar-social nes-pointer"
+                  aria-label="Email Contact"
+                ></i
+              ></a>
+              <i
+                class="nes-icon linkedin is-medium navbar-social nes-pointer profile-link linkedin-icon"
+                aria-label="LinkedIn Profile"
+              ></i>
+            </div>
+          </nav>
+          <!--Mobile Nav -->
+          <nav class="mobile-nav">
+            <a href="/home">
+              <img
+                class="nes-avatar is-medium logo"
+                style="image-rendering: pixelated"
+                src="/Assets/Logo/Key_P_Logo.png"
+                alt="Paolo Papania Logo"
+            /></a>
+            <button
+              id="burger-button"
+              class="burger"
+            >
+              <span class="burger-line"></span>
+              <span class="burger-line"></span>
+              <span class="burger-line"></span>
+            </button>
+            <div
+              id="menu"
+              class="menu"
+            >
+              <a
+                class="nes-btn"
+                href="/home"
+                >Home</a
+              ><a
+                class="nes-btn"
+                href="/about"
+                >About</a
+              ><a
+                class="nes-btn is-primary"
+                href="/projects"
+                >Projects</a
+              >
+              <a
+                class="nes-btn"
+                href="/Assets/cv_papaniap.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                >CV</a
+              >
+              <div class="icon-list social-mobile">
+                <i
+                  class="nes-icon github is-medium navbar-social nes-pointer profile-link github-icon"
+                  aria-label="GitHub Profile"
+                ></i
+                ><a href="mailto:papaniap11@gmail.com"
+                  ><i
+                    class="social nes-icon gmail is-medium navbar-social nes-pointer"
+                    aria-label="Email Contact"
+                  ></i></a
+                ><i
+                  class="nes-icon linkedin is-medium navbar-social nes-pointer profile-link linkedin-icon"
+                  aria-label="LinkedIn Profile"
+                ></i>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <main
+          class="main main-projects nes-container is-light is-rounded"
+        >
+          <div
+            class="project-container with-title is-centered nes-container is-rounded is-light"
+          >
+            <h2 class="project-title title">Maxi Zoo Rewards</h2>
+            <div class="img-container">
+              <img
+                class="project-image"
+                src="/Assets/projects/maxizoo/maxizoo.png"
+                alt="Maxi Zoo Rewards UX Case Study"
+              />
+            </div>
+            <div class="tag-container">
+              <div class="tag nes-container is-bright">
+                <span class="tag-text">UX Research</span>
+              </div>
+              <div class="tag nes-container is-bright">
+                <span class="tag-text">UI Design</span>
+              </div>
+              <div class="tag nes-container is-bright">
+                <span class="tag-text">Figma</span>
+              </div>
+              <div class="tag nes-container is-bright">
+                <span class="tag-text">Prototyping</span>
+              </div>
+            </div>
+            <h2 class="project-description">
+              A comprehensive UX case study focused on creating a
+              digital concept for Maxi Zoo's loyalty program. The
+              project involved extensive user research, competitive
+              analysis, and iterative design to develop an engaging
+              and user-friendly rewards system that enhances customer
+              loyalty and satisfaction.
+            </h2>
+            <div class="project-buttons">
+              <a
+                class="nes-btn"
+                id="maxizoo-case"
+                href="maxizoo-case-study.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Case Study</a
+              >
+              <a
+                class="nes-btn is-primary"
+                id="maxizoo-prototype"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Prototype</a
+              >
+            </div>
+          </div>
+          <div class="mobile-line"></div>
+          <div
+            class="project-container with-title is-centered nes-container is-rounded is-light"
+          >
+            <h2 class="project-title title">Levito Pharmacies</h2>
+            <div class="img-container">
+              <img
+                class="project-image"
+                src="/Assets/projects/levito/levito.png"
+                alt="Levito Pharmacies Website Screenshot"
+              />
+            </div>
+            <div class="tag-container">
+              <div class="tag nes-container is-bright">
+                <span class="tag-text tag-wp">WordPress</span>
+              </div>
+              <div class="tag nes-container is-bright">
+                <span class="tag-text">HTML</span>
+              </div>
+              <div class="tag nes-container is-bright">
+                <span class="tag-text">CSS</span>
+              </div>
+              <div class="tag nes-container is-bright">
+                <span class="tag-text tag-js">JavaScript</span>
+              </div>
+            </div>
+            <h2 class="project-description">
+              Developed a comprehensive website for a chain of
+              pharmacies in Slovakia, focusing on user-friendly
+              navigation and clear presentation of services. The
+              project involved creating a modern, accessible platform
+              that serves both customers and healthcare professionals.
+            </h2>
+            <div class="project-buttons">
+              <a
+                class="nes-btn"
+                id="levito-project"
+                href="https://levito.dk/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Project</a
+              >
+            </div>
+          </div>
+          <div class="mobile-line"></div>
+          <div
+            class="project-container with-title is-centered nes-container is-rounded is-light"
+          >
+            <h2 class="project-title title">Weather App</h2>
+            <div class="img-container">
+              <img
+                class="project-image"
+                src="/Assets/projects/weather/weather-app-4.png"
+                alt="Weather App Screenshot"
+              />
+            </div>
+            <div class="tag-container">
+              <div class="tag nes-container is-bright">
+                <span class="tag-text">HTML</span>
+              </div>
+              <div class="tag nes-container is-bright">
+                <span class="tag-text">CSS</span>
+              </div>
+              <div class="tag nes-container is-bright">
+                <span class="tag-text tag-js">JavaScript</span>
+              </div>
+            </div>
+            <h2 class="project-description">
+              A weather app project created to learn JavaScript and
+              API implementation. With this app, users can check the
+              current weather conditions for a location by entering
+              the city name.
+            </h2>
+            <div class="project-buttons">
+              <a
+                class="nes-btn"
+                id="weather-project"
+                href="https://weather-app.papaniap.dk"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Project</a
+              >
+              <a
+                class="nes-btn is-primary"
+                id="weather-code"
+                href="https://github.com/PapaniaP/weather_app"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Code</a
+              >
+            </div>
+          </div>
+          <div class="mobile-line"></div>
+          <div
+            class="project-container with-title is-centered nes-container is-rounded is-light"
+          >
+            <h2 class="project-title title">Hlousek &amp; Brokers</h2>
+            <div class="img-container">
+              <img
+                class="project-image"
+                src="/Assets/projects/h&b/sk_home.png"
+                alt=""
+              />
+            </div>
+            <div class="tag-container">
+              <div class="tag nes-container is-bright">
+                <span class="tag-text tag-wp">WordPress</span>
+              </div>
+              <div class="tag nes-container is-bright">
+                <span class="tag-text">HTML</span>
+              </div>
+              <div class="tag nes-container is-bright">
+                <span class="tag-text">CSS</span>
+              </div>
+              <div class="tag nes-container is-bright">
+                <span class="tag-text tag-js">JavaScript</span>
+              </div>
+            </div>
+            <h2 class="project-description">
+              WIP - Designed and developed an online platform for a
+              small financial advisory business, providing them with a
+              professional website and an established digital
+              presence. <br />
+              <br />This comprehensive project spanned from initial
+              research to the final implementation, ensuring a
+              seamless transition to the online world.
+            </h2>
+            <div class="project-buttons">
+              <a
+                class="nes-btn"
+                id="hb-project"
+                href="https://www.hlousekbrokers.sk/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Project</a
+              >
+
+              <a
+                class="nes-btn is-primary"
+                id="hb-code"
+                href="https://github.com/PapaniaP/H-B"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Code</a
+              >
+            </div>
+          </div>
+          <div class="mobile-line"></div>
+          <div
+            class="project-container with-title is-centered nes-container is-rounded is-light"
+          >
+            <h2 class="project-title title">Culture Cave</h2>
+            <div class="img-container">
+              <img
+                class="project-image"
+                src="/Assets/projects/culture_cave/cc-22.png"
+                alt=""
+              />
+            </div>
+            <div class="tag-container">
+              <div class="tag nes-container is-bright">
+                <span class="tag-text">HTML</span>
+              </div>
+              <div class="tag nes-container is-bright">
+                <span class="tag-text">CSS</span>
+              </div>
+              <div class="tag nes-container is-bright">
+                <span class="tag-text tag-js">JavaScript</span>
+              </div>
+            </div>
+            <h2 class="project-description">
+              Designed and developed a solo project dedicated to
+              uncovering Verona's hidden gems, from food spots to wine
+              shops and charming bars.
+            </h2>
+            <div class="project-buttons">
+              <a
+                class="nes-btn"
+                id="cc-project"
+                href="https://papaniap.github.io/CultureCave/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Project</a
+              >
+              <a
+                class="nes-btn is-primary"
+                id="cc-code"
+                href="https://github.com/PapaniaP/CultureCave/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Code</a
+              >
+            </div>
+          </div>
+        </main>
+        <div class="footer-container">
+          <div class="footer-copy">
+            <p>&copy; Copyright 2023, Paolo Papania</p>
+          </div>
+          <div class="icon-list social-desktop-footer">
+            <i
+              class="nes-icon github is-medium navbar-social nes-pointer profile-link github-icon"
+              aria-label="GitHub Profile"
+            ></i>
+            <a href="mailto:papaniap11@gmail.com">
+              <i
+                class="social nes-icon gmail is-medium navbar-social nes-pointer"
+                aria-label="Email Contact"
+              ></i
+            ></a>
+            <i
+              class="nes-icon linkedin is-medium navbar-social nes-pointer profile-link linkedin-icon"
+              aria-label="LinkedIn Profile"
+            ></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
