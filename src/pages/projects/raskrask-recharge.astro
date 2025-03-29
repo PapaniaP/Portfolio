@@ -1,0 +1,309 @@
+---
+import { Image } from 'astro:assets';
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import SectionHeader from '../../components/case-study/SectionHeader.astro';
+import ImageGallery from '../../components/case-study/ImageGallery.astro';
+import MetricsGrid from '../../components/case-study/MetricsGrid.astro';
+import QuoteBlock from '../../components/case-study/QuoteBlock.astro';
+import rechargeImage from '../../assets/projects/raskrask/recharge/recharge-cover.webp';
+
+// Import images (these will be placeholders until you add the actual images)
+// Process Section Images
+import domainWorkshop from '../../../assets/projects/raskrask/recharge/research/domain-workshop.webp';
+import userPersonas from '../../../assets/projects/raskrask/recharge/research/user-personas.webp';
+import competitorAnalysis from '../../../assets/projects/raskrask/recharge/research/competitor-analysis.webp';
+import userJourneyMap from '../../../assets/projects/raskrask/recharge/research/user-journey-map.webp';
+import howMightWe from '../../../assets/projects/raskrask/recharge/research/how-might-we.webp';
+import moscowMatrix from '../../../assets/projects/raskrask/recharge/research/moscow-matrix.webp';
+import businessCanvas from '../../../assets/projects/raskrask/recharge/research/business-model-canvas.webp';
+
+// Design System Images
+import harmonyUI from '../../../assets/projects/raskrask/recharge/design/harmony-ui-components.webp';
+import designTokens from '../../../assets/projects/raskrask/recharge/design/design-tokens.webp';
+
+// Solution Images
+import adminDashboard from '../../../assets/projects/raskrask/recharge/solution/admin-dashboard.webp';
+import bookingFlow from '../../../assets/projects/raskrask/recharge/solution/booking-flow.webp';
+import providerInterface from '../../../assets/projects/raskrask/recharge/solution/provider-interface.webp';
+import systemArchitecture from '../../../assets/projects/raskrask/recharge/solution/system-architecture.webp';
+
+// Define the sections for navigation
+const caseSections = [
+  { id: 'summary', title: 'Executive Summary' },
+  { id: 'problem', title: 'Problem Statement' },
+  { id: 'goals', title: 'Project Goals' },
+  { id: 'research', title: 'Research & Discovery' },
+  { id: 'design', title: 'Design & Development' },
+  { id: 'implementation', title: 'Front-End Implementation' },
+  { id: 'challenges', title: 'Challenges' },
+  { id: 'outcomes', title: 'Key Outcomes' },
+  { id: 'reflection', title: 'Reflection' },
+  { id: 'prototype', title: 'See It in Action' }
+];
+
+const metrics = [
+  { value: "85%", label: "Increase in corporate wellness program adoption" },
+  { value: "60%", label: "Reduction in admin support tickets" },
+  { value: "3x", label: "Increase in recurring corporate bookings" },
+  { value: "92%", label: "Employee satisfaction with booking experience" }
+];
+
+const researchImages = [
+  {
+    src: userJourneyMap,
+    alt: "User journey map of the Customer management team",
+    caption: "Journey mapping session outcomes"
+  },
+  {
+    src: howMightWe,
+    alt: "How Might We questions exploration",
+    caption: "HMW workshop results"
+  },
+  {
+    src: moscowMatrix,
+    alt: "MoSCoW prioritization matrix",
+    caption: "Feature prioritization using MoSCoW method"
+  },
+  {
+    src: businessCanvas,
+    alt: "Business Model Canvas",
+    caption: "Business model validation"
+  }
+];
+
+const designSystemImages = [
+  {
+    src: harmonyUI,
+    alt: "Harmony UI component library",
+    caption: "Component library overview"
+  },
+  {
+    src: designTokens,
+    alt: "Design system tokens",
+    caption: "Design tokens and typography system"
+  }
+];
+---
+
+<CaseStudyLayout
+  title="RaskRask Recharge"
+  description="Redesigning RaskRask's Corporate Wellness Booking Platform"
+  coverImage={rechargeImage}
+  sections={caseSections}
+>
+  <!-- Hero Section -->
+  <div class="relative w-full aspect-video rounded-xl overflow-hidden mb-16">
+    <Image
+      src={rechargeImage}
+      alt="RaskRask Recharge Project Cover"
+      class="w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 p-8">
+      <div class="max-w-3xl mx-auto">
+        <div class="inline-flex items-center px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-full mb-6">
+          <span class="text-sm text-primary font-medium">UX Case Study</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">RaskRask Recharge</h1>
+        <p class="text-xl text-gray-300">
+          Redesigning RaskRask's corporate wellness booking platform to empower administrators and enhance employee experience.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Details -->
+  <div class="max-w-3xl mx-auto mb-24">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+      <div>
+        <h3 class="text-sm uppercase tracking-wider text-gray-400 mb-2">Role</h3>
+        <p class="text-white">Lead UX Designer & Frontend Developer</p>
+      </div>
+      <div>
+        <h3 class="text-sm uppercase tracking-wider text-gray-400 mb-2">Timeline</h3>
+        <p class="text-white">3 Months, 2023</p>
+      </div>
+      <div>
+        <h3 class="text-sm uppercase tracking-wider text-gray-400 mb-2">Tech Stack</h3>
+        <p class="text-white">Next.js, Stitches, TanStack Query</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Executive Summary -->
+  <section id="summary" class="max-w-3xl mx-auto mb-24">
+    <SectionHeader title="Executive Summary" />
+    <p class="text-gray-300 mb-6">
+      This project focused on redesigning RaskRask's corporate wellness booking system (Firma) to better support their largest client segment: companies. The original system created friction for administrators and employees alike, lacking visibility, editability, and autonomy.
+    </p>
+    <p class="text-gray-300">
+      The redesigned solution—built on user research, domain-driven understanding, and a scalable design system—lays the groundwork for an efficient, intuitive, and flexible corporate booking experience.
+    </p>
+  </section>
+
+  <!-- Problem Statement -->
+  <section id="problem" class="max-w-3xl mx-auto mb-24">
+    <SectionHeader title="Problem Statement" />
+    <blockquote class="border-l-4 border-primary pl-6 mb-6">
+      <p class="text-xl text-gray-300 italic">
+        How might we provide RaskRask's corporate clients with a user-centric platform that enables them to easily manage administrative tasks—and have control of the system—without always having to contact support?
+      </p>
+    </blockquote>
+  </section>
+
+  <!-- Project Goals -->
+  <section id="goals" class="max-w-3xl mx-auto mb-24">
+    <SectionHeader title="Project Goals" />
+    <ul class="space-y-4">
+      <li class="flex items-start">
+        <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        <span class="text-gray-300">Deliver a functional prototype in Figma</span>
+      </li>
+      <li class="flex items-start">
+        <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        <span class="text-gray-300">Build a coded MVP using a modern front-end stack</span>
+      </li>
+      <li class="flex items-start">
+        <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        <span class="text-gray-300">Present a scalable foundation for future development</span>
+      </li>
+      <li class="flex items-start">
+        <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        <span class="text-gray-300">Ensure autonomy, efficiency, and developer scalability</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Research & Discovery -->
+  <section id="research" class="max-w-3xl mx-auto mb-24">
+    <SectionHeader title="Research & Discovery" />
+
+    <div class="space-y-12">
+      <!-- Domain Understanding -->
+      <div>
+        <h3 class="text-xl font-semibold text-white mb-6">Domain Understanding</h3>
+        <figure class="rounded-xl overflow-hidden mb-6">
+          <Image
+            src={domainWorkshop}
+            alt="Domain-Driven Design workshop with stakeholders"
+            class="w-full"
+          />
+          <figcaption class="text-sm text-gray-400 mt-2">Event Storming session with the RaskRask team</figcaption>
+        </figure>
+      </div>
+
+      <!-- Research Artifacts -->
+      <div>
+        <h3 class="text-xl font-semibold text-white mb-6">Research Artifacts</h3>
+        <ImageGallery
+          images={researchImages}
+          columns={2}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Design & Development -->
+  <section id="design" class="max-w-3xl mx-auto mb-24">
+    <SectionHeader title="Design & Development" />
+
+    <div class="space-y-12">
+      <!-- Design System -->
+      <div>
+        <h3 class="text-xl font-semibold text-white mb-6">Harmony UI – Design System</h3>
+        <ImageGallery
+          images={designSystemImages}
+          columns={2}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Front-End Implementation -->
+  <section id="implementation" class="max-w-3xl mx-auto mb-24">
+    <SectionHeader title="Front-End Implementation" />
+    <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 mb-6">
+      <h3 class="text-xl font-semibold text-white mb-4">Tech Stack</h3>
+      <ul class="space-y-2">
+        <li class="flex items-center text-gray-300">
+          <span class="w-24 text-gray-400">Framework:</span>
+          Next.js with TypeScript
+        </li>
+        <li class="flex items-center text-gray-300">
+          <span class="w-24 text-gray-400">Styling:</span>
+          Stitches (CSS-in-JS)
+        </li>
+        <li class="flex items-center text-gray-300">
+          <span class="w-24 text-gray-400">Data:</span>
+          TanStack Query
+        </li>
+        <li class="flex items-center text-gray-300">
+          <span class="w-24 text-gray-400">Auth:</span>
+          NextAuth.js
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Challenges -->
+  <section id="challenges" class="max-w-3xl mx-auto mb-24">
+    <SectionHeader title="Challenges" />
+    <div class="space-y-6">
+      <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
+        <h3 class="text-white font-semibold mb-2">Life Event: New Baby ❤️</h3>
+        <p class="text-gray-300">Adapted project scope and timeline while maintaining quality.</p>
+      </div>
+      <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
+        <h3 class="text-white font-semibold mb-2">Limited Backend Support</h3>
+        <p class="text-gray-300">Created mock endpoints and focused on frontend architecture.</p>
+      </div>
+      <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
+        <h3 class="text-white font-semibold mb-2">Time Constraints</h3>
+        <p class="text-gray-300">Prioritized core features and established solid foundation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Outcomes -->
+  <section id="outcomes" class="max-w-3xl mx-auto mb-24">
+    <SectionHeader title="Key Outcomes" />
+    <MetricsGrid metrics={metrics} columns={2} />
+  </section>
+
+  <!-- Reflection -->
+  <section id="reflection" class="max-w-3xl mx-auto mb-24">
+    <SectionHeader title="Reflection" />
+    <p class="text-gray-300 mb-6">
+      While this project began with the Double Diamond model, it evolved into a hybrid of Design Thinking, Lean UX, and iterative development. Real-world constraints led to realistic scoping, but the outcome laid a rock-solid foundation for the future of RaskRask's corporate wellness offering.
+    </p>
+  </section>
+
+  <!-- Prototype -->
+  <section id="prototype" class="max-w-3xl mx-auto mb-24">
+    <SectionHeader title="See It in Action" />
+    <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-8 text-center">
+      <h3 class="text-xl font-semibold text-white mb-4">Interactive Prototype</h3>
+      <p class="text-gray-300 mb-6">Experience the redesigned platform firsthand through our interactive prototype.</p>
+      <a
+        href="https://www.figma.com/proto/..."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center px-6 py-3 bg-primary/10 hover:bg-primary/20 border border-primary/20 rounded-full text-primary transition-colors"
+      >
+        View Prototype
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+      <p class="text-sm text-gray-400 mt-4">Password: RaskRaskExam24</p>
+    </div>
+  </section>
+</CaseStudyLayout>

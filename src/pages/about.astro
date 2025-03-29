@@ -1,0 +1,317 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+// Import your profile image - replace with actual path when available
+import profileImage from '../assets/profile/profile.webp';
+
+const skills = [
+    {
+        category: "UX/UI Design",
+        items: ["User Research", "Wireframing", "Prototyping", "Usability Testing", "Information Architecture", "Figma"]
+    },
+    {
+        category: "Frontend Development",
+        items: ["HTML", "CSS", "JavaScript", "React", "Astro", "TailwindCSS", "Responsive Design"]
+    },
+    {
+        category: "Tools & Other",
+        items: ["Git", "WordPress", "Firebase", "Photoshop", "Illustrator", "Agile Methodologies"]
+    }
+];
+
+// Add your education details
+const education = [
+    {
+        degree: "Multimedia Design & Communication",
+        institution: "Copenhagen School of Design and Technology (KEA)",
+        year: "2021-2023",
+        description: "Focused on UX/UI design, web development, and digital communication strategies."
+    },
+    {
+        degree: "Previous Education or Certificate",
+        institution: "Institution Name",
+        year: "2018-2020",
+        description: "Brief description of your studies and focus."
+    }
+];
+
+// Add your work experience
+const experience = [
+    {
+        position: "UX/UI Designer",
+        company: "RaskRask",
+        period: "2023",
+        description: "Designed and developed digital solutions for a wellness service provider, focusing on improving user experience and business operations."
+    },
+    {
+        position: "Previous Position",
+        company: "Company Name",
+        period: "2020-2022",
+        description: "Description of responsibilities and achievements."
+    }
+];
+
+---
+
+<Layout title="About Me" description="Learn more about Paolo Papania - UX/UI Designer and Frontend Developer based in Copenhagen, Denmark.">
+    <div class="container mx-auto px-4 py-20">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8 animate-fadeIn">
+                About Me
+            </h1>
+
+            <!-- Bio Section -->
+            <div class="grid md:grid-cols-2 gap-12 mb-16 animate-fadeIn animation-delay-100">
+                <div class="order-2 md:order-1">
+                    <h2 class="text-2xl font-bold text-white mb-4 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
+                        Hello, I'm Paolo Papania
+                    </h2>
+                    <div class="space-y-4 text-gray-300">
+                        <p>
+                            I'm a UX/UI Designer and Frontend Developer based in Copenhagen, Denmark, passionate about creating intuitive, accessible, and visually appealing digital experiences.
+                        </p>
+                        <p>
+                            With a background in Multimedia Design & Communication, I blend design thinking with technical skills to build solutions that not only look great but also solve real user problems.
+                        </p>
+                        <p>
+                            I believe in a user-centered approach to design, where understanding user needs and behaviors forms the foundation of every project I undertake.
+                        </p>
+                        <div class="mt-8">
+                            <a
+                                href="/cv.pdf"
+                                class="inline-flex items-center px-5 py-3 bg-gradient-to-r from-primary to-primary-light text-white rounded-lg hover:shadow-glow-sm transition-all"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                Download CV
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="relative group">
+                        <!-- Decorative elements -->
+                        <div class="absolute -top-3 -left-3 w-12 h-12 border-t-2 border-l-2 border-primary-light opacity-70"></div>
+                        <div class="absolute -bottom-3 -right-3 w-12 h-12 border-b-2 border-r-2 border-primary opacity-70"></div>
+
+                        <!-- Gradient overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10 rounded-xl"></div>
+
+                        <!-- Image container -->
+                        <div class="bg-gray-800/60 rounded-xl overflow-hidden shadow-glow-md border border-gray-700">
+                            <Image
+                                src={profileImage}
+                                alt="Paolo Papania"
+                                width={600}
+                                height={800}
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="mb-16 animate-fadeIn animation-delay-200">
+                <h2 class="text-2xl font-bold text-white mb-6 inline-flex items-center">
+                    <span class="bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">Skills & Expertise</span>
+                    <div class="ml-3 h-px w-20 bg-gradient-to-r from-primary to-transparent"></div>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {skills.map((skillGroup, index) => (
+                        <div class="bg-gray-800/60 backdrop-blur-sm rounded-xl overflow-hidden shadow-glow-sm hover:shadow-glow-md transition-all duration-300 border border-gray-700 group"
+                            style={`animation-delay: ${200 + (index * 100)}ms`}>
+                            <!-- Gradient header -->
+                            <div class="bg-gradient-to-r from-primary to-primary-light/70 p-4 group-hover:from-primary-light group-hover:to-primary transition-all duration-500">
+                                <h3 class="text-xl font-semibold text-white">
+                                    {skillGroup.category}
+                                </h3>
+                            </div>
+                            <div class="p-6">
+                                <ul class="space-y-3">
+                                    {skillGroup.items.map((skill) => (
+                                        <li class="flex items-center">
+                                            <svg class="w-5 h-5 text-primary-light mr-2 transition-transform duration-300 group-hover:scale-110" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                            </svg>
+                                            <span class="text-gray-300">{skill}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <!-- Education & Experience -->
+            <div class="grid md:grid-cols-2 gap-12 mb-16 animate-fadeIn animation-delay-300">
+                <!-- Education -->
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-6 inline-flex items-center">
+                        <span class="bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">Education</span>
+                        <div class="ml-3 h-px w-20 bg-gradient-to-r from-primary to-transparent"></div>
+                    </h2>
+                    <div class="space-y-8">
+                        {education.map((item, index) => (
+                            <div class="relative pl-8 border-l-2 border-gray-700 group" style={`animation-delay: ${300 + (index * 100)}ms`}>
+                                <div class="absolute w-4 h-4 bg-gradient-to-r from-primary to-primary-light rounded-full -left-[9px] top-1 shadow-glow-sm group-hover:shadow-glow-md transition-all duration-300"></div>
+                                <h3 class="text-xl font-semibold text-white group-hover:text-primary-light transition-colors duration-300">
+                                    {item.degree}
+                                </h3>
+                                <p class="text-primary-light mb-1">
+                                    {item.institution}
+                                </p>
+                                <p class="text-sm text-gray-500 mb-2">
+                                    {item.year}
+                                </p>
+                                <p class="text-gray-300">
+                                    {item.description}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <!-- Experience -->
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-6 inline-flex items-center">
+                        <span class="bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">Experience</span>
+                        <div class="ml-3 h-px w-20 bg-gradient-to-r from-primary to-transparent"></div>
+                    </h2>
+                    <div class="space-y-8">
+                        {experience.map((item, index) => (
+                            <div class="relative pl-8 border-l-2 border-gray-700 group" style={`animation-delay: ${300 + (index * 100)}ms`}>
+                                <div class="absolute w-4 h-4 bg-gradient-to-r from-primary to-primary-light rounded-full -left-[9px] top-1 shadow-glow-sm group-hover:shadow-glow-md transition-all duration-300"></div>
+                                <h3 class="text-xl font-semibold text-white group-hover:text-primary-light transition-colors duration-300">
+                                    {item.position}
+                                </h3>
+                                <p class="text-primary-light mb-1">
+                                    {item.company}
+                                </p>
+                                <p class="text-sm text-gray-500 mb-2">
+                                    {item.period}
+                                </p>
+                                <p class="text-gray-300">
+                                    {item.description}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personal Interests -->
+            <div class="mb-16 animate-fadeIn animation-delay-400">
+                <h2 class="text-2xl font-bold text-white mb-6 inline-flex items-center">
+                    <span class="bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">Beyond Work</span>
+                    <div class="ml-3 h-px w-20 bg-gradient-to-r from-primary to-transparent"></div>
+                </h2>
+                <div class="bg-gray-800/60 backdrop-blur-sm rounded-xl p-8 border border-gray-700 shadow-glow-sm overflow-hidden relative">
+                    <!-- Decorative gradient accent -->
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-primary/20 to-transparent rounded-bl-full -z-1"></div>
+
+                    <div class="text-gray-300 space-y-4 relative z-10">
+                        <p>
+                            When I'm not designing or coding, you can find me exploring Copenhagen's vibrant streets, playing basketball, or experimenting with photography.
+                        </p>
+                        <p>
+                            I'm passionate about sustainable design and believe that digital products should not only look good but also be environmentally conscious in their implementation.
+                        </p>
+                        <p>
+                            I love learning new technologies and techniques, and I'm always up for a challenge that pushes my creative and technical boundaries.
+                        </p>
+                    </div>
+
+                    <!-- Fun interactive element -->
+                    <div class="mt-8 p-6 bg-gray-900/70 rounded-lg border border-gray-700 shadow-inner relative z-10">
+                        <h3 class="text-lg font-semibold text-white mb-4 flex items-center">
+                            <span class="text-primary-light mr-2">⚡</span> Fun Fact
+                        </h3>
+                        <p class="text-gray-300" id="fun-fact">
+                            I've visited over 20 countries and can say "Hello, world!" in 5 different programming languages and 3 human ones.
+                        </p>
+                        <button id="new-fact-btn" class="mt-4 px-4 py-2 bg-gradient-to-r from-primary/80 to-primary-light/80 text-white rounded-lg hover:from-primary hover:to-primary-light transition-all duration-300 hover:shadow-glow-sm">
+                            Give me another fact!
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact CTA -->
+            <div class="text-center animate-fadeIn animation-delay-500">
+                <h2 class="text-2xl font-bold text-white mb-4 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent inline-block">
+                    Let's Connect
+                </h2>
+                <p class="text-gray-300 mb-6">
+                    Interested in working together or just want to say hello?
+                </p>
+                <a
+                    href="/#contact"
+                    class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-primary-light text-white rounded-lg hover:shadow-glow-md transition-all duration-300"
+                >
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fun facts array - update with your own facts
+        const funFacts = [
+            "I've visited over 20 countries and can say 'Hello, world!' in 5 different programming languages and 3 human ones.",
+            "My record for most coffees in one day while coding is 7. I don't recommend it.",
+            "I once debugged code in my dreams and woke up with the solution.",
+            "I can type at 90 words per minute, but only when nobody is watching.",
+            "My first website was a fan page for my pet goldfish when I was 12."
+        ];
+
+        // Fun fact switcher
+        const newFactBtn = document.getElementById('new-fact-btn');
+
+        if (newFactBtn) {
+            newFactBtn.addEventListener('click', () => {
+                const factElement = document.getElementById('fun-fact');
+
+                if (factElement && factElement.textContent) {
+                    let newFact: string;
+
+                    // Make sure we don't repeat the current fact
+                    do {
+                        newFact = funFacts[Math.floor(Math.random() * funFacts.length)];
+                    } while (newFact === factElement.textContent.trim());
+
+                    // Add fade-out effect
+                    factElement.style.opacity = '0';
+
+                    // Change text and fade back in
+                    setTimeout(() => {
+                        if (factElement) {
+                            factElement.textContent = newFact;
+                            factElement.style.opacity = '1';
+                        }
+                    }, 300);
+                }
+            });
+        }
+    </script>
+</Layout>
+
+<style>
+    /* Fade transition for fun facts */
+    #fun-fact {
+        transition: opacity 0.3s ease;
+    }
+
+    /* Enhance the z-index for decorative elements */
+    .z-1 {
+        z-index: 1;
+    }
+
+    .-z-1 {
+        z-index: -1;
+    }
+</style>

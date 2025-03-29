@@ -1,6 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import maxiZooImage from '../assets/projects/maxizoo/mz-mockup.png';
+import levitoImage from '../assets/projects/levito/levito-home.webp';
+import weatherAppImage from '../assets/projects/weather/weather-app-1.webp';
+import hlousekImage from '../assets/projects/h&b/sk_home.png';
+import cultureCaveImage from '../assets/projects/culture_cave/cc-22.png';
+import portfolioImage from '../assets/projects/portfolio-23/portfolio-23.webp';
+import swishImage from '../assets/projects/swish/swish-cover.webp';
+import harmonyImage from '../assets/projects/raskrask/harmony/harmonyUI-cover.webp';
+import rechargeImage from '../assets/projects/raskrask/recharge/recharge-cover.webp';
 
 // Define types in the frontmatter section
 interface ProjectLink {
@@ -11,16 +20,94 @@ interface ProjectLink {
 
 interface Project {
 	title: string;
-	image: string;
+	image: any; // Using 'any' to accept both string and imported images
 	description: string;
 	tags: string[];
 	links: ProjectLink[];
+	date: string; // Date of project completion (YYYY-MM format)
+	featured: boolean; // Whether this is a featured project
+	isUXUI?: boolean; // Whether this project falls under UX/UI category
+	isFrontend?: boolean; // Whether this project falls under Frontend category
 }
+
+// Note: Replace these placeholder URLs with imported images when you add them
+// Example: import maxiZooImage from '../assets/projects/maxizoo/maxizoo.png';
+// Then update the image property to use the imported image variable
 
 const projects: Project[] = [
 	{
+		title: 'RaskRask Recharge',
+		image: rechargeImage,
+		description: 'My thesis project for my Multimedia Design degree. A comprehensive solution focused on enhancing the user experience and business operations for RaskRask, a leading wellness service provider.',
+		tags: ['UX Research', 'UI Design', 'Figma', 'Prototyping', 'Thesis Project'],
+		links: [
+			{
+				text: 'Case Study',
+				url: '/projects/raskrask-recharge',
+				primary: false
+			},
+			{
+				text: 'Prototype',
+				url: '#',
+				primary: true
+			}
+		],
+		date: '2023-06',
+		featured: true
+	},
+	{
+		title: 'Portfolio Website',
+		image: portfolioImage,
+		description: 'My personal portfolio website built with modern web technologies. Features a clean, accessible design with dark mode support and responsive layouts. The site showcases my projects and skills as a frontend developer and UX/UI designer.',
+		tags: ['Astro', 'TailwindCSS', 'TypeScript', 'Responsive Design'],
+		links: [
+			{
+				text: 'GitHub',
+				url: 'https://github.com/PapaniaP/Portfolio',
+				primary: false
+			}
+		],
+		date: '2023-03',
+		featured: false
+	},
+	{
+		title: 'RaskRask Harmony UI',
+		image: harmonyImage,
+		description: 'A comprehensive design system created during my internship for my Multimedia Design degree. Harmony UI provides a consistent visual language and component library for RaskRask\'s digital products, ensuring cohesive user experiences across all platforms.',
+		tags: ['Design System', 'UI Components', 'Figma', 'Documentation', 'Internship'],
+		links: [
+			{
+				text: 'Gallery',
+				url: '/projects/harmony-ui',
+				primary: true
+			}
+		],
+		date: '2023-01',
+		featured: true
+	},
+	{
+		title: 'Swish Basketball App',
+		image: swishImage,
+		description: 'A pick-up basketball app developed as a school project. The application helps players find local games, connect with other basketball enthusiasts, and organize matches. The project focused on UX/UI design principles and implementation using React with Firebase.',
+		tags: ['React', 'Firebase', 'UX/UI Design', 'Figma', 'School Project'],
+		links: [
+			{
+				text: 'Case Study',
+				url: '/projects/swish',
+				primary: false
+			},
+			{
+				text: 'Prototype',
+				url: '#',
+				primary: true
+			}
+		],
+		date: '2022-11',
+		featured: true
+	},
+	{
 		title: 'Maxi Zoo Rewards',
-		image: '/Assets/projects/maxizoo/maxizoo.png',
+		image: maxiZooImage,
 		description: 'A comprehensive UX case study focused on creating a digital concept for Maxi Zoo\'s loyalty program. The project involved extensive user research, competitive analysis, and iterative design to develop an engaging and user-friendly rewards system that enhances customer loyalty and satisfaction.',
 		tags: ['UX Research', 'UI Design', 'Figma', 'Prototyping'],
 		links: [
@@ -34,42 +121,13 @@ const projects: Project[] = [
 				url: '#',
 				primary: true
 			}
-		]
-	},
-	{
-		title: 'Levito Pharmacies',
-		image: '/Assets/projects/levito/levito.png',
-		description: 'Developed a comprehensive website for a chain of pharmacies in Slovakia, focusing on user-friendly navigation and clear presentation of services. The project involved creating a modern, accessible platform that serves both customers and healthcare professionals.',
-		tags: ['WordPress', 'HTML', 'CSS', 'JavaScript'],
-		links: [
-			{
-				text: 'View Project',
-				url: 'https://levito.dk/',
-				primary: true
-			}
-		]
-	},
-	{
-		title: 'Weather App',
-		image: '/Assets/projects/weather/weather-app-4.png',
-		description: 'A weather app project created to learn JavaScript and API implementation. With this app, users can check the current weather conditions for a location by entering the city name.',
-		tags: ['HTML', 'CSS', 'JavaScript'],
-		links: [
-			{
-				text: 'Project',
-				url: 'https://weather-app.papaniap.dk',
-				primary: false
-			},
-			{
-				text: 'Code',
-				url: 'https://github.com/PapaniaP/weather_app',
-				primary: true
-			}
-		]
+		],
+		date: '2022-05',
+		featured: true
 	},
 	{
 		title: 'Hlousek & Brokers',
-		image: '/Assets/projects/h&b/sk_home.png',
+		image: hlousekImage,
 		description: 'WIP - Designed and developed an online platform for a small financial advisory business, providing them with a professional website and an established digital presence. This comprehensive project spanned from initial research to the final implementation, ensuring a seamless transition to the online world.',
 		tags: ['WordPress', 'HTML', 'CSS', 'JavaScript'],
 		links: [
@@ -83,11 +141,48 @@ const projects: Project[] = [
 				url: 'https://github.com/PapaniaP/H-B',
 				primary: true
 			}
-		]
+		],
+		date: '2022-03',
+		featured: false
+	},
+	{
+		title: 'Levito Pharmacies',
+		image: levitoImage,
+		description: 'Developed a comprehensive website for a chain of pharmacies in Slovakia, focusing on user-friendly navigation and clear presentation of services. The project involved creating a modern, accessible platform that serves both customers and healthcare professionals.',
+		tags: ['WordPress', 'HTML', 'CSS', 'JavaScript'],
+		links: [
+			{
+				text: 'View Project',
+				url: 'https://levito.dk/',
+				primary: true
+			}
+		],
+		date: '2021-10',
+		featured: false
+	},
+	{
+		title: 'Weather App',
+		image: weatherAppImage,
+		description: 'A weather app project created to learn JavaScript and API implementation. With this app, users can check the current weather conditions for a location by entering the city name.',
+		tags: ['HTML', 'CSS', 'JavaScript'],
+		links: [
+			{
+				text: 'Project',
+				url: 'https://papaniap.github.io/weather_app/',
+				primary: false
+			},
+			{
+				text: 'Code',
+				url: 'https://github.com/PapaniaP/weather_app',
+				primary: true
+			}
+		],
+		date: '2021-07',
+		featured: false
 	},
 	{
 		title: 'Culture Cave',
-		image: '/Assets/projects/culture_cave/cc-22.png',
+		image: cultureCaveImage,
 		description: 'Designed and developed a solo project dedicated to uncovering Verona\'s hidden gems, from food spots to wine shops and charming bars.',
 		tags: ['HTML', 'CSS', 'JavaScript'],
 		links: [
@@ -101,63 +196,187 @@ const projects: Project[] = [
 				url: 'https://github.com/PapaniaP/CultureCave/',
 				primary: true
 			}
-		]
-	},
-	{
-		title: 'Portfolio Website',
-		image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=Portfolio+Website',
-		description: 'My personal portfolio website built with modern web technologies. Features a clean, accessible design with dark mode support and responsive layouts. The site showcases my projects and skills as a frontend developer and UX/UI designer.',
-		tags: ['Astro', 'TailwindCSS', 'TypeScript', 'Responsive Design'],
-		links: [
-			{
-				text: 'GitHub',
-				url: 'https://github.com/PapaniaP/Portfolio',
-				primary: false
-			}
-		]
+		],
+		date: '2021-04',
+		featured: false
 	}
 ];
+
+// Get all unique tags from projects
+const allTags = [...new Set(projects.flatMap(project => project.tags))].sort();
+
+// Define simplified categories for filtering
+const categories = [
+	{ name: 'All', filter: 'all' },
+	{ name: 'UX/UI Design', filter: 'ux-ui' },
+	{ name: 'Frontend', filter: 'frontend' }
+];
+
+// Map projects to categories for filtering
+projects.forEach(project => {
+	// Add simplified category flags for filtering
+	const hasUXUI = project.tags.some(tag =>
+		['UX Research', 'UI Design', 'Figma', 'Prototyping', 'Design System', 'UX/UI Design'].includes(tag)
+	);
+
+	const hasFrontend = project.tags.some(tag =>
+		['React', 'Firebase', 'HTML', 'CSS', 'JavaScript', 'WordPress', 'Astro', 'TailwindCSS', 'TypeScript', 'Responsive Design'].includes(tag)
+	);
+
+	// Add these as data attributes when rendering
+	project.isUXUI = hasUXUI;
+	project.isFrontend = hasFrontend;
+});
+
+// Get featured projects
+const featuredProjects = projects.filter(project => project.featured);
+
+// Client-side filtering script
+const filterScript = `
+document.addEventListener('DOMContentLoaded', () => {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+  const searchInput = document.getElementById('search-projects');
+
+  let activeFilter = 'all';
+  let searchTerm = '';
+
+  function filterProjects() {
+    projectCards.forEach(card => {
+      const cardTitle = card.dataset.title.toLowerCase();
+      const isUXUI = card.dataset.uxui === 'true';
+      const isFrontend = card.dataset.frontend === 'true';
+
+      let matchesCategory = false;
+      if (activeFilter === 'all') {
+        matchesCategory = true;
+      } else if (activeFilter === 'ux-ui') {
+        matchesCategory = isUXUI;
+      } else if (activeFilter === 'frontend') {
+        matchesCategory = isFrontend;
+      }
+
+      const matchesSearch = !searchTerm || cardTitle.includes(searchTerm);
+
+      if (matchesCategory && matchesSearch) {
+        card.classList.remove('hidden');
+        // Add entrance animation
+        card.classList.add('animate-fadeIn');
+        setTimeout(() => {
+          card.classList.remove('animate-fadeIn');
+        }, 500);
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    // Check if any projects are visible
+    const hasVisibleProjects = Array.from(projectCards).some(card => !card.classList.contains('hidden'));
+
+    if (!hasVisibleProjects) {
+      document.getElementById('no-results').classList.remove('hidden');
+    } else {
+      document.getElementById('no-results').classList.add('hidden');
+    }
+  }
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      activeFilter = button.dataset.filter;
+      filterProjects();
+    });
+  });
+
+  searchInput?.addEventListener('input', (e) => {
+    searchTerm = e.target.value.toLowerCase();
+    filterProjects();
+  });
+});
+`;
 ---
 
 <Layout title="Projects">
 	<div class="container mx-auto px-4 py-20">
 		<div class="max-w-4xl">
-			<h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+			<h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 animate-fadeIn">
 				Projects
 			</h1>
-			<p class="text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-2xl">
+			<p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl animate-fadeIn animation-delay-100">
 				A collection of my work in frontend development and UX/UI design. Each project represents a unique challenge and showcases different aspects of my skills and approach to problem-solving.
 			</p>
 		</div>
 
-		<div class="space-y-20">
-			{projects.map((project) => (
-				<article class="bg-white dark:bg-gray-800 rounded-xl shadow-lg mb-16">
-					<div class="grid md:grid-cols-2 gap-6">
-						<div class="order-2 md:order-1 p-6 md:p-8 flex flex-col justify-between">
+		<!-- Filter Controls -->
+		<div class="mb-12 animate-fadeIn animation-delay-200">
+			<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+				<div class="flex flex-wrap gap-2">
+					{categories.map(category => (
+						<button class={`filter-btn px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300
+                            ${category.filter === 'all' ? 'active bg-gradient-to-r from-primary to-primary-light text-white shadow-glow-sm' : 'bg-gray-800/60 text-gray-200 hover:bg-gray-700 border border-gray-700'}`}
+                            data-filter={category.filter}>
+							{category.name}
+						</button>
+					))}
+				</div>
+				<div class="relative w-full md:w-auto">
+					<input
+						type="text"
+						id="search-projects"
+						placeholder="Search projects..."
+						class="pl-10 pr-4 py-2 w-full md:w-64 border border-gray-700 rounded-lg bg-gray-800/60 text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+					/>
+					<svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+					</svg>
+				</div>
+			</div>
+		</div>
+
+		<!-- All Projects Section -->
+		<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 animate-fadeIn animation-delay-300">All Projects</h2>
+		<div class="projects-container space-y-10">
+			{projects.map((project, index) => (
+				<article class={`project-card relative bg-gray-800/60 rounded-xl shadow-glow-md overflow-hidden backdrop-blur-sm border border-gray-700 transition-all duration-300 hover:shadow-glow-lg animate-fadeIn`}
+                    style={`animation-delay: ${300 + (index * 100)}ms`}
+					data-tags={JSON.stringify(project.tags)}
+					data-title={project.title}
+					data-featured={project.featured.toString()}
+					data-uxui={(project.isUXUI || false).toString()}
+					data-frontend={(project.isFrontend || false).toString()}>
+                    {/* Gradient accent */}
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-primary-light to-accent opacity-80"></div>
+					<div class="grid md:grid-cols-2 gap-0">
+						<div class="order-2 md:order-1 p-6 md:p-8 flex flex-col justify-between h-full">
 							<div>
-								<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-									{project.title}
-								</h2>
-								<p class="text-gray-600 dark:text-gray-300 mb-6">
+								<div class="flex justify-between items-start mb-3">
+									<h2 class="text-2xl font-bold text-white group-hover:text-primary transition-colors">
+										{project.title}
+									</h2>
+									<span class="text-sm text-primary-light px-3 py-1 rounded-full bg-gray-900/50 border border-gray-700">
+										{new Date(project.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}
+									</span>
+								</div>
+								<p class="text-gray-300 mb-6">
 									{project.description}
 								</p>
 								<div class="flex flex-wrap gap-2 mb-6">
 									{project.tags.map((tag) => (
-										<span class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full">
+										<span class="px-3 py-1 text-sm bg-gray-900/70 text-primary-light border border-gray-700 rounded-full backdrop-blur-sm">
 											{tag}
 										</span>
 									))}
 								</div>
 							</div>
-							<div class="flex gap-4">
+							<div class="flex flex-wrap gap-3 mt-4">
 								{project.links.map((link) => (
 									<a
 										href={link.url}
-										class={`inline-flex items-center px-6 py-3 text-base font-medium rounded-lg transition-colors
+										class={`inline-flex items-center px-5 py-2 text-base font-medium rounded-lg transition-all duration-300
 											${link.primary
-												? 'text-white bg-primary hover:bg-primary-dark'
-												: 'text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600'
+												? 'text-white bg-gradient-to-r from-primary to-primary-light hover:shadow-glow-sm'
+												: 'text-gray-200 bg-gray-900/70 border border-gray-700 hover:bg-gray-700 hover:text-white'
 											}`}
 										target={link.url.startsWith('http') ? '_blank' : undefined}
 										rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
@@ -172,22 +391,56 @@ const projects: Project[] = [
 								))}
 							</div>
 						</div>
-						<div class="order-1 md:order-2">
-							<Image
-								src={project.image}
-								alt={`${project.title} Screenshot`}
-								width={800}
-								height={600}
-								class="w-full h-64 md:h-full object-cover"
-							/>
+						<div class="order-1 md:order-2 bg-gray-900 h-full relative group">
+                            {/* Hover overlay with gradient */}
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+							<div class="h-full w-full overflow-hidden">
+								<Image
+									src={project.image}
+									alt={`${project.title} Screenshot`}
+									width={800}
+									height={600}
+									class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+								/>
+							</div>
 						</div>
 					</div>
 				</article>
 			))}
+
+			<!-- No results message -->
+			<div id="no-results" class="hidden py-16 text-center">
+				<svg class="mx-auto h-12 w-12 text-primary-light" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+				</svg>
+				<h3 class="mt-2 text-lg font-medium text-white">No projects found</h3>
+				<p class="mt-1 text-gray-400">Try changing your search or filter criteria.</p>
+				<button class="mt-4 px-4 py-2 bg-gradient-to-r from-primary to-primary-light text-white rounded-lg hover:shadow-glow-sm transition-all" onclick="resetFilters()">
+					Reset Filters
+				</button>
+			</div>
 		</div>
 	</div>
-</Layout>
 
-<script>
-	import Layout from '../layouts/Layout.astro';
-</script>
+	<script define:vars={{ filterScript }}>
+		{filterScript}
+
+		function resetFilters() {
+			document.querySelectorAll('.filter-btn').forEach(btn => {
+				if (btn.dataset.filter === 'all') {
+					btn.classList.add('active', 'bg-gradient-to-r', 'from-primary', 'to-primary-light', 'text-white', 'shadow-glow-sm');
+					btn.classList.remove('bg-gray-800/60', 'text-gray-200', 'border', 'border-gray-700');
+				} else {
+					btn.classList.remove('active', 'bg-gradient-to-r', 'from-primary', 'to-primary-light', 'text-white', 'shadow-glow-sm');
+					btn.classList.add('bg-gray-800/60', 'text-gray-200', 'border', 'border-gray-700');
+				}
+			});
+
+			document.getElementById('search-projects').value = '';
+
+			// Manually trigger the filtering logic again
+			const event = new Event('input');
+			document.getElementById('search-projects').dispatchEvent(event);
+		}
+	</script>
+</Layout>

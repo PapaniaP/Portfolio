@@ -1,0 +1,141 @@
+---
+import { Image } from 'astro:assets';
+import Layout from './Layout.astro';
+import TocSidebar from '../components/case-study/TocSidebar';
+import InteractiveSectionGuide from '../components/InteractiveSectionGuide';
+import SectionMarkers from '../components/SectionMarkers';
+import SectionObserver from '../components/SectionObserver';
+import MobileTableOfContents from '../components/MobileTableOfContents';
+
+interface Props {
+  title: string;
+  description: string;
+  coverImage: ImageMetadata;
+  sections: Array<{
+    id: string;
+    title: string;
+  }>;
+  showTableOfContents?: boolean;
+}
+
+const { title, description, coverImage, sections, showTableOfContents = true } = Astro.props;
+---
+
+<Layout title={title} description={description}>
+  <style is:global>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+
+  <div class="relative min-h-screen bg-gray-900 pb-24">
+    <!-- Cover Image -->
+    <div class="w-full h-[40vh] relative">
+      <Image
+        src={coverImage}
+        alt={title}
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="container mx-auto px-4 -mt-32 relative z-10">
+      <div class="flex gap-8">
+        <!-- TOC Sidebar -->
+        <TocSidebar client:load sections={sections} />
+
+        <!-- Main Content -->
+        <main class="flex-1">
+          <!-- Section navigation using our interactive component - only if showTableOfContents is true -->
+          {showTableOfContents && sections.length > 2 && (
+            <InteractiveSectionGuide client:load sections={sections} position="left" showLabels={true} />
+          )}
+
+          <!-- Back to projects link -->
+          <div class="container mx-auto px-4 md:px-8 mb-8">
+            <a href="/projects" class="inline-flex items-center text-sm text-gray-400 hover:text-primary transition-colors">
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+              </svg>
+              Back to Projects
+            </a>
+          </div>
+
+          <!-- Case study content -->
+          <div class="container mx-auto px-4 md:px-8">
+            <slot />
+          </div>
+
+          <!-- Mobile Table of Contents (for small screens) using Astro Island -->
+          {showTableOfContents && sections.length > 2 && (
+            <MobileTableOfContents client:visible sections={sections} />
+          )}
+
+          <!-- Section Markers - Astro Island for adding markers to headings -->
+          <SectionMarkers client:load />
+
+          <!-- Section Observer - Astro Island for tracking active sections -->
+          <SectionObserver client:load />
+        </main>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  /* Section marker styles */
+  .section-marker {
+    position: relative;
+    height: 0;
+    width: 0;
+  }
+
+  /* For mobile screens, adjust the marker positioning */
+  @media (max-width: 1024px) {
+    .section-marker div {
+      left: 0;
+      top: 0.5rem;
+    }
+  }
+
+  /* Add connecting lines between section markers */
+  h2[id] {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  h2[id]::before {
+    content: "";
+    position: absolute;
+    left: -9px;
+    top: -1rem;
+    bottom: -1rem;
+    width: 1px;
+    background: rgba(75, 85, 99, 0.3);
+    z-index: -1;
+  }
+
+  /* Make the active section marker more prominent */
+  .section-marker div div {
+    transition: all 0.3s ease;
+  }
+
+  /* Animation for section activation */
+  @keyframes pulse-dot {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+  }
+
+  .section-active .section-marker div div {
+    width: 2.5px !important;
+    height: 2.5px !important;
+    background-color: var(--color-primary) !important;
+    animation: pulse-dot 1.5s ease-in-out 1;
+  }
+
+  .section-active .section-marker div {
+    border-color: rgba(var(--color-primary-rgb), 0.5) !important;
+  }
+</style>
