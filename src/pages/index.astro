@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import AnimatedSection from '../components/AnimatedSection';
+import Button from '../components/ui/Button.astro';
 
 // Import profile image - replace with actual image when available
 import profileImage from '../assets/profile/profile.webp';
@@ -363,12 +364,16 @@ const skillAreas = [
 				</div>
 
 				<div class="mt-12">
-					<a href="/projects" class="inline-flex items-center px-5 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors duration-300 border border-gray-700">
+					<Button
+						href="/projects"
+						variant="secondary"
+						size="md"
+					>
 						View All Projects
 						<svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
 						</svg>
-					</a>
+					</Button>
 				</div>
 			</div>
 		</div>

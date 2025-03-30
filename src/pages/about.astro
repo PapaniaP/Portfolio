@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import Button from '../components/ui/Button.astro';
 // Import your profile image - replace with actual path when available
 import profileImage from '../assets/profile/profile.webp';
 
@@ -234,9 +235,14 @@ const experience = [
                         <p class="text-gray-300" id="fun-fact">
                             I've visited over 20 countries and can say "Hello, world!" in 5 different programming languages and 3 human ones.
                         </p>
-                        <button id="new-fact-btn" class="mt-4 px-4 py-2 bg-gradient-to-r from-primary/80 to-primary-light/80 text-white rounded-lg hover:from-primary hover:to-primary-light transition-all duration-300 hover:shadow-glow-sm">
+                        <Button
+                            id="new-fact-btn"
+                            variant="primary"
+                            size="sm"
+                            class="mt-4"
+                        >
                             Give me another fact!
-                        </button>
+                        </Button>
                     </div>
                 </div>
             </div>
@@ -249,12 +255,13 @@ const experience = [
                 <p class="text-gray-300 mb-6">
                     Interested in working together or just want to say hello?
                 </p>
-                <a
+                <Button
                     href="/#contact"
-                    class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-primary-light text-white rounded-lg hover:shadow-glow-md transition-all duration-300"
+                    variant="primary"
+                    size="lg"
                 >
                     Get in Touch
-                </a>
+                </Button>
             </div>
         </div>
     </div>

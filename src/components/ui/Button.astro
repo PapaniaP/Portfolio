@@ -1,0 +1,57 @@
+---
+/*
+  Button Component
+
+  Usage:
+  <Button href="/some-link" variant="primary">Click Me</Button>
+  <Button variant="secondary" type="button" onClick="myFunction()">Click Me</Button>
+
+  Props:
+  - variant: "primary" | "secondary" (default: "primary")
+  - href: string (optional - if provided, renders as <a>, otherwise as <button>)
+  - class: string (optional - additional classes)
+  - size: "sm" | "md" | "lg" (default: "md")
+  - all other HTML attributes for button/anchor are passed through
+*/
+
+export interface Props {
+  variant?: "primary" | "secondary";
+  size?: "sm" | "md" | "lg";
+  href?: string;
+  class?: string;
+  [x: string]: any;
+}
+
+const {
+  variant = "primary",
+  size = "md",
+  href,
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+// Base classes for all buttons
+const baseClasses = "inline-flex items-center justify-center font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-primary/50";
+
+// Size variations
+const sizeClasses = {
+  sm: "px-3 py-1.5 text-sm rounded-lg",
+  md: "px-5 py-2 text-base rounded-lg",
+  lg: "px-8 py-3 text-lg rounded-lg"
+};
+
+// Variant styles
+const variantClasses = {
+  primary: "bg-primary hover:bg-primary-dark text-white",
+  secondary: "bg-gray-800 hover:bg-gray-700 text-white border border-gray-700"
+};
+
+// Combined classes
+const classes = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`;
+
+const Element = href ? "a" : "button";
+---
+
+<Element href={href} class={classes} {...rest}>
+  <slot />
+</Element>
