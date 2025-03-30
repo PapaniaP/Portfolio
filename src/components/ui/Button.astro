@@ -1,22 +1,22 @@
 ---
 /*
-  Button Component
+  Button Component - shadcn UI inspired
 
   Usage:
   <Button href="/some-link" variant="primary">Click Me</Button>
   <Button variant="secondary" type="button" onClick="myFunction()">Click Me</Button>
 
   Props:
-  - variant: "primary" | "secondary" (default: "primary")
+  - variant: "primary" | "secondary" | "outline" | "ghost" (default: "primary")
+  - size: "sm" | "md" | "lg" | "icon" (default: "md")
   - href: string (optional - if provided, renders as <a>, otherwise as <button>)
   - class: string (optional - additional classes)
-  - size: "sm" | "md" | "lg" (default: "md")
   - all other HTML attributes for button/anchor are passed through
 */
 
 export interface Props {
-  variant?: "primary" | "secondary";
-  size?: "sm" | "md" | "lg";
+  variant?: "primary" | "secondary" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg" | "icon";
   href?: string;
   class?: string;
   [x: string]: any;
@@ -31,19 +31,22 @@ const {
 } = Astro.props;
 
 // Base classes for all buttons
-const baseClasses = "inline-flex items-center justify-center font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-primary/50";
+const baseClasses = "inline-flex items-center justify-center font-medium transition-colors duration-200 select-none rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary/50 focus-visible:ring-offset-gray-900 disabled:opacity-50 disabled:pointer-events-none";
 
 // Size variations
 const sizeClasses = {
-  sm: "px-3 py-1.5 text-sm rounded-lg",
-  md: "px-5 py-2 text-base rounded-lg",
-  lg: "px-8 py-3 text-lg rounded-lg"
+  sm: "h-9 px-3 text-sm",
+  md: "h-10 py-2 px-4",
+  lg: "h-11 px-6 text-base",
+  icon: "h-10 w-10"
 };
 
 // Variant styles
 const variantClasses = {
-  primary: "bg-primary hover:bg-primary-dark text-white",
-  secondary: "bg-gray-800 hover:bg-gray-700 text-white border border-gray-700"
+  primary: "bg-primary text-white hover:bg-primary-dark active:scale-[0.98] shadow-sm",
+  secondary: "bg-gray-800 text-white hover:bg-gray-700 active:scale-[0.98] border border-gray-700",
+  outline: "border border-primary text-primary hover:bg-primary/10 active:scale-[0.98]",
+  ghost: "text-gray-400 hover:text-white hover:bg-gray-800"
 };
 
 // Combined classes
@@ -55,3 +58,16 @@ const Element = href ? "a" : "button";
 <Element href={href} class={classes} {...rest}>
   <slot />
 </Element>
+
+<style>
+  /* Custom active state with slight scale reduction */
+  button:active, a:active {
+    transform: scale(0.98);
+  }
+
+  /* Custom focus visible state */
+  button:focus-visible, a:focus-visible {
+    outline: 2px solid theme('colors.primary.DEFAULT');
+    outline-offset: 2px;
+  }
+</style>
