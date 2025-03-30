@@ -1,21 +1,41 @@
 ---
 interface Props {
   quote: string;
-  author?: string;
+  author: string;
   role?: string;
-  className?: string;
+  company?: string;
 }
 
-const { quote, author, role, className = "" } = Astro.props;
+const { quote, author, role, company } = Astro.props;
 ---
 
-<blockquote class={`bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 ${className}`}>
-  <p class="text-gray-300 italic mb-4">"{quote}"</p>
-  {(author || role) && (
-    <footer class="text-gray-400">
-      {author && `- ${author}`}
-      {role && author && ", "}
-      {role}
-    </footer>
-  )}
-</blockquote>
+<div class="quote-block my-12">
+  <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-8 md:p-12 relative">
+    <!-- Quote mark background -->
+    <div class="absolute top-6 left-6 text-9xl text-primary/10 font-serif">
+      "
+    </div>
+
+    <div class="relative">
+      <blockquote>
+        <p class="text-xl md:text-2xl text-gray-200 italic leading-relaxed mb-8 relative z-10">
+          "{quote}"
+        </p>
+
+        <footer class="flex items-center">
+          <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+            <span class="text-primary font-medium text-lg">{author.charAt(0)}</span>
+          </div>
+          <div>
+            <p class="text-white font-medium">{author}</p>
+            {(role || company) && (
+              <p class="text-gray-400 text-sm">
+                {role}{company && role ? `, ${company}` : company}
+              </p>
+            )}
+          </div>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+</div>
