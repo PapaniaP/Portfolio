@@ -8,53 +8,53 @@ import profileImage from '../assets/profile/profile.webp';
 const skills = [
     {
         category: "UX/UI Design",
-        items: ["User Research", "Wireframing", "Prototyping", "Usability Testing", "Information Architecture", "Figma"]
+        items: ["User Research", "Wireframing", "Prototyping", "Usability Testing", "Information Architecture", "Figma", "Product Design", "Design Systems"]
     },
     {
         category: "Frontend Development",
-        items: ["HTML", "CSS", "JavaScript", "React", "Astro", "TailwindCSS", "Responsive Design"]
+        items: ["HTML", "CSS", "JavaScript", "React", "Astro", "TailwindCSS", "Version Control"]
     },
     {
         category: "Tools & Other",
-        items: ["Git", "WordPress", "Firebase", "Photoshop", "Illustrator", "Agile Methodologies"]
+        items: ["Git", "WordPress", "Firebase", "Agile Methodologies", "User Testing", "Design Thinking", "Interaction Design"]
     }
 ];
 
 // Add your education details
 const education = [
     {
-        degree: "Multimedia Design & Communication",
-        institution: "Copenhagen School of Design and Technology (KEA)",
-        year: "2021-2023",
-        description: "Focused on UX/UI design, web development, and digital communication strategies."
+        degree: "Digital Concept Development",
+        institution: "Business Academy Aarhus",
+        year: "2024-Present",
+        description: "Currently pursuing advanced studies in digital concept development, focusing on creating innovative digital solutions and product strategies."
     },
     {
-        degree: "Previous Education or Certificate",
-        institution: "Institution Name",
-        year: "2018-2020",
-        description: "Brief description of your studies and focus."
+        degree: "Multimedia Design",
+        institution: "Business Academy Aarhus",
+        year: "2022-2024",
+        description: "Focused on UX/UI design, web development, and digital communication strategies. Developed strong foundation in user-centered design principles and frontend development."
     }
 ];
 
 // Add your work experience
 const experience = [
     {
-        position: "UX/UI Designer",
+        position: "Frontend Developer & UX/UI Designer",
         company: "RaskRask",
-        period: "2023",
-        description: "Designed and developed digital solutions for a wellness service provider, focusing on improving user experience and business operations."
+        period: "2024 (6 month internship)",
+        description: "Collaborated with the development team on frontend implementation and UX/UI design for a wellness service provider. Contributed to responsive web solutions and user-centered design improvements using modern technologies."
     },
     {
-        position: "Previous Position",
-        company: "Company Name",
-        period: "2020-2022",
-        description: "Description of responsibilities and achievements."
+        position: "Freelance Designer",
+        company: "Self-employed",
+        period: "2022-Present",
+        description: "Providing UX/UI design services for various clients, focusing on creating intuitive and engaging digital experiences."
     }
 ];
 
 ---
 
-<Layout title="About Me" description="Learn more about Paolo Papania - UX/UI Designer and Frontend Developer based in Copenhagen, Denmark.">
+<Layout title="About Me" description="Learn more about Paolo Papania - UX/UI Designer and Frontend Developer based in Aarhus, Denmark.">
     <div class="container mx-auto px-4 py-20">
         <div class="max-w-4xl mx-auto">
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8 animate-fadeIn">
@@ -69,13 +69,13 @@ const experience = [
                     </h2>
                     <div class="space-y-4 text-gray-300">
                         <p>
-                            I'm a UX/UI Designer and Frontend Developer based in Copenhagen, Denmark, passionate about creating intuitive, accessible, and visually appealing digital experiences.
+                            I'm a UX/UI Designer with frontend development skills based in Aarhus, Denmark. I'm passionate about creating intuitive, accessible, and user-centered digital experiences that solve real problems.
                         </p>
                         <p>
-                            With a background in Multimedia Design & Communication, I blend design thinking with technical skills to build solutions that not only look great but also solve real user problems.
+                            Currently pursuing Digital Concept Development at Business Academy Aarhus, I combine my design thinking with technical knowledge to create comprehensive digital solutions that prioritize user needs while meeting business objectives.
                         </p>
                         <p>
-                            I believe in a user-centered approach to design, where understanding user needs and behaviors forms the foundation of every project I undertake.
+                            My approach to design is deeply rooted in understanding user behavior and needs, always striving to create experiences that are both functional and delightful to use.
                         </p>
                         <div class="mt-8">
                             <a
@@ -217,32 +217,53 @@ const experience = [
 
                     <div class="text-gray-300 space-y-4 relative z-10">
                         <p>
-                            When I'm not designing or coding, you can find me exploring Copenhagen's vibrant streets, playing basketball, or experimenting with photography.
+                            When I'm not designing or coding, you can find me immersed in video games or cheering for my favorite rugby team. I'm also passionate about ergonomic computing, using a custom low-profile Ferris Sweep split keyboard as my daily driver.
                         </p>
                         <p>
-                            I'm passionate about sustainable design and believe that digital products should not only look good but also be environmentally conscious in their implementation.
+                            My interest in technology extends beyond the screen – I enjoy exploring how hardware and software can work together to create better user experiences, whether that's through ergonomic keyboard layouts or intuitive interface design.
                         </p>
                         <p>
-                            I love learning new technologies and techniques, and I'm always up for a challenge that pushes my creative and technical boundaries.
+                            At home, I share my space with my cat, who occasionally serves as my unofficial design critic during late-night coding sessions.
                         </p>
                     </div>
 
                     <!-- Fun interactive element -->
-                    <div class="mt-8 p-6 bg-gray-900/70 rounded-lg border border-gray-700 shadow-inner relative z-10">
-                        <h3 class="text-lg font-semibold text-white mb-4 flex items-center">
-                            <span class="text-primary-light mr-2">⚡</span> Fun Fact
-                        </h3>
-                        <p class="text-gray-300" id="fun-fact">
-                            I've visited over 20 countries and can say "Hello, world!" in 5 different programming languages and 3 human ones.
-                        </p>
-                        <Button
-                            id="new-fact-btn"
-                            variant="primary"
-                            size="sm"
-                            class="mt-4"
-                        >
-                            Give me another fact!
-                        </Button>
+                    <div class="mt-12 relative z-10">
+                        <div class="fun-fact-terminal">
+                            <!-- Terminal Header -->
+                            <div class="terminal-header">
+                                <div class="terminal-buttons">
+                                    <span class="terminal-button close"></span>
+                                    <span class="terminal-button minimize"></span>
+                                    <span class="terminal-button zoom"></span>
+                                </div>
+                                <div class="terminal-title">fun_facts.sh</div>
+                            </div>
+
+                            <!-- Terminal Content -->
+                            <div class="terminal-content">
+                                <div class="command-line">
+                                    <span class="prompt">visitor@portfolio</span>
+                                    <span class="separator">:</span>
+                                    <span class="directory">~/fun-facts</span>
+                                    <span class="separator">$</span>
+                                    <span class="command">get_random_fact</span>
+                                </div>
+                                <div class="output-line">
+                                    <span class="output-prefix">[OUTPUT] </span>
+                                    <span id="fun-fact" class="fact-text">I use a custom low-profile Ferris Sweep split keyboard, which has helped me maintain better ergonomics while coding.</span>
+                                </div>
+                                <div class="command-line">
+                                    <Button
+                                        id="new-fact-btn"
+                                        variant="terminal"
+                                        size="sm"
+                                    >
+                                        $ generate_new_fact
+                                    </Button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -256,7 +277,7 @@ const experience = [
                     Interested in working together or just want to say hello?
                 </p>
                 <Button
-                    href="/#contact"
+                    href="/#contact-section"
                     variant="primary"
                     size="lg"
                 >
@@ -269,56 +290,137 @@ const experience = [
     <script>
         // Fun facts array - update with your own facts
         const funFacts = [
-            "I've visited over 20 countries and can say 'Hello, world!' in 5 different programming languages and 3 human ones.",
-            "My record for most coffees in one day while coding is 7. I don't recommend it.",
-            "I once debugged code in my dreams and woke up with the solution.",
-            "I can type at 90 words per minute, but only when nobody is watching.",
-            "My first website was a fan page for my pet goldfish when I was 12."
+            "I'm South African and proud Springboks supporter - currently playing rugby for Aarhus Rugby Klub (ARK).",
+            "I've been teaching English for 7 years, starting as a full-time teacher and now continuing part-time alongside my UX career.",
+            "My keyboard collection includes 7 different boards, including two Ferris Sweeps, an A.dux, a Tipper-TF, a Corne, a Planck, and a 65%.",
+            "I'm a big fan of roguelikes/lites - currently alternating between Hades and Darkest Dungeon 2, with some Call of Duty when I need a shooter fix.",
+            "My daily driver is a 34-key split Ferris Sweep - proving you don't need many keys to be productive!"
         ];
 
         // Fun fact switcher
         const newFactBtn = document.getElementById('new-fact-btn');
+        const factElement = document.getElementById('fun-fact');
 
-        if (newFactBtn) {
+        if (newFactBtn && factElement) {
             newFactBtn.addEventListener('click', () => {
-                const factElement = document.getElementById('fun-fact');
+                let newFact: string;
+                const currentFact = factElement.textContent?.trim() || '';
 
-                if (factElement && factElement.textContent) {
-                    let newFact: string;
+                // Make sure we don't repeat the current fact
+                do {
+                    newFact = funFacts[Math.floor(Math.random() * funFacts.length)];
+                } while (newFact === currentFact);
 
-                    // Make sure we don't repeat the current fact
-                    do {
-                        newFact = funFacts[Math.floor(Math.random() * funFacts.length)];
-                    } while (newFact === factElement.textContent.trim());
+                // Add fade-out effect
+                factElement.style.opacity = '0';
 
-                    // Add fade-out effect
-                    factElement.style.opacity = '0';
-
-                    // Change text and fade back in
-                    setTimeout(() => {
-                        if (factElement) {
-                            factElement.textContent = newFact;
-                            factElement.style.opacity = '1';
-                        }
-                    }, 300);
-                }
+                // Change text and fade back in
+                setTimeout(() => {
+                    factElement.textContent = newFact;
+                    factElement.style.opacity = '1';
+                }, 300);
             });
         }
     </script>
 </Layout>
 
 <style>
-    /* Fade transition for fun facts */
-    #fun-fact {
+    /* Terminal Styles */
+    .fun-fact-terminal {
+        background-color: #1a1b26;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(88, 209, 255, 0.15),
+                    0 0 40px rgba(88, 209, 255, 0.1);
+        font-family: 'JetBrains Mono', monospace;
+        overflow: hidden;
+        border: 1px solid rgba(88, 209, 255, 0.2);
+    }
+
+    .terminal-header {
+        background: #1f2335;
+        padding: 8px 16px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgba(88, 209, 255, 0.2);
+    }
+
+    .terminal-buttons {
+        display: flex;
+        gap: 8px;
+        margin-right: 16px;
+    }
+
+    .terminal-button {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+    }
+
+    .terminal-button.close {
+        background: #ff5f56;
+    }
+
+    .terminal-button.minimize {
+        background: #ffbd2e;
+    }
+
+    .terminal-button.zoom {
+        background: #27c93f;
+    }
+
+    .terminal-title {
+        color: #7aa2f7;
+        font-size: 14px;
+        opacity: 0.8;
+    }
+
+    .terminal-content {
+        padding: 20px;
+        color: #a9b1d6;
+    }
+
+    .command-line {
+        margin: 12px 0;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .prompt {
+        color: #9ece6a;
+    }
+
+    .separator {
+        color: #7aa2f7;
+    }
+
+    .directory {
+        color: #7dcfff;
+    }
+
+    .command {
+        color: #bb9af7;
+        margin-left: 8px;
+    }
+
+    .output-line {
+        margin: 16px 0;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 4px;
+        border-left: 3px solid #7aa2f7;
+    }
+
+    .output-prefix {
+        color: #7aa2f7;
+        font-weight: bold;
+    }
+
+    .fact-text {
+        color: #c0caf5;
+        margin-left: 8px;
+        opacity: 1;
         transition: opacity 0.3s ease;
-    }
-
-    /* Enhance the z-index for decorative elements */
-    .z-1 {
-        z-index: 1;
-    }
-
-    .-z-1 {
-        z-index: -1;
     }
 </style>

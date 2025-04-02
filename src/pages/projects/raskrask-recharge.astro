@@ -10,7 +10,9 @@ import rechargeImage from '../../assets/projects/raskrask/recharge/recharge-cove
 
 // Process Section Images
 import domainWorkshop from '../../assets/projects/raskrask/recharge/research/domain-workshop.webp';
-import userPersona1 from '../../assets/projects/raskrask/recharge/research/userPersona1.png';
+import userPersona1 from '../../assets/projects/raskrask/recharge/research/user-persona1.webp';
+import userPersona2 from '../../assets/projects/raskrask/recharge/research/user-persona2.webp';
+
 
 // Temporarily comment out missing images until they're added
 /*
@@ -22,18 +24,16 @@ import businessCanvas from '../../assets/projects/raskrask/recharge/research/bus
 */
 
 // Design System Images - temporarily commented out until images are added
+import harmonyUI from '../../assets/projects/raskrask/harmony/harmonyUI-cover.webp';
 /*
-import harmonyUI from '../../assets/projects/raskrask/recharge/design/harmony-ui-components.webp';
 import designTokens from '../../assets/projects/raskrask/recharge/design/design-tokens.webp';
 */
 
 // Solution Images - temporarily commented out until images are added
-/*
 import adminDashboard from '../../assets/projects/raskrask/recharge/solution/admin-dashboard.webp';
-import bookingFlow from '../../assets/projects/raskrask/recharge/solution/booking-flow.webp';
-import providerInterface from '../../assets/projects/raskrask/recharge/solution/provider-interface.webp';
-import systemArchitecture from '../../assets/projects/raskrask/recharge/solution/system-architecture.webp';
-*/
+import bookingManagement  from '../../assets/projects/raskrask/recharge/solution/booking-management.webp';
+import userManagement from '../../assets/projects/raskrask/recharge/solution/user-management.webp';
+
 
 // Define the sections for navigation
 const caseSections = [
@@ -71,6 +71,11 @@ const researchImages: GalleryImage[] = [
     src: userPersona1,
     alt: "User persona for corporate wellness administrator",
     caption: "Mette (Admin): Manages credits, bookings, and invoices"
+  },
+  {
+    src: userPersona2,
+    alt: "User persona for employee wellness user",
+    caption: "Carl (Employee): Software developer seeking efficient wellness services"
   }
 ];
 
@@ -835,6 +840,45 @@ const processSteps = [
         </div>
       </div>
 
+      <!-- Add Solution Screenshots -->
+      <div class="mb-12">
+        <h3 class="text-2xl font-semibold text-white mb-8">Solution Screenshots</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <figure class="rounded-xl overflow-hidden bg-gray-800/50 border border-gray-700/50 p-4">
+            <div class="rounded-lg overflow-hidden">
+              <Image
+                src={adminDashboard}
+                alt="Admin dashboard interface showing analytics and management tools"
+                class="w-full"
+              />
+            </div>
+            <figcaption class="text-sm text-gray-400 mt-4">Admin Dashboard: Centralized management interface with analytics and controls</figcaption>
+          </figure>
+
+          <figure class="rounded-xl overflow-hidden bg-gray-800/50 border border-gray-700/50 p-4">
+            <div class="rounded-lg overflow-hidden">
+              <Image
+                src={bookingManagement}
+                alt="Booking management interface showing appointment details and controls"
+                class="w-full"
+              />
+            </div>
+            <figcaption class="text-sm text-gray-400 mt-4">Booking Management: Comprehensive interface for managing appointments and schedules</figcaption>
+          </figure>
+
+          <figure class="rounded-xl overflow-hidden bg-gray-800/50 border border-gray-700/50 p-4">
+            <div class="rounded-lg overflow-hidden">
+              <Image
+                src={userManagement}
+                alt="User management interface for administrators"
+                class="w-full"
+              />
+            </div>
+            <figcaption class="text-sm text-gray-400 mt-4">User Management: Interface for managing employee access and credits</figcaption>
+          </figure>
+        </div>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
         <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
           <h4 class="text-xl font-medium text-white mb-4">Architecture Highlights</h4>
@@ -1095,9 +1139,9 @@ const processSteps = [
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 002-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
           </div>
-          <h3 class="text-white font-medium text-lg mb-3">Reduced Support Requests</h3>
+          <h3 class="text-white font-medium text-lg mb-3">Design System</h3>
           <p class="text-gray-300">
-            <span class="text-primary font-medium text-xl">67%</span> reduction in customer support tickets related to corporate booking administration
+            Created a comprehensive design system with reusable components, enabling consistent UI development across the platform
           </p>
         </div>
 
@@ -1107,9 +1151,9 @@ const processSteps = [
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h3 class="text-white font-medium text-lg mb-3">Faster Booking Process</h3>
+          <h3 class="text-white font-medium text-lg mb-3">User Experience</h3>
           <p class="text-gray-300">
-            <span class="text-primary font-medium text-xl">78%</span> decrease in time required for employees to complete a booking
+            Streamlined booking process with intuitive workflows for both administrators and employees
           </p>
         </div>
 
@@ -1119,139 +1163,51 @@ const processSteps = [
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
           </div>
-          <h3 class="text-white font-medium text-lg mb-3">Increased Utilization</h3>
+          <h3 class="text-white font-medium text-lg mb-3">Technical Foundation</h3>
           <p class="text-gray-300">
-            <span class="text-primary font-medium text-xl">43%</span> increase in employee wellness service utilization across pilot clients
+            Built a scalable architecture using modern front-end technologies and best practices
           </p>
         </div>
       </div>
 
       <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-8 mb-12">
-        <h3 class="text-2xl font-semibold text-white mb-6">Client Feedback</h3>
+        <h3 class="text-2xl font-semibold text-white mb-6">Project Achievements</h3>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div class="p-5 bg-gray-900/50 rounded-lg border border-gray-700/30">
-            <svg class="w-8 h-8 text-primary/40 mb-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-            </svg>
-            <p class="text-gray-300 mb-4">
-              "The new corporate platform has completely transformed how we manage wellness services for our employees. What used to take our HR team hours each week is now automated, and our employees love the simplified booking experience."
-            </p>
-            <div class="flex items-center">
-              <div class="text-sm">
-                <p class="text-white font-medium">Christine Bergmann</p>
-                <p class="text-gray-400">HR Director, Nordea</p>
-              </div>
-            </div>
+            <h4 class="text-white font-medium mb-3">Design & UX</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="text-gray-300">Created comprehensive user personas and journey maps</span>
+              </li>
+              <li class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="text-gray-300">Developed Harmony UI design system with 30+ components</span>
+              </li>
+              <li class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="text-gray-300">Designed intuitive workflows for complex booking processes</span>
+              </li>
+            </ul>
           </div>
 
           <div class="p-5 bg-gray-900/50 rounded-lg border border-gray-700/30">
-            <svg class="w-8 h-8 text-primary/40 mb-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-            </svg>
-            <p class="text-gray-300 mb-4">
-              "The analytics dashboard gives us insights we never had before about how our wellness program is being utilized. We can now make data-driven decisions about which services to offer and how to allocate our wellness budget."
-            </p>
-            <div class="flex items-center">
-              <div class="text-sm">
-                <p class="text-white font-medium">Michael Thorsen</p>
-                <p class="text-gray-400">Wellness Program Manager, Maersk</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <h3 class="text-2xl font-semibold text-white mb-8">Business Impact</h3>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="space-y-6">
-            <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-              <h4 class="text-white font-medium mb-3">New Client Acquisition</h4>
-              <p class="text-gray-300 mb-4">
-                The enhanced corporate platform became a key selling point for RaskRask's B2B sales team, leading to:
-              </p>
-              <ul class="space-y-2">
-                <li class="flex items-start">
-                  <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                  <span class="text-gray-300">4 new enterprise clients within 3 months of launch</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                  <span class="text-gray-300">27% increase in corporate contract value</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                  <span class="text-gray-300">Shortened sales cycle from 3 months to 6 weeks</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-              <h4 class="text-white font-medium mb-3">Operational Efficiency</h4>
-              <p class="text-gray-300 mb-4">
-                The self-service capabilities and automated workflows resulted in:
-              </p>
-              <ul class="space-y-2">
-                <li class="flex items-start">
-                  <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                  <span class="text-gray-300">52% reduction in account management costs</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                  <span class="text-gray-300">83% decrease in manual data entry errors</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                  <span class="text-gray-300">Freed up 15+ hours weekly for the customer success team</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="space-y-6">
-            <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-              <h4 class="text-white font-medium mb-3">Client Retention</h4>
-              <p class="text-gray-300 mb-4">
-                Improved client satisfaction metrics led to stronger retention:
-              </p>
-              <ul class="space-y-2">
-                <li class="flex items-start">
-                  <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                  <span class="text-gray-300">100% renewal rate among pilot clients</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                  <span class="text-gray-300">31% increase in contract expansion opportunities</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                  <span class="text-gray-300">Net Promoter Score improved by 38 points</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-              <h4 class="text-white font-medium mb-3">Platform Scalability</h4>
-              <p class="text-gray-300 mb-4">
-                The technical foundation established by the project enabled:
-              </p>
-              <ul class="space-y-2">
-                <li class="flex items-start">
-                  <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                  <span class="text-gray-300">Support for 10x growth in user base without performance issues</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                  <span class="text-gray-300">60% faster development cycles for new features</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                  <span class="text-gray-300">Reduced onboarding time for new developers from weeks to days</span>
-                </li>
-              </ul>
-            </div>
+            <h4 class="text-white font-medium mb-3">Development</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="text-gray-300">Built scalable front-end architecture with Next.js</span>
+              </li>
+              <li class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="text-gray-300">Implemented component library with TypeScript</span>
+              </li>
+              <li class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="text-gray-300">Created mock API layer for development and testing</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1264,16 +1220,16 @@ const processSteps = [
       <div class="space-y-12">
         <div class="prose prose-invert max-w-none">
           <p>
-            The RaskRask Recharge project successfully transformed the corporate wellness booking experience for both administrators and employees. By centering the design and development process around user needs, we created a platform that not only solved immediate pain points but also established a foundation for future growth and innovation.
+            The RaskRask Recharge project successfully demonstrated how a user-centered design approach could transform the corporate wellness booking experience. Through extensive research, thoughtful design, and modern development practices, we created a prototype that showcases the potential for both administrators and employees to have a more efficient and enjoyable platform.
           </p>
           <p>
-            The project exemplifies how thoughtful UX design combined with modern front-end development practices can create business value through improved operational efficiency, enhanced user satisfaction, and stronger client relationships. The design system and component architecture we established will continue to serve RaskRask as they expand their corporate offerings.
+            The project serves as a testament to how thoughtful UX design combined with modern front-end development practices can create a solid foundation for future development. The design system and component architecture we established provides a blueprint for building scalable corporate platforms.
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-            <h3 class="text-xl font-medium text-white mb-4">Future Roadmap</h3>
+            <h3 class="text-xl font-medium text-white mb-4">Future Possibilities</h3>
             <ul class="space-y-3">
               <li class="flex items-start">
                 <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
@@ -1327,7 +1283,7 @@ const processSteps = [
                 <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
                 <div>
                   <span class="text-white">Design System Investment</span>
-                  <p class="text-gray-400 text-sm mt-1">The time spent creating a robust design system accelerated development in later stages and ensured consistency</p>
+                  <p class="text-gray-400 text-sm mt-1">The time spent creating a robust design system accelerated development and ensured consistency</p>
                 </div>
               </li>
               <li class="flex items-start">
@@ -1342,29 +1298,10 @@ const processSteps = [
         </div>
 
         <QuoteBlock
-          quote="This project represents not just a technological advancement for RaskRask, but a fundamental shift in how they approach their corporate wellness offering. By putting users at the center of the experience, we've helped transform a service into a strategic advantage."
+          quote="This project demonstrates the power of user-centered design and modern development practices in creating intuitive, scalable solutions. While it remains a prototype, it sets a strong foundation for future corporate wellness platforms."
           author="Final Reflection"
         />
       </div>
-    </section>
-
-    <!-- Contact section (using MetricsGrid for layout) -->
-    <section id="contact" class="mb-32">
-      <SectionHeader title="Let's Connect" />
-      <div class="text-center mb-8">
-        <p class="text-gray-300 max-w-2xl mx-auto">
-          Interested in discussing this project or exploring how we could collaborate on your next digital product? I'd love to hear from you.
-        </p>
-      </div>
-
-      <MetricsGrid
-        metrics={[
-          { label: 'Email', value: 'hello@papania.dev' },
-          { label: 'LinkedIn', value: '/in/mikepapania' },
-          { label: 'GitHub', value: '@mikey-papania' },
-          { label: 'Portfolio', value: 'papania.dev' }
-        ]}
-      />
     </section>
   </div>
 </CaseStudyLayout>

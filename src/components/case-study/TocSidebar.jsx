@@ -36,25 +36,38 @@ export default function TocSidebar({ sections }) {
   };
 
   return (
-    <aside className="hidden lg:block sticky top-24 w-64 pr-8">
+    <motion.aside
+      initial={{ x: -20, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="hidden lg:block sticky top-24 w-64 pr-8"
+    >
       <nav className="space-y-2">
         {sections.map((section) => (
-          <motion.a
-            key={section.id}
-            href={`#${section.id}`}
-            onClick={(e) => handleClick(e, section.id)}
-            className={`block text-sm transition-colors hover:text-primary ${
-              section.id === activeId
-                ? "text-primary font-semibold"
-                : "text-gray-400"
-            }`}
-            whileHover={{ x: 4 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            {section.title}
-          </motion.a>
+          <div className="relative" key={section.id}>
+            {section.id === activeId && (
+              <motion.span
+                layoutId="toc-active"
+                className="absolute left-0 top-0 h-full w-1 bg-primary rounded"
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              />
+            )}
+            <motion.a
+              href={`#${section.id}`}
+              onClick={(e) => handleClick(e, section.id)}
+              className={`block text-sm transition-colors hover:text-primary ${
+                section.id === activeId
+                  ? "text-primary font-semibold"
+                  : "text-gray-400"
+              }`}
+              whileHover={{ x: 4 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              {section.title}
+            </motion.a>
+          </div>
         ))}
       </nav>
-    </aside>
+    </motion.aside>
   );
 }

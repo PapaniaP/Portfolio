@@ -1,13 +1,13 @@
 ---
 /*
-  Button Component - shadcn UI inspired
+  Button Component
 
   Usage:
   <Button href="/some-link" variant="primary">Click Me</Button>
   <Button variant="secondary" type="button" onClick="myFunction()">Click Me</Button>
 
   Props:
-  - variant: "primary" | "secondary" | "outline" | "ghost" (default: "primary")
+  - variant: "primary" | "secondary" | "outline" | "ghost" | "terminal" (default: "primary")
   - size: "sm" | "md" | "lg" | "icon" (default: "md")
   - href: string (optional - if provided, renders as <a>, otherwise as <button>)
   - class: string (optional - additional classes)
@@ -15,7 +15,7 @@
 */
 
 export interface Props {
-  variant?: "primary" | "secondary" | "outline" | "ghost";
+  variant?: "primary" | "secondary" | "outline" | "ghost" | "terminal";
   size?: "sm" | "md" | "lg" | "icon";
   href?: string;
   class?: string;
@@ -46,7 +46,8 @@ const variantClasses = {
   primary: "bg-primary text-white hover:bg-primary-dark active:scale-[0.98] shadow-sm",
   secondary: "bg-gray-800 text-white hover:bg-gray-700 active:scale-[0.98] border border-gray-700",
   outline: "border border-primary text-primary hover:bg-primary/10 active:scale-[0.98]",
-  ghost: "text-gray-400 hover:text-white hover:bg-gray-800"
+  ghost: "text-gray-400 hover:text-white hover:bg-gray-800",
+  terminal: "bg-transparent border border-[#7aa2f7] text-[#7aa2f7] hover:bg-[#7aa2f7]/10 hover:shadow-[0_0_10px_rgba(122,162,247,0.3)] font-mono text-sm"
 };
 
 // Combined classes
