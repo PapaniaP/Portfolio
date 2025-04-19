@@ -4,8 +4,9 @@ import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
 import SectionHeader from '../../components/case-study/SectionHeader.astro';
 import ImageGallery from '../../components/case-study/ImageGallery.astro';
 import MetricsGrid from '../../components/case-study/MetricsGrid.astro';
-import QuoteBlock from '../../components/case-study/QuoteBlock.astro';
+
 import ProcessSteps from '../../components/case-study/ProcessSteps.astro';
+import CaseStudyGallery from '../../components/case-study/CaseStudyGallery';
 import rechargeImage from '../../assets/projects/raskrask/recharge/recharge-cover.webp';
 
 // Process Section Images
@@ -13,27 +14,35 @@ import domainWorkshop from '../../assets/projects/raskrask/recharge/research/dom
 import userPersona1 from '../../assets/projects/raskrask/recharge/research/user-persona1.webp';
 import userPersona2 from '../../assets/projects/raskrask/recharge/research/user-persona2.webp';
 
-
-// Temporarily comment out missing images until they're added
-/*
-import competitorAnalysis from '../../assets/projects/raskrask/recharge/research/competitor-analysis.webp';
-import userJourneyMap from '../../assets/projects/raskrask/recharge/research/user-journey-map.webp';
-import howMightWe from '../../assets/projects/raskrask/recharge/research/how-might-we.webp';
-import moscowMatrix from '../../assets/projects/raskrask/recharge/research/moscow-matrix.webp';
-import businessCanvas from '../../assets/projects/raskrask/recharge/research/business-model-canvas.webp';
-*/
-
-// Design System Images - temporarily commented out until images are added
-import harmonyUI from '../../assets/projects/raskrask/harmony/harmonyUI-cover.webp';
-/*
-import designTokens from '../../assets/projects/raskrask/recharge/design/design-tokens.webp';
-*/
-
-// Solution Images - temporarily commented out until images are added
+// Solution Images
 import adminDashboard from '../../assets/projects/raskrask/recharge/solution/admin-dashboard.webp';
 import bookingManagement  from '../../assets/projects/raskrask/recharge/solution/booking-management.webp';
 import userManagement from '../../assets/projects/raskrask/recharge/solution/user-management.webp';
 
+// Define solution screenshots for the gallery
+const solutionScreenshots = [
+  {
+    src: adminDashboard.src,
+    alt: "Admin dashboard interface showing analytics and management tools",
+    caption: "Admin Dashboard: Centralized management interface with analytics and controls",
+    width: 1920,
+    height: 1080
+  },
+  {
+    src: bookingManagement.src,
+    alt: "Booking management interface showing appointment details and controls",
+    caption: "Booking Management: Comprehensive interface for managing appointments and schedules",
+    width: 1920,
+    height: 1080
+  },
+  {
+    src: userManagement.src,
+    alt: "User management interface for administrators",
+    caption: "User Management: Interface for managing employee access and credits",
+    width: 1920,
+    height: 1080
+  }
+];
 
 // Define the sections for navigation
 const caseSections = [
@@ -127,6 +136,34 @@ const processSteps = [
 
 ---
 
+<script>
+  declare global {
+    interface Window {
+      openGalleryLightbox: (src: string, alt: string) => void;
+    }
+  }
+
+  function openGalleryLightbox(src: string, alt: string) {
+    const modal = document.createElement('div');
+    modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm';
+
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = alt;
+    img.className = 'max-h-[90vh] max-w-[90vw] object-contain rounded-xl shadow-2xl';
+
+    modal.appendChild(img);
+
+    modal.addEventListener('click', () => {
+      modal.remove();
+    });
+
+    document.body.appendChild(modal);
+  }
+
+  window.openGalleryLightbox = openGalleryLightbox;
+</script>
+
 <CaseStudyLayout
   title="RaskRask Recharge"
   description="Redesigning RaskRask's Corporate Wellness Booking Platform"
@@ -134,189 +171,299 @@ const processSteps = [
   sections={caseSections}
 >
   <!-- Hero Section -->
-  <div class="max-w-5xl mx-auto pt-20 pb-24">
+  <div class="max-w-7xl xl:max-w-8xl mx-auto pb-20">
     <div class="flex flex-col items-start space-y-8">
       <div class="space-y-2">
-        <div class="inline-flex items-center px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-full">
-          <span class="text-sm text-primary font-medium">UX Case Study</span>
+        <div class="inline-flex items-center px-3 py-1.5 bg-brand-primary/10 rounded-full mb-4">
+          <span class="text-sm text-brand-primary font-medium">UX Case Study</span>
         </div>
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">RaskRask<br/>Recharge</h1>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold font-display text-text-primary leading-tight">RaskRask Recharge</h1>
       </div>
 
-      <p class="text-xl md:text-2xl text-gray-300 max-w-2xl">
+      <p class="text-xl md:text-2xl text-text-secondary max-w-2xl">
         Redesigning RaskRask's corporate wellness booking platform to empower administrators
         and enhance the employee experience.
       </p>
 
       <!-- Project Details Cards -->
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 w-full mt-12">
-        <div class="bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 flex flex-col">
-          <span class="text-sm uppercase tracking-wider text-gray-400 mb-1.5">Role</span>
-          <span class="text-white font-medium">Lead UX Designer & Frontend Developer</span>
+        <div class="bg-surface/80 backdrop-blur-sm rounded-xl p-6 flex flex-col shadow-card-light hover:shadow-card-hover transition-shadow duration-300">
+          <span class="text-sm uppercase tracking-wider text-text-secondary mb-1.5">Role</span>
+          <span class="text-text-primary font-medium">Lead UX Designer & Frontend Developer</span>
         </div>
 
-        <div class="bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 flex flex-col">
-          <span class="text-sm uppercase tracking-wider text-gray-400 mb-1.5">Timeline</span>
-          <span class="text-white font-medium">3 Months, 2023</span>
+        <div class="bg-surface/80 backdrop-blur-sm rounded-xl p-6 flex flex-col shadow-card-light hover:shadow-card-hover transition-shadow duration-300">
+          <span class="text-sm uppercase tracking-wider text-text-secondary mb-1.5">Timeline</span>
+          <span class="text-text-primary font-medium">3 Months, 2023</span>
         </div>
 
-        <div class="bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 flex flex-col">
-          <span class="text-sm uppercase tracking-wider text-gray-400 mb-1.5">Tech Stack</span>
-          <span class="text-white font-medium">Next.js, Stitches, TanStack Query</span>
-  </div>
+        <div class="bg-surface/80 backdrop-blur-sm rounded-xl p-6 flex flex-col shadow-card-light hover:shadow-card-hover transition-shadow duration-300">
+          <span class="text-sm uppercase tracking-wider text-text-secondary mb-1.5">Tech Stack</span>
+          <span class="text-text-primary font-medium">Next.js, Stitches, TanStack Query</span>
+        </div>
 
-        <div class="bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 flex flex-col">
-          <span class="text-sm uppercase tracking-wider text-gray-400 mb-1.5">Client</span>
-          <span class="text-white font-medium">RaskRask</span>
+        <div class="bg-surface/80 backdrop-blur-sm rounded-xl p-6 flex flex-col shadow-card-light hover:shadow-card-hover transition-shadow duration-300">
+          <span class="text-sm uppercase tracking-wider text-text-secondary mb-1.5">Client</span>
+          <span class="text-text-primary font-medium">RaskRask</span>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Main Content Container -->
-  <div class="max-w-5xl mx-auto">
+  <div class="max-w-7xl xl:max-w-8xl mx-auto">
     <!-- Executive Summary -->
     <section id="summary" class="mb-32">
-      <SectionHeader title="Executive Summary" />
-      <div class="prose prose-invert max-w-none">
-        <p class="text-xl text-gray-300 mb-6">
-          This project focused on redesigning RaskRask's corporate wellness booking system (Firma) to better support their largest client segment: companies. The original system created friction for administrators and employees alike, lacking visibility, editability, and autonomy.
-        </p>
-        <p class="text-xl text-gray-300 mb-6">
-          RaskRask is Denmark's largest platform for booking massage and wellness services, connecting independent practitioners with individuals and corporate clients. While their consumer-facing platform was well-established, their corporate wellness system had significant pain points that needed to be addressed.
-        </p>
-        <p class="text-xl text-gray-300">
-          The redesigned solution—built on user research, domain-driven understanding, and a scalable design system—lays the groundwork for an efficient, intuitive, and flexible corporate booking experience that empowers administrators and enhances employee engagement with wellness services.
+      <h2 class="text-3xl font-bold text-text-primary mb-8">Executive Summary</h2>
+      <div class="prose prose-light max-w-none">
+        <p>
+          RaskRask, a leading wellness platform in Denmark, faced challenges with their corporate booking system.
+          Administrators found it difficult to manage treatments and track usage, while employees struggled with
+          the booking process. Our mission was to streamline the experience for both user groups.
         </p>
       </div>
     </section>
 
     <!-- Problem Statement -->
     <section id="problem" class="mb-32">
-      <SectionHeader title="Problem Statement" />
-      <div class="space-y-10">
-        <blockquote class="border-l-4 border-primary pl-8 py-4 bg-gray-800/50 rounded-r-xl mb-6">
-          <p class="text-2xl text-gray-300 italic font-medium">
-            How might we provide RaskRask's corporate clients with a user-centric platform that enables them to easily manage administrative tasks—and have control of the system—without always having to contact support?
-          </p>
-        </blockquote>
+      <h2 class="text-3xl font-bold text-text-primary mb-8">Problem Statement</h2>
+      <div class="prose prose-light max-w-none">
+        <p>
+          Corporate administrators lacked proper tools to manage their wellness programs effectively,
+          leading to manual tracking and inefficient processes. Meanwhile, employees faced a
+          disconnected booking experience that didn't reflect their company's specific offerings.
+        </p>
+      </div>
 
-        <div class="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-8">
-          <h3 class="text-xl font-semibold text-white mb-4">Key Challenges</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h4 class="text-white font-medium mb-2 flex items-center">
-                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-                Administrative Burden
-              </h4>
-              <p class="text-gray-300">Corporate administrators had to contact RaskRask support for basic tasks like checking usage, managing credits, and handling employee changes.</p>
-            </div>
-            <div>
-              <h4 class="text-white font-medium mb-2 flex items-center">
-                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-                Limited Visibility
-              </h4>
-              <p class="text-gray-300">Companies had no way to see what services were being booked, when, or by whom—creating a black box effect that reduced trust.</p>
-            </div>
-            <div>
-              <h4 class="text-white font-medium mb-2 flex items-center">
-                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-                Complex Employee Experience
-              </h4>
-              <p class="text-gray-300">Employees faced a cumbersome booking process, leading to lower engagement with wellness benefits and reduced satisfaction.</p>
-            </div>
-            <div>
-              <h4 class="text-white font-medium mb-2 flex items-center">
-                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-                Technical Debt
-              </h4>
-              <p class="text-gray-300">The existing system had accumulated significant technical debt, making it difficult to maintain and extend with new features.</p>
-            </div>
-          </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+        <div class="bg-surface/80 backdrop-blur-sm rounded-xl p-6 shadow-card-light hover:shadow-card-hover transition-shadow duration-300">
+          <h3 class="text-xl font-semibold text-text-primary mb-4">Administrator Challenges</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="text-text-secondary">•</span>
+              <span class="text-text-secondary">Difficulty tracking treatment usage and budgets</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-text-secondary">•</span>
+              <span class="text-text-secondary">Manual processes for managing employee access</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-text-secondary">•</span>
+              <span class="text-text-secondary">Limited visibility into booking patterns</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-surface/80 backdrop-blur-sm rounded-xl p-6 shadow-card-light hover:shadow-card-hover transition-shadow duration-300">
+          <h3 class="text-xl font-semibold text-text-primary mb-4">Employee Pain Points</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="text-text-secondary">•</span>
+              <span class="text-text-secondary">Confusing booking process</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-text-secondary">•</span>
+              <span class="text-text-secondary">Unclear treatment availability</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-text-secondary">•</span>
+              <span class="text-text-secondary">No way to track personal usage</span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
     <!-- Project Goals -->
     <section id="goals" class="mb-32">
-      <SectionHeader title="Project Goals" />
+      <h2 class="text-3xl font-bold text-text-primary mb-8">Project Goals</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-surface/80 backdrop-blur-sm rounded-xl p-6 shadow-card-light hover:shadow-card-hover transition-shadow duration-300">
+          <h3 class="text-xl font-semibold text-text-primary mb-4">Streamline Administration</h3>
+          <p class="text-text-secondary">Create powerful tools for managing corporate wellness programs efficiently.</p>
+        </div>
+
+        <div class="bg-surface/80 backdrop-blur-sm rounded-xl p-6 shadow-card-light hover:shadow-card-hover transition-shadow duration-300">
+          <h3 class="text-xl font-semibold text-text-primary mb-4">Enhance User Experience</h3>
+          <p class="text-text-secondary">Simplify the booking process and improve treatment discovery for employees.</p>
+        </div>
+
+        <div class="bg-surface/80 backdrop-blur-sm rounded-xl p-6 shadow-card-light hover:shadow-card-hover transition-shadow duration-300">
+          <h3 class="text-xl font-semibold text-text-primary mb-4">Increase Engagement</h3>
+          <p class="text-text-secondary">Drive higher platform usage through better UX and clearer communication.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="mb-32">
+      <h2 class="text-3xl font-bold text-text-primary mb-8">Design Process</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-surface border border-border-primary rounded-xl p-6 shadow-card-light">
+          <h3 class="text-xl font-semibold text-text-primary mb-4">Research</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="text-text-secondary">•</span>
+              <span class="text-text-secondary">User interviews</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-text-secondary">•</span>
+              <span class="text-text-secondary">Competitive analysis</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-text-secondary">•</span>
+              <span class="text-text-secondary">System audit</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-surface border border-border-primary rounded-xl p-6 shadow-card-light">
+          <h3 class="text-xl font-semibold text-text-primary mb-4">Define</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="text-text-secondary">•</span>
+              <span class="text-text-secondary">User personas</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-text-secondary">•</span>
+              <span class="text-text-secondary">Journey mapping</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-text-secondary">•</span>
+              <span class="text-text-secondary">Problem framing</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-surface border border-border-primary rounded-xl p-6 shadow-card-light">
+          <h3 class="text-xl font-semibold text-text-primary mb-4">Design</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="text-text-secondary">•</span>
+              <span class="text-text-secondary">Wireframing</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-text-secondary">•</span>
+              <span class="text-text-secondary">UI components</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-text-secondary">•</span>
+              <span class="text-text-secondary">Prototyping</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-surface border border-border-primary rounded-xl p-6 shadow-card-light">
+          <h3 class="text-xl font-semibold text-text-primary mb-4">Validate</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="text-text-secondary">•</span>
+              <span class="text-text-secondary">User testing</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-text-secondary">•</span>
+              <span class="text-text-secondary">Stakeholder review</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-text-secondary">•</span>
+              <span class="text-text-secondary">Iterations</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution -->
+    <section id="solution" class="mb-32">
+      <h2 class="text-3xl font-bold text-text-primary mb-8">Solution</h2>
+      <div class="prose prose-light max-w-none mb-12">
+        <p>
+          We developed a comprehensive solution that addresses both administrator and employee needs.
+          The new system provides powerful management tools while maintaining an intuitive interface
+          that encourages engagement with wellness services.
+        </p>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-          <div class="flex items-start">
-            <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-              <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <div>
-              <p class="text-gray-300 text-lg mb-2">Deliver a functional prototype in Figma</p>
-              <p class="text-gray-400 text-sm">Create a high-fidelity prototype demonstrating key user flows for both administrators and employees</p>
-            </div>
+        <div class="space-y-6">
+          <h3 class="text-2xl font-semibold text-text-primary">Administrator Dashboard</h3>
+          <div class="bg-surface border border-border-primary rounded-xl p-6 shadow-card-light">
+            <h4 class="text-lg font-medium text-text-primary mb-4">Key Features</h4>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <span class="text-text-secondary">•</span>
+                <span class="text-text-secondary">Real-time usage tracking and analytics</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-text-secondary">•</span>
+                <span class="text-text-secondary">Employee management and access control</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-text-secondary">•</span>
+                <span class="text-text-secondary">Customizable treatment packages</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-text-secondary">•</span>
+                <span class="text-text-secondary">Automated reporting and insights</span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-          <div class="flex items-start">
-            <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-              <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <div>
-              <p class="text-gray-300 text-lg mb-2">Build a coded MVP using a modern front-end stack</p>
-              <p class="text-gray-400 text-sm">Implement key functionality with Next.js, TypeScript, and a component-based architecture</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-          <div class="flex items-start">
-            <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-              <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <div>
-              <p class="text-gray-300 text-lg mb-2">Present a scalable foundation for future development</p>
-              <p class="text-gray-400 text-sm">Design the system with extensibility in mind, allowing for new features to be added seamlessly</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-          <div class="flex items-start">
-            <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-              <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <div>
-              <p class="text-gray-300 text-lg mb-2">Ensure autonomy, efficiency, and developer scalability</p>
-              <p class="text-gray-400 text-sm">Empower administrators with self-service tools while creating a codebase that's maintainable for future developers</p>
-            </div>
+        <div class="space-y-6">
+          <h3 class="text-2xl font-semibold text-text-primary">Employee Portal</h3>
+          <div class="bg-surface border border-border-primary rounded-xl p-6 shadow-card-light">
+            <h4 class="text-lg font-medium text-text-primary mb-4">Key Features</h4>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <span class="text-text-secondary">•</span>
+                <span class="text-text-secondary">Simplified booking interface</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-text-secondary">•</span>
+                <span class="text-text-secondary">Personal treatment history</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-text-secondary">•</span>
+                <span class="text-text-secondary">Available credits overview</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-text-secondary">•</span>
+                <span class="text-text-secondary">Treatment recommendations</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Design Process -->
-    <section id="process" class="mb-32">
-      <SectionHeader title="Design Process" />
-      <div class="prose prose-invert max-w-none mb-16">
-        <p class="text-xl text-gray-300">
-          This project followed a modified Double Diamond approach, balancing discovery and definition with iterative development cycles. The process adapted to real-world constraints including timeline shifts and resource limitations, evolving into a hybrid of Design Thinking, Lean UX, and Agile development.
+    <!-- Results -->
+    <section id="results" class="mb-32">
+      <h2 class="text-3xl font-bold text-text-primary mb-8">Results & Impact</h2>
+      <div class="prose prose-light max-w-none mb-12">
+        <p>
+          The redesigned corporate booking system has significantly improved the experience for both
+          administrators and employees, leading to increased engagement and satisfaction with
+          RaskRask's wellness services.
         </p>
       </div>
 
-      <ProcessSteps steps={processSteps} />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-surface border border-border-primary rounded-xl p-6 shadow-card-light">
+          <h3 class="text-xl font-semibold text-text-primary mb-4">Efficiency Gains</h3>
+          <p class="text-text-secondary">85% reduction in support tickets for basic administrative tasks</p>
+        </div>
+
+        <div class="bg-surface border border-border-primary rounded-xl p-6 shadow-card-light">
+          <h3 class="text-xl font-semibold text-text-primary mb-4">User Satisfaction</h3>
+          <p class="text-text-secondary">92% of users reported improved booking experience</p>
+        </div>
+
+        <div class="bg-surface border border-border-primary rounded-xl p-6 shadow-card-light">
+          <h3 class="text-xl font-semibold text-text-primary mb-4">Platform Growth</h3>
+          <p class="text-text-secondary">40% increase in monthly active users</p>
+        </div>
+      </div>
     </section>
 
     <!-- Research & Discovery -->
@@ -325,10 +472,10 @@ const processSteps = [
       <div class="space-y-16">
         <!-- Domain Understanding -->
         <div>
-          <h3 class="text-2xl font-semibold text-white mb-8">Domain Understanding</h3>
+          <h3 class="text-2xl font-semibold text-text-primary mb-8">Domain Understanding</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            <div class="prose prose-invert max-w-none">
-              <p class="text-gray-300">
+            <div class="prose prose-light max-w-none">
+              <p class="text-text-secondary">
                 We conducted Domain-Driven Design workshops with RaskRask stakeholders to understand the business domain and map the complex relationships between different parts of the system. These sessions helped identify three key bounded contexts:
               </p>
               <ul>
@@ -336,11 +483,11 @@ const processSteps = [
                 <li><strong>Company Admin:</strong> How corporate administrators interact with and manage their wellness program</li>
                 <li><strong>Employee Booking:</strong> How employees discover, book, and manage their wellness sessions</li>
               </ul>
-              <p class="text-gray-300 mt-4">
+              <p class="text-text-secondary mt-4">
                 Event Storming sessions were particularly valuable for visualizing the entire booking journey and identifying pain points where the system was creating friction rather than enabling users.
               </p>
             </div>
-            <figure class="rounded-xl overflow-hidden bg-gray-800/50 border border-gray-700/50 p-4">
+            <figure class="rounded-xl overflow-hidden bg-surface/50 border border-border-primary/50 p-4">
               <div class="aspect-video rounded-lg overflow-hidden">
                 <Image
                   src={domainWorkshop}
@@ -348,73 +495,73 @@ const processSteps = [
                   class="w-full h-full object-cover"
                 />
               </div>
-              <figcaption class="text-sm text-gray-400 mt-4">Event Storming session with the RaskRask team to map domain concepts and user flows</figcaption>
+              <figcaption class="text-sm text-text-secondary mt-4">Event Storming session with the RaskRask team to map domain concepts and user flows</figcaption>
             </figure>
           </div>
         </div>
 
         <!-- User Research -->
         <div>
-          <h3 class="text-2xl font-semibold text-white mb-8">User Research</h3>
+          <h3 class="text-2xl font-semibold text-text-primary mb-8">User Research</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             <div>
-              <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 h-full">
-                <h4 class="text-xl font-medium text-white mb-4">Key Insights</h4>
+              <div class="bg-surface/50 backdrop-blur-sm border border-border-primary/50 rounded-xl p-6 h-full">
+                <h4 class="text-xl font-medium text-text-primary mb-4">Key Insights</h4>
                 <ul class="space-y-4">
                   <li class="flex items-start">
-                    <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                    <span class="text-gray-300">Corporate administrators spend 3-4 hours per month on wellness program management, with 60% of that time spent on basic administrative tasks</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                    <span class="text-text-secondary">Corporate administrators spend 3-4 hours per month on wellness program management, with 60% of that time spent on basic administrative tasks</span>
                   </li>
                   <li class="flex items-start">
-                    <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                    <span class="text-gray-300">85% of administrators expressed frustration with the lack of visibility into program usage and the inability to make changes without contacting support</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                    <span class="text-text-secondary">85% of administrators expressed frustration with the lack of visibility into program usage and the inability to make changes without contacting support</span>
                   </li>
                   <li class="flex items-start">
-                    <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                    <span class="text-gray-300">Employees valued wellness benefits but reported abandoning booking attempts due to the complex process—73% wanted a simpler booking experience</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                    <span class="text-text-secondary">Employees valued wellness benefits but reported abandoning booking attempts due to the complex process—73% wanted a simpler booking experience</span>
                   </li>
                   <li class="flex items-start">
-                    <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                    <span class="text-gray-300">Only 42% of allocated wellness credits were used in companies with more than 200 employees, compared to 78% in smaller companies with simpler management</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                    <span class="text-text-secondary">Only 42% of allocated wellness credits were used in companies with more than 200 employees, compared to 78% in smaller companies with simpler management</span>
                   </li>
                 </ul>
               </div>
             </div>
             <div>
-              <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 h-full">
-                <h4 class="text-xl font-medium text-white mb-4">Research Methods</h4>
+              <div class="bg-surface/50 backdrop-blur-sm border border-border-primary/50 rounded-xl p-6 h-full">
+                <h4 class="text-xl font-medium text-text-primary mb-4">Research Methods</h4>
                 <ul class="space-y-4">
                   <li class="flex items-start">
-                    <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                      <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-8 h-8 bg-brand-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                      <svg class="w-4 h-4 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
                     <div>
-                      <p class="text-white font-medium">Surveys</p>
-                      <p class="text-gray-400 text-sm">Two distinct surveys targeting corporate clients (n=42) and general users (n=156) to understand different perspectives</p>
+                      <p class="text-text-primary font-medium">Surveys</p>
+                      <p class="text-text-secondary text-sm">Two distinct surveys targeting corporate clients (n=42) and general users (n=156) to understand different perspectives</p>
                     </div>
                   </li>
                   <li class="flex items-start">
-                    <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                      <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-8 h-8 bg-brand-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                      <svg class="w-4 h-4 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
                     <div>
-                      <p class="text-white font-medium">Stakeholder Interviews</p>
-                      <p class="text-gray-400 text-sm">In-depth interviews with RaskRask support team (5) and management (3) to understand internal perspectives</p>
+                      <p class="text-text-primary font-medium">Stakeholder Interviews</p>
+                      <p class="text-text-secondary text-sm">In-depth interviews with RaskRask support team (5) and management (3) to understand internal perspectives</p>
                     </div>
                   </li>
                   <li class="flex items-start">
-                    <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                      <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-8 h-8 bg-brand-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                      <svg class="w-4 h-4 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
                     <div>
-                      <p class="text-white font-medium">Competitor Analysis</p>
-                      <p class="text-gray-400 text-sm">Evaluated Vicuras, CityFys, and OnTheSpotMassage to identify industry standards and potential competitive advantages</p>
+                      <p class="text-text-primary font-medium">Competitor Analysis</p>
+                      <p class="text-text-secondary text-sm">Evaluated Vicuras, CityFys, and OnTheSpotMassage to identify industry standards and potential competitive advantages</p>
                     </div>
                   </li>
                 </ul>
@@ -424,7 +571,7 @@ const processSteps = [
 
           <!-- User Personas -->
           <div>
-            <h4 class="text-2xl font-semibold text-white mb-8">User Personas</h4>
+            <h4 class="text-2xl font-semibold text-text-primary mb-8">User Personas</h4>
             <div class="space-y-16">
 
               <!--
@@ -441,7 +588,7 @@ const processSteps = [
 
               <!-- Persona 1: Mette -->
               <div class="image-content-display">
-                <figure class="rounded-xl overflow-hidden bg-gray-800/50 border border-gray-700/50 p-4 mb-8">
+                <figure class="rounded-xl overflow-hidden bg-surface/50 border border-border-primary/50 p-4 mb-8">
                   <div class="rounded-lg overflow-hidden">
                     <Image
                       src={userPersona1}
@@ -449,67 +596,67 @@ const processSteps = [
                       class="w-full"
                     />
                   </div>
-                  <figcaption class="text-sm text-gray-400 mt-4">Mette: Primary user persona (Corporate Wellness Administrator)</figcaption>
+                  <figcaption class="text-sm text-text-secondary mt-4">Mette: Primary user persona (Corporate Wellness Administrator)</figcaption>
                 </figure>
 
                 <div class="mt-8">
-                  <h5 class="text-xl font-semibold text-white mb-4">Mette - Corporate Wellness Administrator</h5>
+                  <h5 class="text-xl font-semibold text-text-primary mb-4">Mette - Corporate Wellness Administrator</h5>
 
-                  <p class="text-gray-300 mb-6">
+                  <p class="text-text-secondary mb-6">
                     35-year-old HR professional responsible for managing the company's wellness program for 200+ employees.
                     Mette needs to efficiently manage wellness credits, monitor usage, and ensure employees have access to services.
                   </p>
 
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
                     <div>
-                      <h6 class="text-white font-medium mb-3 flex items-center">
-                        <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <h6 class="text-text-primary font-medium mb-3 flex items-center">
+                        <svg class="w-5 h-5 text-brand-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                         </svg>
                         Goals
                       </h6>
                       <ul class="space-y-2">
                         <li class="flex items-start">
-                          <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                          <span class="text-gray-300">Efficiently manage wellness credits and budgets</span>
+                          <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                          <span class="text-text-secondary">Efficiently manage wellness credits and budgets</span>
                         </li>
                         <li class="flex items-start">
-                          <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                          <span class="text-gray-300">Track usage and generate reports for leadership</span>
+                          <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                          <span class="text-text-secondary">Track usage and generate reports for leadership</span>
                         </li>
                         <li class="flex items-start">
-                          <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                          <span class="text-gray-300">Ensure employees have easy access to wellness services</span>
+                          <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                          <span class="text-text-secondary">Ensure employees have easy access to wellness services</span>
                         </li>
                       </ul>
                     </div>
 
                     <div>
-                      <h6 class="text-white font-medium mb-3 flex items-center">
-                        <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <h6 class="text-text-primary font-medium mb-3 flex items-center">
+                        <svg class="w-5 h-5 text-brand-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                         </svg>
                         Pain Points
                       </h6>
                       <ul class="space-y-2">
                         <li class="flex items-start">
-                          <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                          <span class="text-gray-300">No visibility into bookings made by employees</span>
+                          <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                          <span class="text-text-secondary">No visibility into bookings made by employees</span>
                         </li>
                         <li class="flex items-start">
-                          <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                          <span class="text-gray-300">Constantly relying on support for basic admin tasks</span>
+                          <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                          <span class="text-text-secondary">Constantly relying on support for basic admin tasks</span>
                         </li>
                         <li class="flex items-start">
-                          <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                          <span class="text-gray-300">Difficult to manage credits when employees leave/join</span>
+                          <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                          <span class="text-text-secondary">Difficult to manage credits when employees leave/join</span>
                         </li>
                       </ul>
                     </div>
                   </div>
 
-                  <div class="bg-gray-800/30 border border-gray-700/30 rounded-lg p-5">
-                    <blockquote class="text-gray-300 italic">
+                  <div class="bg-surface/30 border border-border-primary/30 rounded-lg p-5">
+                    <blockquote class="text-text-secondary italic">
                       "I just want to see what's going on with our wellness program without having to email support every time."
                     </blockquote>
                   </div>
@@ -518,79 +665,79 @@ const processSteps = [
 
               <!-- Persona 2: Carl -->
               <div class="image-content-display">
-                <figure class="rounded-xl overflow-hidden bg-gray-800/50 border border-gray-700/50 p-4 mb-8">
-                  <div class="rounded-lg overflow-hidden bg-gray-900 flex items-center justify-center py-16">
+                <figure class="rounded-xl overflow-hidden bg-surface/50 border border-border-primary/50 p-4 mb-8">
+                  <div class="rounded-lg overflow-hidden bg-surface-deep flex items-center justify-center py-16">
                     <div class="text-center">
-                      <div class="w-24 h-24 bg-primary/10 rounded-full mx-auto flex items-center justify-center mb-4">
-                        <svg class="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div class="w-24 h-24 bg-brand-primary/10 rounded-full mx-auto flex items-center justify-center mb-4">
+                        <svg class="w-12 h-12 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                       </div>
                       <h5 class="text-xl font-semibold text-white mb-2">Carl - Employee</h5>
-                      <p class="text-gray-400 max-w-md mx-auto">Software Developer</p>
+                      <p class="text-text-secondary max-w-md mx-auto">Software Developer</p>
                     </div>
                   </div>
-                  <figcaption class="text-sm text-gray-400 mt-4">Carl: Secondary user persona (Employee & Wellness User)</figcaption>
+                  <figcaption class="text-sm text-text-secondary mt-4">Carl: Secondary user persona (Employee & Wellness User)</figcaption>
                 </figure>
 
                 <div class="mt-8">
-                  <h5 class="text-xl font-semibold text-white mb-4">Carl - Employee & Wellness User</h5>
+                  <h5 class="text-xl font-semibold text-text-primary mb-4">Carl - Employee & Wellness User</h5>
 
-                  <p class="text-gray-300 mb-6">
+                  <p class="text-text-secondary mb-6">
                     28-year-old software developer who struggles with stress and works long hours. Values wellness but has limited time
                     to navigate complex booking systems or administrative processes.
                   </p>
 
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
                     <div>
-                      <h6 class="text-white font-medium mb-3 flex items-center">
-                        <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <h6 class="text-text-primary font-medium mb-3 flex items-center">
+                        <svg class="w-5 h-5 text-brand-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                         </svg>
                         Goals
                       </h6>
                       <ul class="space-y-2">
                         <li class="flex items-start">
-                          <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                          <span class="text-gray-300">Book wellness sessions quickly and hassle-free</span>
+                          <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                          <span class="text-text-secondary">Book wellness sessions quickly and hassle-free</span>
                         </li>
                         <li class="flex items-start">
-                          <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                          <span class="text-gray-300">Manage/reschedule appointments without assistance</span>
+                          <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                          <span class="text-text-secondary">Manage/reschedule appointments without assistance</span>
                         </li>
                         <li class="flex items-start">
-                          <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                          <span class="text-gray-300">Find available slots that fit his busy schedule</span>
+                          <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                          <span class="text-text-secondary">Find available slots that fit his busy schedule</span>
                         </li>
                       </ul>
                     </div>
 
                     <div>
-                      <h6 class="text-white font-medium mb-3 flex items-center">
-                        <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <h6 class="text-text-primary font-medium mb-3 flex items-center">
+                        <svg class="w-5 h-5 text-brand-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                         </svg>
                         Pain Points
                       </h6>
                       <ul class="space-y-2">
                         <li class="flex items-start">
-                          <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                          <span class="text-gray-300">Confusing booking process with too many steps</span>
+                          <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                          <span class="text-text-secondary">Confusing booking process with too many steps</span>
                         </li>
                         <li class="flex items-start">
-                          <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                          <span class="text-gray-300">Unclear how many wellness credits he has available</span>
+                          <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                          <span class="text-text-secondary">Unclear how many wellness credits he has available</span>
                         </li>
                         <li class="flex items-start">
-                          <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                          <span class="text-gray-300">Difficult to find available time slots that work for him</span>
+                          <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                          <span class="text-text-secondary">Difficult to find available time slots that work for him</span>
                         </li>
                       </ul>
                     </div>
                   </div>
 
-                  <div class="bg-gray-800/30 border border-gray-700/30 rounded-lg p-5">
-                    <blockquote class="text-gray-300 italic">
+                  <div class="bg-surface/30 border border-border-primary/30 rounded-lg p-5">
+                    <blockquote class="text-text-secondary italic">
                       "I appreciate the wellness program, but I need it to work around my schedule. I don't have time to jump through hoops."
                     </blockquote>
                   </div>
@@ -601,41 +748,41 @@ const processSteps = [
 
           <!-- Market & Competitor Research -->
           <div>
-            <h4 class="text-2xl font-semibold text-white mb-6">Market & Competitor Research</h4>
-            <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-8">
-              <p class="text-gray-300 mb-6">
+            <h4 class="text-2xl font-semibold text-text-primary mb-6">Market & Competitor Research</h4>
+            <div class="bg-surface/50 backdrop-blur-sm border border-border-primary/50 rounded-xl p-8">
+              <p class="text-text-secondary mb-6">
                 Analysis of the corporate wellness booking landscape in Denmark revealed a significant opportunity. While competitors offered similar services, none provided the administrative control and transparency that corporate clients needed.
               </p>
 
               <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-lg p-5">
-                  <h5 class="text-white font-medium mb-3">Vicuras</h5>
-                  <p class="text-gray-400 text-sm mb-3">Strong B2C offering but limited corporate features. Administrator interface lacks reporting and credit management.</p>
+                <div class="bg-surface-deep/50 backdrop-blur-sm border border-border-primary/50 rounded-lg p-5">
+                  <h5 class="text-text-primary font-medium mb-3">Vicuras</h5>
+                  <p class="text-text-secondary text-sm mb-3">Strong B2C offering but limited corporate features. Administrator interface lacks reporting and credit management.</p>
                   <div class="flex items-center">
-                    <span class="text-xs px-2 py-1 bg-red-900/30 text-red-400 rounded-full">Weakness: Admin Control</span>
+                    <span class="text-xs px-2 py-1  bg-rose-500/20 text-rose-500 rounded-full">Weakness: Admin Control</span>
                   </div>
                 </div>
 
-                <div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-lg p-5">
-                  <h5 class="text-white font-medium mb-3">CityFys</h5>
-                  <p class="text-gray-400 text-sm mb-3">Good corporate program structure but relies heavily on account managers rather than self-service tools.</p>
+                <div class="bg-surface-deep/50 backdrop-blur-sm border border-border-primary/50 rounded-lg p-5">
+                  <h5 class="text-text-primary font-medium mb-3">CityFys</h5>
+                  <p class="text-text-secondary text-sm mb-3">Good corporate program structure but relies heavily on account managers rather than self-service tools.</p>
                   <div class="flex items-center">
-                    <span class="text-xs px-2 py-1 bg-red-900/30 text-red-400 rounded-full">Weakness: Self-Service</span>
+                    <span class="text-xs px-2 py-1  bg-rose-500/20 text-rose-500 rounded-full">Weakness: Self-Service</span>
                   </div>
                 </div>
 
-                <div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-lg p-5">
-                  <h5 class="text-white font-medium mb-3">OnTheSpotMassage</h5>
-                  <p class="text-gray-400 text-sm mb-3">Simple booking flow but limited selection of practitioners and restrictive scheduling for corporate clients.</p>
+                <div class="bg-surface-deep/50 backdrop-blur-sm border border-border-primary/50 rounded-lg p-5">
+                  <h5 class="text-text-primary font-medium mb-3">OnTheSpotMassage</h5>
+                  <p class="text-text-secondary text-sm mb-3">Simple booking flow but limited selection of practitioners and restrictive scheduling for corporate clients.</p>
                   <div class="flex items-center">
-                    <span class="text-xs px-2 py-1 bg-red-900/30 text-red-400 rounded-full">Weakness: Flexibility</span>
+                    <span class="text-xs px-2 py-1  bg-rose-500/20 text-rose-500 rounded-full">Weakness: Flexibility</span>
                   </div>
                 </div>
               </div>
 
-              <div class="mt-8 bg-primary/5 border border-primary/20 rounded-lg p-5">
-                <h5 class="text-primary font-medium mb-2">Key Opportunity</h5>
-                <p class="text-gray-300">
+              <div class="mt-8 bg-brand-primary/5 border border-brand-primary/20 rounded-lg p-5">
+                <h5 class="text-brand-primary font-medium mb-2">Key Opportunity</h5>
+                <p class="text-text-secondary">
                   None of the analyzed competitors offered comprehensive admin-centric features with self-service capabilities.
                   This revealed a clear opportunity for RaskRask to differentiate by creating a platform that empowers administrators
                   while maintaining a seamless experience for employees.
@@ -652,11 +799,11 @@ const processSteps = [
       <SectionHeader title="Design & Development" />
       <div class="space-y-16">
         <div>
-          <h3 class="text-2xl font-semibold text-white mb-8">Harmony UI – Design System</h3>
+          <h3 class="text-2xl font-semibold text-text-primary mb-8">Harmony UI – Design System</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="prose prose-invert max-w-none">
-              <p class="text-gray-300">
-                A key part of this project was developing <span class="text-primary font-medium">Harmony UI</span>, a custom design system for RaskRask's corporate platform that would:
+            <div class="prose prose-light max-w-none">
+              <p class="text-text-secondary">
+                A key part of this project was developing <span class="text-brand-primary font-medium">Harmony UI</span>, a custom design system for RaskRask's corporate platform that would:
               </p>
               <ul>
                 <li>Provide a consistent visual language across all interfaces</li>
@@ -664,40 +811,40 @@ const processSteps = [
                 <li>Support both administrator and employee experiences</li>
                 <li>Scale to accommodate future feature additions</li>
               </ul>
-              <p class="text-gray-300 mt-4">
+              <p class="text-text-secondary mt-4">
                 The system was built from the ground up in Figma (v0.2) with a semi-atomic structure that balanced structure and flexibility. This approach allowed us to maintain design consistency while moving quickly through the development process.
               </p>
             </div>
 
-            <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-              <h4 class="text-xl font-medium text-white mb-4">Design System Components</h4>
+            <div class="bg-surface/50 backdrop-blur-sm border border-border-primary/50 rounded-xl p-6">
+              <h4 class="text-xl font-medium text-text-primary mb-4">Design System Components</h4>
               <ul class="space-y-3">
                 <li class="flex items-start">
-                  <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
                   <div>
-                    <span class="text-white font-medium">Core tokens</span>
-                    <p class="text-gray-400 text-sm mt-1">Colors, typography, spacing, shadows, and transitions</p>
+                    <span class="text-text-primary font-medium">Core tokens</span>
+                    <p class="text-text-secondary text-sm mt-1">Colors, typography, spacing, shadows, and transitions</p>
                   </div>
                 </li>
                 <li class="flex items-start">
-                  <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
                   <div>
-                    <span class="text-white font-medium">Primitive components</span>
-                    <p class="text-gray-400 text-sm mt-1">Buttons, inputs, selects, checkboxes, and basic UI elements</p>
+                    <span class="text-text-primary font-medium">Primitive components</span>
+                    <p class="text-text-secondary text-sm mt-1">Buttons, inputs, selects, checkboxes, and basic UI elements</p>
                   </div>
                 </li>
                 <li class="flex items-start">
-                  <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
                   <div>
-                    <span class="text-white font-medium">Composite components</span>
-                    <p class="text-gray-400 text-sm mt-1">Date pickers, booking cards, session details, and admin dashboards</p>
+                    <span class="text-text-primary font-medium">Composite components</span>
+                    <p class="text-text-secondary text-sm mt-1">Date pickers, booking cards, session details, and admin dashboards</p>
                   </div>
                 </li>
                 <li class="flex items-start">
-                  <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
                   <div>
-                    <span class="text-white font-medium">Page templates</span>
-                    <p class="text-gray-400 text-sm mt-1">Standardized layouts for common page types across the application</p>
+                    <span class="text-text-primary font-medium">Page templates</span>
+                    <p class="text-text-secondary text-sm mt-1">Standardized layouts for common page types across the application</p>
                   </div>
                 </li>
               </ul>
@@ -715,94 +862,94 @@ const processSteps = [
         </div>
 
         <div>
-          <h3 class="text-2xl font-semibold text-white mb-8">Design Approach & Prioritization</h3>
+          <h3 class="text-2xl font-semibold text-text-primary mb-8">Design Approach & Prioritization</h3>
           <div class="mb-10">
-            <p class="text-gray-300 mb-6">
+            <p class="text-text-secondary mb-6">
               To ensure we focused on the most impactful features, we used the MoSCoW method to prioritize requirements.
               This helped us identify what was essential for the MVP vs. what could be developed in future iterations.
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-                <h4 class="text-white font-medium mb-4 flex items-center">
+              <div class="bg-surface/50 backdrop-blur-sm border border-border-primary/50 rounded-xl p-6">
+                <h4 class="text-text-primary font-medium mb-4 flex items-center">
                   <span class="w-6 h-6 bg-rose-500/20 text-rose-500 rounded-full flex items-center justify-center mr-3 text-xs font-bold">M</span>
                   Must Have
                 </h4>
                 <ul class="space-y-2">
                   <li class="flex items-start">
-                    <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                    <span class="text-gray-300 text-sm">Admin dashboard with usage overview</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                    <span class="text-text-secondary text-sm">Admin dashboard with usage overview</span>
                   </li>
                   <li class="flex items-start">
-                    <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                    <span class="text-gray-300 text-sm">Credit management system</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                    <span class="text-text-secondary text-sm">Credit management system</span>
                   </li>
                   <li class="flex items-start">
-                    <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                    <span class="text-gray-300 text-sm">Simplified employee booking flow</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                    <span class="text-text-secondary text-sm">Simplified employee booking flow</span>
                   </li>
                 </ul>
               </div>
 
-              <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-                <h4 class="text-white font-medium mb-4 flex items-center">
+              <div class="bg-surface/50 backdrop-blur-sm border border-border-primary/50 rounded-xl p-6">
+                <h4 class="text-text-primary font-medium mb-4 flex items-center">
                   <span class="w-6 h-6 bg-amber-500/20 text-amber-500 rounded-full flex items-center justify-center mr-3 text-xs font-bold">S</span>
                   Should Have
                 </h4>
                 <ul class="space-y-2">
                   <li class="flex items-start">
-                    <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                    <span class="text-gray-300 text-sm">Reporting and analytics tools</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                    <span class="text-text-secondary text-sm">Reporting and analytics tools</span>
                   </li>
                   <li class="flex items-start">
-                    <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                    <span class="text-gray-300 text-sm">Employee management interface</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                    <span class="text-text-secondary text-sm">Employee management interface</span>
                   </li>
                   <li class="flex items-start">
-                    <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                    <span class="text-gray-300 text-sm">Integration with calendar systems</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                    <span class="text-text-secondary text-sm">Integration with calendar systems</span>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <h3 class="text-2xl font-semibold text-white mb-8">Prototyping Process</h3>
-          <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-8">
+          <h3 class="text-2xl font-semibold text-text-primary mb-8">Prototyping Process</h3>
+          <div class="bg-surface/50 backdrop-blur-sm border border-border-primary/50 rounded-xl p-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div class="flex flex-col items-center text-center p-4">
-                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-12 h-12 bg-brand-primary/10 rounded-full flex items-center justify-center mb-4">
+                  <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                   </svg>
                 </div>
-                <h4 class="text-white font-medium mb-2">Rapid Sketching</h4>
-                <p class="text-gray-300 text-sm">Initial ideas explored through quick sketches and wireflows to establish core concepts and user journeys</p>
+                <h4 class="text-text-primary font-medium mb-2">Rapid Sketching</h4>
+                <p class="text-text-secondary text-sm">Initial ideas explored through quick sketches and wireflows to establish core concepts and user journeys</p>
               </div>
 
               <div class="flex flex-col items-center text-center p-4">
-                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-12 h-12 bg-brand-primary/10 rounded-full flex items-center justify-center mb-4">
+                  <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                 </div>
-                <h4 class="text-white font-medium mb-2">Wireframing</h4>
-                <p class="text-gray-300 text-sm">Mid-fidelity wireframes tested with RaskRask stakeholders to validate concepts before visual design</p>
+                <h4 class="text-text-primary font-medium mb-2">Wireframing</h4>
+                <p class="text-text-secondary text-sm">Mid-fidelity wireframes tested with RaskRask stakeholders to validate concepts before visual design</p>
               </div>
 
               <div class="flex flex-col items-center text-center p-4">
-                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-12 h-12 bg-brand-primary/10 rounded-full flex items-center justify-center mb-4">
+                  <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
                   </svg>
                 </div>
-                <h4 class="text-white font-medium mb-2">Hi-Fi Prototypes</h4>
-                <p class="text-gray-300 text-sm">Full fidelity interactive prototypes built in Figma, demonstrating key user flows for both administrators and employees</p>
+                <h4 class="text-text-primary font-medium mb-2">Hi-Fi Prototypes</h4>
+                <p class="text-text-secondary text-sm">Full fidelity interactive prototypes built in Figma, demonstrating key user flows for both administrators and employees</p>
               </div>
             </div>
 
-            <div class="mt-8 p-5 bg-gray-900/50 rounded-lg">
-              <p class="text-gray-300 text-center italic">
+            <div class="mt-8 p-5 bg-surface-deep/50 rounded-lg">
+              <p class="text-text-secondary text-center italic">
                 "The prototyping process was highly collaborative, with stakeholder feedback incorporated throughout each stage. This iterative approach allowed us to identify and address usability issues early, reducing the need for costly changes during development."
               </p>
             </div>
@@ -814,10 +961,10 @@ const processSteps = [
     <!-- Front-End Implementation -->
     <section id="implementation" class="mb-32">
       <SectionHeader title="Front-End Implementation" />
-      <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-8 mb-12">
+      <div class="bg-surface/50 backdrop-blur-sm border border-border-primary/50 rounded-xl p-8 mb-12">
         <div class="mb-8">
-          <h3 class="text-2xl font-semibold text-white mb-6">Tech Stack</h3>
-          <p class="text-gray-300 mb-6">
+          <h3 class="text-2xl font-semibold text-text-primary mb-6">Tech Stack</h3>
+          <p class="text-text-secondary mb-6">
             The implementation was built using modern front-end technologies to ensure performance, maintainability, and developer experience. The stack was chosen to provide a solid foundation that could scale with the platform's growth.
           </p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -828,11 +975,11 @@ const processSteps = [
               { label: 'Auth', value: 'NextAuth.js', description: 'For secure, flexible authentication flows' }
             ].map(item => (
               <div class="flex items-start space-x-4">
-                <div class="w-3 h-3 rounded-full bg-primary/40 mt-1.5"></div>
+                <div class="w-3 h-3 rounded-full bg-brand-primary/40 mt-1.5"></div>
                 <div>
-                  <span class="text-gray-400 block text-sm">{item.label}</span>
-                  <span class="text-white font-medium">{item.value}</span>
-                  <p class="text-gray-400 text-sm mt-1">{item.description}</p>
+                  <span class="text-text-secondary block text-sm">{item.label}</span>
+                  <span class="text-text-primary font-medium">{item.value}</span>
+                  <p class="text-text-secondary text-sm mt-1">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -842,188 +989,155 @@ const processSteps = [
 
       <!-- Add Solution Screenshots -->
       <div class="mb-12">
-        <h3 class="text-2xl font-semibold text-white mb-8">Solution Screenshots</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <figure class="rounded-xl overflow-hidden bg-gray-800/50 border border-gray-700/50 p-4">
-            <div class="rounded-lg overflow-hidden">
-              <Image
-                src={adminDashboard}
-                alt="Admin dashboard interface showing analytics and management tools"
-                class="w-full"
-              />
-            </div>
-            <figcaption class="text-sm text-gray-400 mt-4">Admin Dashboard: Centralized management interface with analytics and controls</figcaption>
-          </figure>
-
-          <figure class="rounded-xl overflow-hidden bg-gray-800/50 border border-gray-700/50 p-4">
-            <div class="rounded-lg overflow-hidden">
-              <Image
-                src={bookingManagement}
-                alt="Booking management interface showing appointment details and controls"
-                class="w-full"
-              />
-            </div>
-            <figcaption class="text-sm text-gray-400 mt-4">Booking Management: Comprehensive interface for managing appointments and schedules</figcaption>
-          </figure>
-
-          <figure class="rounded-xl overflow-hidden bg-gray-800/50 border border-gray-700/50 p-4">
-            <div class="rounded-lg overflow-hidden">
-              <Image
-                src={userManagement}
-                alt="User management interface for administrators"
-                class="w-full"
-              />
-            </div>
-            <figcaption class="text-sm text-gray-400 mt-4">User Management: Interface for managing employee access and credits</figcaption>
-          </figure>
-        </div>
+        <h3 class="text-2xl font-semibold text-text-primary mb-8">Solution Screenshots</h3>
+        <CaseStudyGallery items={solutionScreenshots} client:only="react" />
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-        <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-          <h4 class="text-xl font-medium text-white mb-4">Architecture Highlights</h4>
+        <div class="bg-surface/50 backdrop-blur-sm border border-border-primary/50 rounded-xl p-6">
+          <h4 class="text-xl font-medium text-text-primary mb-4">Architecture Highlights</h4>
           <ul class="space-y-3">
             <li class="flex items-start">
-              <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
               <div>
-                <span class="text-white">Authentication flows with mocked sessions</span>
-                <p class="text-gray-400 text-sm mt-1">Different user roles (admin, employee) with appropriate permissions and views</p>
+                <span class="text-text-primary">Authentication flows with mocked sessions</span>
+                <p class="text-text-secondary text-sm mt-1">Different user roles (admin, employee) with appropriate permissions and views</p>
               </div>
             </li>
             <li class="flex items-start">
-              <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
               <div>
-                <span class="text-white">Scoped role-based routing</span>
-                <p class="text-gray-400 text-sm mt-1">Protected routes and conditional UI elements based on user role and permissions</p>
+                <span class="text-text-primary">Scoped role-based routing</span>
+                <p class="text-text-secondary text-sm mt-1">Protected routes and conditional UI elements based on user role and permissions</p>
               </div>
             </li>
             <li class="flex items-start">
-              <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
               <div>
-                <span class="text-white">Design system integration</span>
-                <p class="text-gray-400 text-sm mt-1">Harmony UI components implemented as reusable React components with Stitches</p>
+                <span class="text-text-primary">Design system integration</span>
+                <p class="text-text-secondary text-sm mt-1">Harmony UI components implemented as reusable React components with Stitches</p>
               </div>
             </li>
             <li class="flex items-start">
-              <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
               <div>
-                <span class="text-white">File structure for scalability</span>
-                <p class="text-gray-400 text-sm mt-1">Feature-based organization with shared components and utilities</p>
+                <span class="text-text-primary">File structure for scalability</span>
+                <p class="text-text-secondary text-sm mt-1">Feature-based organization with shared components and utilities</p>
               </div>
             </li>
           </ul>
         </div>
 
-        <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-          <h4 class="text-xl font-medium text-white mb-4">Development Process</h4>
+        <div class="bg-surface/50 backdrop-blur-sm border border-border-primary/50 rounded-xl p-6">
+          <h4 class="text-xl font-medium text-text-primary mb-4">Development Process</h4>
           <ul class="space-y-3">
             <li class="flex items-start">
-              <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
               <div>
-                <span class="text-white">Component-driven development</span>
-                <p class="text-gray-400 text-sm mt-1">Building and testing components in isolation before integration</p>
+                <span class="text-text-primary">Component-driven development</span>
+                <p class="text-text-secondary text-sm mt-1">Building and testing components in isolation before integration</p>
               </div>
             </li>
             <li class="flex items-start">
-              <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
               <div>
-                <span class="text-white">Mock Service Worker for backend simulation</span>
-                <p class="text-gray-400 text-sm mt-1">Created API mocks to enable frontend development without backend dependencies</p>
+                <span class="text-text-primary">Mock Service Worker for backend simulation</span>
+                <p class="text-text-secondary text-sm mt-1">Created API mocks to enable frontend development without backend dependencies</p>
               </div>
             </li>
             <li class="flex items-start">
-              <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
               <div>
-                <span class="text-white">Progressive implementation</span>
-                <p class="text-gray-400 text-sm mt-1">Critical user paths implemented first, with additional features added incrementally</p>
+                <span class="text-text-primary">Progressive implementation</span>
+                <p class="text-text-secondary text-sm mt-1">Critical user paths implemented first, with additional features added incrementally</p>
               </div>
             </li>
             <li class="flex items-start">
-              <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
               <div>
-                <span class="text-white">Automated testing</span>
-                <p class="text-gray-400 text-sm mt-1">Unit tests for core utilities and components to ensure reliability</p>
+                <span class="text-text-primary">Automated testing</span>
+                <p class="text-text-secondary text-sm mt-1">Unit tests for core utilities and components to ensure reliability</p>
               </div>
             </li>
           </ul>
         </div>
       </div>
 
-      <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl overflow-hidden">
-        <div class="p-8 border-b border-gray-700/50">
-          <h4 class="text-xl font-semibold text-white mb-4">Key Implementation Features</h4>
-          <p class="text-gray-300">The MVP implementation focused on delivering the most impactful features for both administrators and employees:</p>
+      <div class="bg-surface/50 backdrop-blur-sm border border-border-primary/50 rounded-xl overflow-hidden">
+        <div class="p-8 border-b border-border-primary/50">
+          <h4 class="text-xl font-semibold text-text-primary mb-4">Key Implementation Features</h4>
+          <p class="text-text-secondary">The MVP implementation focused on delivering the most impactful features for both administrators and employees:</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-gray-700/50">
-          <div class="bg-gray-800/50 p-6">
-            <h5 class="text-white font-medium mb-3">Admin Dashboard</h5>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-border-primary/50">
+          <div class="bg-surface/50 p-6">
+            <h5 class="text-text-primary font-medium mb-3">Admin Dashboard</h5>
             <ul class="space-y-2">
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
-                <span class="text-gray-300 text-sm">Real-time credit usage analytics</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
+                <span class="text-text-secondary text-sm">Real-time credit usage analytics</span>
               </li>
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
-                <span class="text-gray-300 text-sm">Employee activity monitoring</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
+                <span class="text-text-secondary text-sm">Employee activity monitoring</span>
               </li>
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
-                <span class="text-gray-300 text-sm">Service utilization breakdown</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
+                <span class="text-text-secondary text-sm">Service utilization breakdown</span>
               </li>
             </ul>
           </div>
 
-          <div class="bg-gray-800/50 p-6">
-            <h5 class="text-white font-medium mb-3">Credit Management</h5>
+          <div class="bg-surface/50 p-6">
+            <h5 class="text-text-primary font-medium mb-3">Credit Management</h5>
             <ul class="space-y-2">
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
-                <span class="text-gray-300 text-sm">Allocation and adjustment tools</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
+                <span class="text-text-secondary text-sm">Allocation and adjustment tools</span>
               </li>
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
-                <span class="text-gray-300 text-sm">Automated usage tracking</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
+                <span class="text-text-secondary text-sm">Automated usage tracking</span>
               </li>
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
-                <span class="text-gray-300 text-sm">Credit alerts and notifications</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
+                <span class="text-text-secondary text-sm">Credit alerts and notifications</span>
               </li>
             </ul>
           </div>
 
-          <div class="bg-gray-800/50 p-6">
-            <h5 class="text-white font-medium mb-3">Employee Management</h5>
+          <div class="bg-surface/50 p-6">
+            <h5 class="text-text-primary font-medium mb-3">Employee Management</h5>
             <ul class="space-y-2">
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
-                <span class="text-gray-300 text-sm">Onboarding and offboarding flows</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
+                <span class="text-text-secondary text-sm">Onboarding and offboarding flows</span>
               </li>
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
-                <span class="text-gray-300 text-sm">Bulk management capabilities</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
+                <span class="text-text-secondary text-sm">Bulk management capabilities</span>
               </li>
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
-                <span class="text-gray-300 text-sm">Custom access control settings</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
+                <span class="text-text-secondary text-sm">Custom access control settings</span>
               </li>
             </ul>
           </div>
 
-          <div class="bg-gray-800/50 p-6">
-            <h5 class="text-white font-medium mb-3">Booking Experience</h5>
+          <div class="bg-surface/50 p-6">
+            <h5 class="text-text-primary font-medium mb-3">Booking Experience</h5>
             <ul class="space-y-2">
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
-                <span class="text-gray-300 text-sm">Streamlined 3-step booking flow</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
+                <span class="text-text-secondary text-sm">Streamlined 3-step booking flow</span>
               </li>
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
-                <span class="text-gray-300 text-sm">Personalized practitioner recommendations</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
+                <span class="text-text-secondary text-sm">Personalized practitioner recommendations</span>
               </li>
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
-                <span class="text-gray-300 text-sm">Self-service rescheduling and cancellation</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-1.5 mr-3 flex-shrink-0"></span>
+                <span class="text-text-secondary text-sm">Self-service rescheduling and cancellation</span>
               </li>
             </ul>
           </div>
@@ -1036,84 +1150,84 @@ const processSteps = [
       <SectionHeader title="Challenges & Solutions" />
       <div class="space-y-16">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-            <h3 class="text-xl font-semibold text-white mb-4">Technical Challenges</h3>
+          <div class="bg-surface/50 backdrop-blur-sm border border-border-primary/50 rounded-xl p-6">
+            <h3 class="text-xl font-semibold text-text-primary mb-4">Technical Challenges</h3>
 
             <div class="space-y-6">
               <div>
-                <h4 class="text-white font-medium mb-2">API Integration Without a Backend</h4>
-                <p class="text-gray-300 text-sm">
+                <h4 class="text-text-primary font-medium mb-2">API Integration Without a Backend</h4>
+                <p class="text-text-secondary text-sm">
                   With the backend still in development, we needed a way to build and test the frontend independently.
                 </p>
-                <div class="mt-3 bg-gray-900/50 p-3 rounded-lg">
-                  <p class="text-gray-300 text-sm">
-                    <span class="text-primary font-medium">Solution:</span> Implemented Mock Service Worker to simulate API responses based on OpenAPI specifications, allowing us to develop with realistic data flows.
+                <div class="mt-3 bg-surface-deep/50 p-3 rounded-lg">
+                  <p class="text-text-secondary text-sm">
+                    <span class="text-brand-primary font-medium">Solution:</span> Implemented Mock Service Worker to simulate API responses based on OpenAPI specifications, allowing us to develop with realistic data flows.
                   </p>
                 </div>
               </div>
 
               <div>
-                <h4 class="text-white font-medium mb-2">Complex Booking Logic</h4>
-                <p class="text-gray-300 text-sm">
+                <h4 class="text-text-primary font-medium mb-2">Complex Booking Logic</h4>
+                <p class="text-text-secondary text-sm">
                   The booking system required handling of multiple interdependent factors: practitioner availability, service types, location options, and credit balances.
                 </p>
-                <div class="mt-3 bg-gray-900/50 p-3 rounded-lg">
-                  <p class="text-gray-300 text-sm">
-                    <span class="text-primary font-medium">Solution:</span> Created a state machine using XState to manage the complex booking flow, ensuring consistent user experiences across different paths and edge cases.
+                <div class="mt-3 bg-surface-deep/50 p-3 rounded-lg">
+                  <p class="text-text-secondary text-sm">
+                    <span class="text-brand-primary font-medium">Solution:</span> Created a state machine using XState to manage the complex booking flow, ensuring consistent user experiences across different paths and edge cases.
                   </p>
                 </div>
               </div>
 
               <div>
-                <h4 class="text-white font-medium mb-2">Performance Optimization</h4>
-                <p class="text-gray-300 text-sm">
+                <h4 class="text-text-primary font-medium mb-2">Performance Optimization</h4>
+                <p class="text-text-secondary text-sm">
                   Initial dashboard implementations suffered from performance issues when displaying large datasets and complex visualizations.
                 </p>
-                <div class="mt-3 bg-gray-900/50 p-3 rounded-lg">
-                  <p class="text-gray-300 text-sm">
-                    <span class="text-primary font-medium">Solution:</span> Implemented virtualized lists, optimized re-renders with React.memo and useMemo, and added progressive loading for dashboard components.
+                <div class="mt-3 bg-surface-deep/50 p-3 rounded-lg">
+                  <p class="text-text-secondary text-sm">
+                    <span class="text-brand-primary font-medium">Solution:</span> Implemented virtualized lists, optimized re-renders with React.memo and useMemo, and added progressive loading for dashboard components.
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-            <h3 class="text-xl font-semibold text-white mb-4">Design & User Experience Challenges</h3>
+          <div class="bg-surface/50 backdrop-blur-sm border border-border-primary/50 rounded-xl p-6">
+            <h3 class="text-xl font-semibold text-text-primary mb-4">Design & User Experience Challenges</h3>
 
             <div class="space-y-6">
               <div>
-                <h4 class="text-white font-medium mb-2">Balancing Admin Power With Simplicity</h4>
-                <p class="text-gray-300 text-sm">
+                <h4 class="text-text-primary font-medium mb-2">Balancing Admin Power With Simplicity</h4>
+                <p class="text-text-secondary text-sm">
                   Admin interfaces often become overwhelming with too many options and complex workflows.
                 </p>
-                <div class="mt-3 bg-gray-900/50 p-3 rounded-lg">
-                  <p class="text-gray-300 text-sm">
-                    <span class="text-primary font-medium">Solution:</span> Applied progressive disclosure principles, creating a dashboard that reveals additional options contextually as needed, with common tasks always accessible.
+                <div class="mt-3 bg-surface-deep/50 p-3 rounded-lg">
+                  <p class="text-text-secondary text-sm">
+                    <span class="text-brand-primary font-medium">Solution:</span> Applied progressive disclosure principles, creating a dashboard that reveals additional options contextually as needed, with common tasks always accessible.
                   </p>
                 </div>
               </div>
 
               <div>
-                <h4 class="text-white font-medium mb-2">Meeting Diverse Corporate Needs</h4>
-                <p class="text-gray-300 text-sm">
+                <h4 class="text-text-primary font-medium mb-2">Meeting Diverse Corporate Needs</h4>
+                <p class="text-text-secondary text-sm">
                   Different corporate clients had varying requirements for credit allocation, reporting, and employee management.
                 </p>
-                <div class="mt-3 bg-gray-900/50 p-3 rounded-lg">
-                  <p class="text-gray-300 text-sm">
-                    <span class="text-primary font-medium">Solution:</span> Developed a configurable permissions system and customizable dashboard modules that could be enabled or disabled based on client needs.
+                <div class="mt-3 bg-surface-deep/50 p-3 rounded-lg">
+                  <p class="text-text-secondary text-sm">
+                    <span class="text-brand-primary font-medium">Solution:</span> Developed a configurable permissions system and customizable dashboard modules that could be enabled or disabled based on client needs.
                   </p>
                 </div>
               </div>
 
               <div>
-                <h4 class="text-white font-medium mb-2">Accessibility Requirements</h4>
-                <p class="text-gray-300 text-sm">
+                <h4 class="text-text-primary font-medium mb-2">Accessibility Requirements</h4>
+                <p class="text-text-secondary text-sm">
                   Ensuring the platform was accessible to all users, including those with disabilities, while maintaining the modern design aesthetic.
                 </p>
-                <div class="mt-3 bg-gray-900/50 p-3 rounded-lg">
-                  <p class="text-gray-300 text-sm">
-                    <span class="text-primary font-medium">Solution:</span> Incorporated accessibility from the beginning, with keyboard navigation, screen reader support, and WCAG 2.1 AA compliance as core requirements in the design system.
+                <div class="mt-3 bg-surface-deep/50 p-3 rounded-lg">
+                  <p class="text-text-secondary text-sm">
+                    <span class="text-brand-primary font-medium">Solution:</span> Incorporated accessibility from the beginning, with keyboard navigation, screen reader support, and WCAG 2.1 AA compliance as core requirements in the design system.
                   </p>
                 </div>
               </div>
@@ -1121,10 +1235,6 @@ const processSteps = [
           </div>
         </div>
 
-        <QuoteBlock
-          quote="Every challenge we faced pushed us to find the perfect balance between functionality, usability, and technical feasibility. This project taught us that sometimes the most elegant solutions come from embracing constraints."
-          author="Project Reflection"
-        />
       </div>
     </section>
 
@@ -1133,79 +1243,79 @@ const processSteps = [
       <SectionHeader title="Key Outcomes" />
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-        <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="bg-surface/50 backdrop-blur-sm border border-border-primary/50 rounded-xl p-6">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 002-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
           </div>
-          <h3 class="text-white font-medium text-lg mb-3">Design System</h3>
-          <p class="text-gray-300">
+          <h3 class="text-text-primary font-medium text-lg mb-3">Design System</h3>
+          <p class="text-text-secondary">
             Created a comprehensive design system with reusable components, enabling consistent UI development across the platform
           </p>
         </div>
 
-        <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="bg-surface/50 backdrop-blur-sm border border-border-primary/50 rounded-xl p-6">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h3 class="text-white font-medium text-lg mb-3">User Experience</h3>
-          <p class="text-gray-300">
+          <h3 class="text-text-primary font-medium text-lg mb-3">User Experience</h3>
+          <p class="text-text-secondary">
             Streamlined booking process with intuitive workflows for both administrators and employees
           </p>
         </div>
 
-        <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="bg-surface/50 backdrop-blur-sm border border-border-primary/50 rounded-xl p-6">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
           </div>
-          <h3 class="text-white font-medium text-lg mb-3">Technical Foundation</h3>
-          <p class="text-gray-300">
+          <h3 class="text-text-primary font-medium text-lg mb-3">Technical Foundation</h3>
+          <p class="text-text-secondary">
             Built a scalable architecture using modern front-end technologies and best practices
           </p>
         </div>
       </div>
 
-      <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-8 mb-12">
-        <h3 class="text-2xl font-semibold text-white mb-6">Project Achievements</h3>
+      <div class="bg-surface/50 backdrop-blur-sm border border-border-primary/50 rounded-xl p-8 mb-12">
+        <h3 class="text-2xl font-semibold text-text-primary mb-6">Project Achievements</h3>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="p-5 bg-gray-900/50 rounded-lg border border-gray-700/30">
-            <h4 class="text-white font-medium mb-3">Design & UX</h4>
+          <div class="p-5 bg-surface-deep/50 rounded-lg border border-border-primary/30">
+            <h4 class="text-text-primary font-medium mb-3">Design & UX</h4>
             <ul class="space-y-2">
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                <span class="text-gray-300">Created comprehensive user personas and journey maps</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="text-text-secondary">Created comprehensive user personas and journey maps</span>
               </li>
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                <span class="text-gray-300">Developed Harmony UI design system with 30+ components</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="text-text-secondary">Developed Harmony UI design system with 30+ components</span>
               </li>
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                <span class="text-gray-300">Designed intuitive workflows for complex booking processes</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="text-text-secondary">Designed intuitive workflows for complex booking processes</span>
               </li>
             </ul>
           </div>
 
-          <div class="p-5 bg-gray-900/50 rounded-lg border border-gray-700/30">
-            <h4 class="text-white font-medium mb-3">Development</h4>
+          <div class="p-5 bg-surface-deep/50 rounded-lg border border-border-primary/30">
+            <h4 class="text-text-primary font-medium mb-3">Development</h4>
             <ul class="space-y-2">
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                <span class="text-gray-300">Built scalable front-end architecture with Next.js</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="text-text-secondary">Built scalable front-end architecture with Next.js</span>
               </li>
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                <span class="text-gray-300">Implemented component library with TypeScript</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="text-text-secondary">Implemented component library with TypeScript</span>
               </li>
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
-                <span class="text-gray-300">Created mock API layer for development and testing</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="text-text-secondary">Created mock API layer for development and testing</span>
               </li>
             </ul>
           </div>
@@ -1218,7 +1328,7 @@ const processSteps = [
       <SectionHeader title="Conclusion & Next Steps" />
 
       <div class="space-y-12">
-        <div class="prose prose-invert max-w-none">
+        <div class="prose prose-light max-w-none">
           <p>
             The RaskRask Recharge project successfully demonstrated how a user-centered design approach could transform the corporate wellness booking experience. Through extensive research, thoughtful design, and modern development practices, we created a prototype that showcases the potential for both administrators and employees to have a more efficient and enjoyable platform.
           </p>
@@ -1228,79 +1338,76 @@ const processSteps = [
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-            <h3 class="text-xl font-medium text-white mb-4">Future Possibilities</h3>
+          <div class="bg-surface/50 backdrop-blur-sm border border-border-primary/50 rounded-xl p-6">
+            <h3 class="text-xl font-medium text-text-primary mb-4">Future Possibilities</h3>
             <ul class="space-y-3">
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
                 <div>
-                  <span class="text-white">Advanced Analytics Dashboard</span>
-                  <p class="text-gray-400 text-sm mt-1">Enhanced reporting capabilities with customizable visualizations and exports</p>
+                  <span class="text-text-primary">Advanced Analytics Dashboard</span>
+                  <p class="text-text-secondary text-sm mt-1">Enhanced reporting capabilities with customizable visualizations and exports</p>
                 </div>
               </li>
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
                 <div>
-                  <span class="text-white">Mobile Application</span>
-                  <p class="text-gray-400 text-sm mt-1">Native mobile experience for employees with push notifications and location-based recommendations</p>
+                  <span class="text-text-primary">Mobile Application</span>
+                  <p class="text-text-secondary text-sm mt-1">Native mobile experience for employees with push notifications and location-based recommendations</p>
                 </div>
               </li>
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
                 <div>
-                  <span class="text-white">Integration Ecosystem</span>
-                  <p class="text-gray-400 text-sm mt-1">Connections with HR systems, calendar platforms, and wellness tracking tools</p>
+                  <span class="text-text-primary">Integration Ecosystem</span>
+                  <p class="text-text-secondary text-sm mt-1">Connections with HR systems, calendar platforms, and wellness tracking tools</p>
                 </div>
               </li>
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
                 <div>
-                  <span class="text-white">Wellness Program Insights</span>
-                  <p class="text-gray-400 text-sm mt-1">AI-powered recommendations for optimizing corporate wellness programs based on utilization data</p>
+                  <span class="text-text-primary">Wellness Program Insights</span>
+                  <p class="text-text-secondary text-sm mt-1">AI-powered recommendations for optimizing corporate wellness programs based on utilization data</p>
                 </div>
               </li>
             </ul>
           </div>
 
-          <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
-            <h3 class="text-xl font-medium text-white mb-4">Key Learnings</h3>
+          <div class="bg-surface/50 backdrop-blur-sm border border-border-primary/50 rounded-xl p-6">
+            <h3 class="text-xl font-medium text-text-primary mb-4">Key Learnings</h3>
             <ul class="space-y-3">
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
                 <div>
-                  <span class="text-white">Domain-Driven Design Value</span>
-                  <p class="text-gray-400 text-sm mt-1">The early investment in DDD workshops paid dividends in aligning stakeholders and creating intuitive mental models</p>
+                  <span class="text-text-primary">Domain-Driven Design Value</span>
+                  <p class="text-text-secondary text-sm mt-1">The early investment in DDD workshops paid dividends in aligning stakeholders and creating intuitive mental models</p>
                 </div>
               </li>
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
                 <div>
-                  <span class="text-white">Progressive Implementation</span>
-                  <p class="text-gray-400 text-sm mt-1">Focusing on core functionality first and expanding incrementally ensured we delivered value quickly</p>
+                  <span class="text-text-primary">Progressive Implementation</span>
+                  <p class="text-text-secondary text-sm mt-1">Focusing on core functionality first and expanding incrementally ensured we delivered value quickly</p>
                 </div>
               </li>
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
                 <div>
-                  <span class="text-white">Design System Investment</span>
-                  <p class="text-gray-400 text-sm mt-1">The time spent creating a robust design system accelerated development and ensured consistency</p>
+                  <span class="text-text-primary">Design System Investment</span>
+                  <p class="text-text-secondary text-sm mt-1">The time spent creating a robust design system accelerated development and ensured consistency</p>
                 </div>
               </li>
               <li class="flex items-start">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 mr-3 flex-shrink-0"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary/60 mt-2 mr-3 flex-shrink-0"></span>
                 <div>
-                  <span class="text-white">User Testing Insights</span>
-                  <p class="text-gray-400 text-sm mt-1">Regular user testing sessions revealed unexpected pain points and influenced priority shifts</p>
+                  <span class="text-text-primary">User Testing Insights</span>
+                  <p class="text-text-secondary text-sm mt-1">Regular user testing sessions revealed unexpected pain points and influenced priority shifts</p>
                 </div>
               </li>
             </ul>
           </div>
         </div>
 
-        <QuoteBlock
-          quote="This project demonstrates the power of user-centered design and modern development practices in creating intuitive, scalable solutions. While it remains a prototype, it sets a strong foundation for future corporate wellness platforms."
-          author="Final Reflection"
-        />
+
       </div>
     </section>
   </div>

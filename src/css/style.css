@@ -1,43 +1,47 @@
-/* Custom Properties */
+/* Custom Properties - Aligned with design-system.md */
 :root {
-  /* Colors */
-  --color-primary: #3b82f6;
-  --color-primary-light: #60a5fa;
-  --color-primary-dark: #2563eb;
-  --color-secondary: #e9e34a; /* Twingate-inspired yellow */
-  --color-accent: #7e22ce; /* Twingate-inspired purple */
+  /* Light Theme Color Variables (HSL format: H S L) - Updated from design-system.md */
+  --color-background: 40 70% 88%; /* #F7E5BD */
+  --color-surface: 40 74% 92%; /* lighter card background */
+  --color-surface-accent: 40 74% 88%;
+  --color-surface-transparent: 40 74% 88% / 0.6;
 
-  /* Dark mode colors */
-  --color-background-dark: #0f172a;
-  --color-surface-dark: #1e293b;
-  --color-text-dark: #f1f5f9;
-  --color-text-secondary-dark: #94a3b8;
-  --color-border-dark: #334155;
+  --color-text-primary: 210 10% 15%; /* very dark gray */
+  --color-text-secondary: 210 9% 35%;
+  --color-text-muted: 210 9% 50%;
+  --color-text-accent: 223 84% 50%; /* #3670EC */
+  --color-text-inverted: 0 0% 100%;
 
-  /* Typography */
-  --font-primary: "Inter", system-ui, -apple-system, sans-serif;
+  --color-border-primary: 40 30% 80%;
+  --color-border-secondary: 40 30% 75%;
+  --color-border-accent: 223 84% 50%;
+
+  --color-brand-primary: 223 84% 50%; /* #3670EC */
+  --color-brand-primary-light: 223 84% 70%;
+  --color-brand-primary-dark: 223 84% 35%;
+
+  --color-brand-accent: 20 100% 85%; /* soft peach */
+  --color-brand-accent-hover: 20 100% 75%;
+
+  /* Other variables from original file - kept for potential use */
   --font-size-base: 1rem;
   --line-height-base: 1.5;
-
-  /* Spacing */
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
   --spacing-lg: 1.5rem;
   --spacing-xl: 2rem;
   --spacing-2xl: 3rem;
-
-  /* Transitions */
   --transition-base: 0.2s ease-in-out;
   --transition-slow: 0.7s ease-in-out;
-
-  /* Border Radius */
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 1rem;
-
-  /* Container Max Width */
   --container-max-width: 1200px;
+
+  /* Ensure body background and text color are set for light theme */
+  background-color: hsl(var(--color-background));
+  color: hsl(var(--color-text-primary));
 }
 
 /* Reset & Base Styles */
@@ -50,345 +54,64 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 16px; /* Consider controlling via Tailwind theme */
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: var(--font-primary);
-  line-height: var(--line-height-base);
-  color: var(--color-text-dark);
-  background-color: var(--color-background-dark);
+  /* Font is handled by Tailwind classes (font-sans, font-heading) */
+  line-height: var(
+    --line-height-base
+  ); /* Could be replaced with Tailwind leading utilities */
+  /* Base text/background colors are set in :root */
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; /* Added for Firefox */
 }
 
-/* Accessibility */
+/* Add base transition for color properties for smooth theme changes - Apply carefully */
+/*
+body,
+body *,
+::before,
+::after {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+This global transition can sometimes cause unwanted side effects.
+Apply transitions more selectively using Tailwind utilities (e.g., `transition-colors`).
+*/
+
+/* Accessibility - Keep Skip Link */
 .skip-link {
   position: absolute;
-  top: -40px;
+  top: -40px; /* Tailwind: -top-10 */
   left: 0;
-  background: var(--color-primary);
-  color: white;
-  padding: var(--spacing-sm) var(--spacing-md);
-  z-index: 100;
-  transition: top var(--transition-base);
+  background: hsl(var(--color-surface)); /* Tailwind: bg-surface */
+  color: hsl(
+    var(--color-text-primary)
+  ); /* Tailwind: text-text-primary */
+  padding: 1rem; /* Tailwind: p-4 */
+  z-index: 100; /* Tailwind: z-50 - Adjust if needed */
+  transition: top 0.2s ease-in-out; /* Tailwind: transition-all duration-200 */
 }
 
 .skip-link:focus {
   top: 0;
 }
 
-/* Layout */
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: var(--color-background);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-}
+/*
+  Removed all custom component styles (.site-header, .main-nav, .hero, .cta-button, etc.)
+  Removed custom utility classes (.container, .btn, .card, .grid*, etc.)
+  Removed custom animations (@keyframes, .animate-*)
 
-.main-nav {
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: var(--spacing-md) var(--spacing-lg);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  These should be implemented using Tailwind utility classes directly in the Astro/React components.
+*/
 
-.nav-links {
-  display: flex;
-  gap: var(--spacing-lg);
-  list-style: none;
-}
-
-.nav-links a {
-  color: var(--color-text);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color var(--transition-base);
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--color-primary);
-}
-
-/* Mobile Navigation */
-.menu-toggle {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: var(--spacing-sm);
-  }
-
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--color-background);
-    padding: var(--spacing-md);
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-}
-
-/* Main Content */
-.main-content {
-  margin-top: 80px; /* Header height + spacing */
-  min-height: calc(
-    100vh - 80px - 100px
-  ); /* Viewport height - header - footer */
-}
-
-.hero {
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: var(--spacing-2xl) var(--spacing-lg);
-  text-align: center;
-}
-
-.hero-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
-  margin-bottom: var(--spacing-md);
-  line-height: 1.2;
-}
-
-.hero-subtitle {
-  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-  color: var(--color-text-light);
-  margin-bottom: var(--spacing-xl);
-}
-
-.cta-button {
-  display: inline-block;
-  padding: var(--spacing-md) var(--spacing-xl);
-  background-color: var(--color-primary);
-  color: white;
-  text-decoration: none;
-  border-radius: var(--radius-md);
-  font-weight: 500;
-  transition: background-color var(--transition-base);
-}
-
-.cta-button:hover {
-  background-color: var(--color-primary-dark);
-}
-
-/* Footer */
-.site-footer {
-  background-color: var(--color-background-alt);
-  padding: var(--spacing-xl) var(--spacing-lg);
-  margin-top: auto;
-}
-
-.footer-content {
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-lg);
-}
-
-.social-links {
-  display: flex;
-  gap: var(--spacing-lg);
-}
-
-.social-links a {
-  color: var(--color-text-light);
-  transition: color var(--transition-base);
-}
-
-.social-links a:hover {
-  color: var(--color-primary);
-}
-
-.copyright {
-  color: var(--color-text-light);
-  font-size: 0.875rem;
-}
-
-/* Utility Classes */
-.container {
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: 0 var(--spacing-lg);
-}
-
-/* Icons */
-.icon {
-  width: 24px;
-  height: 24px;
-  stroke-width: 1.5;
-  transition: transform 0.2s ease;
-}
-
-.icon-sm {
-  width: 18px;
-  height: 18px;
-}
-
-.icon-lg {
-  width: 32px;
-  height: 32px;
-}
-
-/* Twingate-inspired Components */
-
-/* Cards */
-.card {
-  background-color: var(--color-surface-dark);
-  border: 1px solid var(--color-border-dark);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-}
-
-.card-header {
-  padding: var(--spacing-md);
-  border-bottom: 1px solid var(--color-border-dark);
-}
-
-.card-body {
-  padding: var(--spacing-md);
-}
-
-.card-footer {
-  padding: var(--spacing-md);
-  border-top: 1px solid var(--color-border-dark);
-}
-
-/* Buttons */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.625rem 1.25rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  border-radius: var(--radius-md);
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.btn-primary {
-  background: linear-gradient(
-    to right,
-    var(--color-primary),
-    var(--color-primary-dark)
-  );
-  color: white;
-  border: none;
-}
-
-.btn-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
-}
-
-.btn-secondary {
-  background-color: transparent;
-  color: white;
-  border: 1px solid var(--color-border-dark);
-}
-
-.btn-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  transform: translateY(-2px);
-}
-
-.btn-accent {
-  background: linear-gradient(
-    to right,
-    var(--color-secondary),
-    #d4d130
-  );
-  color: #333;
-  border: none;
-  font-weight: 600;
-}
-
-.btn-accent:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
-}
-
-/* Tags */
-.tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  border-radius: 9999px;
-  background-color: rgba(59, 130, 246, 0.1);
-  color: var(--color-primary-light);
-}
-
-/* Gradients */
-.bg-gradient-primary {
-  background: linear-gradient(
-    to right,
-    var(--color-primary),
-    var(--color-primary-dark)
-  );
-}
-
-.bg-gradient-purple {
-  background: linear-gradient(to right, var(--color-accent), #9333ea);
-}
-
-.bg-gradient-yellow {
-  background: linear-gradient(
-    to right,
-    var(--color-secondary),
-    #d4d130
-  );
-}
-
-/* Grid backgrounds */
-.bg-grid {
-  background-image: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0.05) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.05) 1px,
-      transparent 1px
-    );
-  background-size: 40px 40px;
-}
-
-/* Twingate-inspired animations */
-@keyframes fadeIn {
+/* Scroll Animation */
+@keyframes fade-in-slide-up {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(40px); /* Start slightly lower */
   }
   to {
     opacity: 1;
@@ -396,425 +119,79 @@ body {
   }
 }
 
-@keyframes slowPulse {
-  0% {
-    opacity: 0.7;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.9;
-    transform: scale(1.05);
-  }
-  100% {
-    opacity: 0.7;
-    transform: scale(1);
-  }
+/* Class to apply the animation when element is visible */
+.is-visible .animate-fade-in-slide-up {
+  animation: fade-in-slide-up 1s ease-out forwards; /* Match duration/easing */
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.8s ease-out forwards;
-}
-
-.animate-slow-pulse {
-  animation: slowPulse 8s ease-in-out infinite;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animation-delay-300 {
-  animation-delay: 0.3s;
-}
-
-.animation-delay-500 {
-  animation-delay: 0.5s;
-}
-
-.animation-delay-700 {
-  animation-delay: 0.7s;
-}
-
-.animation-delay-1000 {
-  animation-delay: 1s;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-/* Section styles */
-.section {
-  padding: var(--spacing-2xl) 0;
-  position: relative;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: var(--spacing-xl);
-  text-align: center;
-}
-
-.section-subtitle {
-  font-size: 1.25rem;
-  color: var(--color-text-secondary-dark);
-  margin-bottom: var(--spacing-xl);
-  text-align: center;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Grid layouts */
-.grid {
-  display: grid;
-  gap: var(--spacing-lg);
-}
-
-.grid-cols-1 {
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 640px) {
-  .sm\:grid-cols-2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 768px) {
-  .md\:grid-cols-2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .md\:grid-cols-3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .lg\:grid-cols-3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .lg\:grid-cols-4 {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* Form elements */
-.form-group {
-  margin-bottom: var(--spacing-md);
-}
-
-.form-label {
-  display: block;
-  margin-bottom: var(--spacing-xs);
-  font-weight: 500;
-}
-
-.form-input,
-.form-textarea,
-.form-select {
-  width: 100%;
-  padding: var(--spacing-sm) var(--spacing-md);
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--color-border-dark);
-  border-radius: var(--radius-md);
-  color: var(--color-text-dark);
-  transition: border-color 0.2s ease;
-}
-
-.form-input:focus,
-.form-textarea:focus,
-.form-select:focus {
-  outline: none;
-  border-color: var(--color-primary);
-}
-
-/* Status indicators */
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  border-radius: 9999px;
-}
-
-.status-active {
-  background-color: rgba(16, 185, 129, 0.1);
-  color: rgb(16, 185, 129);
-}
-
-.status-pending {
-  background-color: rgba(245, 158, 11, 0.1);
-  color: rgb(245, 158, 11);
-}
-
-.status-failed {
-  background-color: rgba(239, 68, 68, 0.1);
-  color: rgb(239, 68, 68);
-}
-
-/* Tooltip */
-.tooltip {
-  position: relative;
-}
-
-.tooltip::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 0.25rem 0.5rem;
-  background-color: var(--color-surface-dark);
-  color: var(--color-text-dark);
-  border-radius: var(--radius-sm);
-  font-size: 0.75rem;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
-  z-index: 10;
-  border: 1px solid var(--color-border-dark);
-}
-
-.tooltip:hover::after {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Twingate-inspired Components & Utilities */
-
-/* Enhanced Animation Classes */
-.animate-fadeIn {
-  animation: fadeIn 0.8s ease forwards;
-  opacity: 0;
-}
-
-.animate-slideUp {
-  animation: slideUp 0.8s ease forwards;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.animate-slideIn {
-  animation: slideIn 0.8s ease forwards;
-  opacity: 0;
-  transform: translateX(-20px);
-}
-
-.animate-pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-/* Animation Delay Utilities */
-.animation-delay-100 {
-  animation-delay: 100ms;
-}
-
-.animation-delay-200 {
-  animation-delay: 200ms;
-}
-
-.animation-delay-300 {
-  animation-delay: 300ms;
-}
-
-.animation-delay-400 {
-  animation-delay: 400ms;
-}
-
-.animation-delay-500 {
-  animation-delay: 500ms;
-}
-
-/* Keyframes */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes pulse {
+/* Overlay Color Cycling Animation */
+@keyframes cycle-colors {
   0%,
   100% {
-    opacity: 1;
+    /* New Color 1 */
+    background-color: hsl(223 84% 56% / 0.5);
   }
-  50% {
-    opacity: 0.7;
+  33% {
+    /* New Color 2 */
+    background-color: hsl(45 85% 60% / 0.5);
+  }
+  66% {
+    /* New Color 3 */
+    background-color: hsl(4 70% 65% / 0.5);
   }
 }
 
-/* Enhanced Shadow Utilities for Dark Mode */
-.shadow-glow-sm {
-  box-shadow: 0 0 15px rgba(80, 70, 229, 0.15);
+.animate-cycle-colors {
+  /* Updated duration to 5s */
+  animation: cycle-colors 5s steps(1, jump-end) infinite;
 }
 
-.shadow-glow-md {
-  box-shadow: 0 0 25px rgba(80, 70, 229, 0.2);
+/* Shape Cycling Animation - Smooth border-radius only, revised blob-like values */
+@keyframes cycle-shapes {
+  0%,
+  20% {
+    /* Hold Shape 1 */
+    border-radius: 45% 55% 70% 30% / 30% 60% 40% 70%;
+  }
+  25%,
+  45% {
+    /* Hold Shape 2 */
+    border-radius: 70% 30% 45% 55% / 60% 40% 70% 30%;
+  }
+  50%,
+  70% {
+    /* Hold Shape 3 */
+    border-radius: 30% 70% 60% 40% / 70% 30% 60% 40%;
+  }
+  75%,
+  95% {
+    /* Hold Shape 4 */
+    border-radius: 60% 40% 30% 70% / 40% 70% 30% 60%;
+  }
+  100% {
+    /* Loop back to Shape 1 */
+    border-radius: 45% 55% 70% 30% / 30% 60% 40% 70%;
+  }
 }
 
-.shadow-glow-lg {
-  box-shadow: 0 0 40px rgba(80, 70, 229, 0.25);
+.animate-cycle-shapes {
+  /* Use smooth timing, slightly slower duration */
+  animation: cycle-shapes 5.5s ease-in-out infinite;
+  /* Add transition for border-radius change on hover */
+  transition: border-radius 0.3s ease-out;
 }
 
-.shadow-inner-dark {
-  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+/* Pause shape animation on hover AND reset shape */
+/* Target the element itself when it has both classes and is hovered */
+.group.animate-cycle-shapes:hover {
+  animation-play-state: paused;
+  border-radius: theme(
+    "borderRadius.2xl"
+  ) !important; /* Force override */
+  clip-path: none !important; /* Force override */
 }
 
-/* Border Utilities */
-.border-gradient {
-  border: 2px solid;
-  border-image: linear-gradient(to right, #5046e5, #8e74ff) 1;
-}
-
-.border-top-gradient {
-  border-top: 2px solid transparent;
-  border-image: linear-gradient(to right, #5046e5, #8e74ff) 1 0 0 0;
-}
-
-/* Text Gradient */
-.text-gradient {
-  background: linear-gradient(to right, #5046e5, #8e74ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* Card Components */
-.card-dark {
-  background-color: rgba(31, 41, 55, 0.6);
-  border-radius: 0.75rem;
-  border: 1px solid rgba(75, 85, 99, 0.5);
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.card-dark:hover {
-  box-shadow: 0 0 25px rgba(80, 70, 229, 0.2);
-  transform: translateY(-3px);
-}
-
-.card-gradient-header {
-  background: linear-gradient(to right, #5046e5, #8e74ff);
-  padding: 1rem;
-  color: white;
-}
-
-/* Button Styles */
-.btn-primary-gradient {
-  background: linear-gradient(to right, #5046e5, #8e74ff);
-  color: white;
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  transition: all 0.3s ease;
-}
-
-.btn-primary-gradient:hover {
-  box-shadow: 0 0 15px rgba(80, 70, 229, 0.3);
-  transform: translateY(-1px);
-}
-
-.btn-outline-dark {
-  background-color: transparent;
-  border: 1px solid rgba(80, 70, 229, 0.7);
-  color: white;
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  transition: all 0.3s ease;
-}
-
-.btn-outline-dark:hover {
-  background-color: rgba(80, 70, 229, 0.1);
-  border-color: #5046e5;
-}
-
-/* Tag Components */
-.tag-dark {
-  background-color: rgba(31, 41, 55, 0.7);
-  border: 1px solid rgba(75, 85, 99, 0.5);
-  color: #8e74ff;
-  border-radius: 9999px;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.875rem;
-}
-
-/* Advanced Hover Effects */
-.hover-lift {
-  transition: transform 0.3s ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-4px);
-}
-
-.hover-glow {
-  transition: box-shadow 0.3s ease;
-}
-
-.hover-glow:hover {
-  box-shadow: 0 0 25px rgba(80, 70, 229, 0.25);
-}
-
-/* Dividers */
-.divider-gradient {
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    #8e74ff,
-    transparent
-  );
-  margin: 2rem 0;
-}
-
-.divider-gradient-vertical {
-  width: 1px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    #8e74ff,
-    transparent
-  );
-  margin: 0 2rem;
+/* Explicitly remove filter on image hover within group */
+.group:hover .image-for-hero-effect {
+  filter: none !important;
 }

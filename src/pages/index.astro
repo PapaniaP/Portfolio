@@ -96,206 +96,99 @@ const skillAreas = [
 
 <Layout title="Home">
 	<!-- Global background grid for entire page -->
-	<div class="fixed inset-0 z-[-1] opacity-10">
-		<div class="h-full w-full bg-[linear-gradient(#374151_1px,transparent_1px),linear-gradient(to_right,#374151_1px,transparent_1px)] [background-size:80px_80px]"></div>
+	<div class="fixed inset-0 z-[-1] opacity-5">
+		<div class="h-full w-full bg-[linear-gradient(#374151_0.7px,transparent_0.7px),linear-gradient(to_right,#374151_0.7px,transparent_0.7px)] [background-size:64px_64px]"></div>
 	</div>
 
 	<!-- Hero Section -->
-	<AnimatedSection client:load id="hero" className="py-24 md:py-32 relative overflow-hidden">
-		<!-- Decorative elements -->
-		<div class="absolute inset-0 z-0 overflow-hidden">
-			<!-- Creative geometric elements -->
-			<div class="absolute top-20 md:top-40 right-[10%] w-72 h-72 border border-primary/20 rounded-full opacity-20"></div>
-			<div class="absolute top-40 md:top-60 right-[5%] w-36 h-36 border border-blue-400/20 rounded-full opacity-20"></div>
-			<div class="absolute bottom-20 left-[10%] w-52 h-52 border border-indigo-400/20 rounded-full opacity-20"></div>
-
-			<!-- Gradient blobs -->
-			<div class="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-gradient-to-br from-primary/10 to-blue-400/5 rounded-full blur-[120px] opacity-70"></div>
-			<div class="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-gradient-to-tr from-primary/5 to-indigo-400/10 rounded-full blur-[100px] opacity-70"></div>
-
-			<!-- Decorative diagonal lines -->
-			<div class="absolute top-0 right-0 w-1/2 h-1/2 overflow-hidden opacity-10 pointer-events-none">
-				<div class="absolute -top-1/2 -right-1/2 w-full h-full border-t border-l border-primary/30 rotate-45 transform origin-bottom-left"></div>
-				<div class="absolute -top-1/4 -right-1/4 w-full h-full border-t border-l border-primary/20 rotate-45 transform origin-bottom-left"></div>
-			</div>
-		</div>
-
+	<AnimatedSection client:load id="hero" className="relative overflow-hidden min-h-[85dvh] flex items-center py-20">
+		<!-- Two Column Hero Layout -->
 		<div class="container mx-auto px-6 md:px-8 relative z-10">
-			<div class="flex flex-col md:flex-row items-start gap-12 md:gap-8">
-				<!-- Left Column - Text Content -->
-				<div class="md:w-1/2 w-full pt-4 md:pt-12">
-					<!-- Floating badge -->
-					<div class="inline-flex items-center px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-full mb-8 relative">
-						<div class="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-primary/40 animate-ping"></div>
-						<span class="text-sm text-primary font-medium">Digital Concept Developer</span>
-					</div>
+			<div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
 
-					<h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 text-white leading-tight tracking-tight">
-					  <span class="block mb-2 relative">
-					    Designing for
-					    <span class="relative">
-					      humans
-					      <svg class="absolute -bottom-2 left-0 w-full h-2 text-primary/40" preserveAspectRatio="none" viewBox="0 0 100 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-					        <path d="M0 5C20 2 50 2 100 8" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
-					      </svg>
-					    </span>
-					  </span>
-					  <span class="block text-sm text-gray-400 font-thin mt-4 tracking-wide italic">not robots</span>
-					</h1>
-
-					<p class="text-xl text-gray-300 mb-10 max-w-xl relative">
-						Hey! I'm Paolo — a digital concept development student who loves crafting clean, clever, and actually enjoyable digital experiences. I design with purpose, code with care, and always keep things just a little bit fun.
-						<svg class="absolute -left-8 top-0 h-full w-1 opacity-30" preserveAspectRatio="none" viewBox="0 0 10 100" xmlns="http://www.w3.org/2000/svg">
-							<line x1="5" y1="0" x2="5" y2="100" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"></line>
-						</svg>
+				<!-- Left Column: Text Content -->
+				<div class="md:w-1/2 w-full text-left">
+					<!-- Role Subtitle -->
+					<p class="text-sm font-medium text-brand-primary tracking-wider uppercase mb-4 md:mb-6">
+						Digital Concept Developer & UX Designer
 					</p>
 
-					<div class="flex flex-wrap gap-5 mb-16">
-						<Button
-							href="/projects"
-							variant="primary"
-							size="lg"
-							class="group"
-						>
-							<span class="relative flex items-center">
-								View My Work
-								<svg class="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-								</svg>
-							</span>
-						</Button>
+					<!-- Main Heading -->
+					<h1 class="text-5xl md:text-6xl lg:text-7xl font-bold font-heading mb-6 md:mb-8 text-text-primary leading-tight tracking-tighter">
+						Paolo Papania
+					</h1>
 
-						<Button
-							href="/cv_Paolo.pdf"
-							variant="secondary"
-							size="lg"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
+					<!-- Tagline/Description -->
+					<p class="text-lg md:text-xl text-text-secondary max-w-xl mb-10 md:mb-12 leading-relaxed">
+						Crafting thoughtful and engaging digital experiences where design meets function.
+					</p>
+
+					<!-- Calls to Action -->
+					<div class="flex flex-wrap gap-4">
+						<Button href="/projects" variant="primary" size="lg">
+							View My Work
+						</Button>
+						<Button href="/cv_Paolo.pdf" variant="secondary" size="lg" target="_blank" rel="noopener noreferrer">
 							Download CV
 						</Button>
 					</div>
+				</div>
 
-					<!-- Client logos strip -->
-					<div class="relative pl-8 border-l border-gray-700/50">
-						<div class="absolute -left-2.5 top-0 w-5 h-5 bg-gray-900 border border-gray-700/50 rounded-full flex items-center justify-center">
-							<div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
-						</div>
-						<p class="text-sm text-gray-500 uppercase tracking-wider font-medium mb-6">Clients & Collaborations</p>
-						<div class="flex flex-wrap gap-x-8 gap-y-4">
-							<span class="text-base font-medium text-gray-400 transition-colors hover:text-primary">RaskRask</span>
-							<span class="text-base font-medium text-gray-400 transition-colors hover:text-primary">Maxi Zoo</span>
-							<span class="text-base font-medium text-gray-400 transition-colors hover:text-primary">Grundfos</span>
+				<!-- Right Column: Visual Element (Profile Image) - Remove group class here -->
+				<div class="md:w-1/2 w-full">
+					{/* Container for image styling - Add group class here */}
+					<div class="relative mx-auto max-w-sm border border-border-primary shadow-lg rounded-2xl overflow-hidden animate-cycle-shapes group">
+						{/* Wrapper for image and overlay */}
+						<div class="relative">
+							<Image
+								src={profileImage}
+								alt="Paolo Papania"
+								width={700}
+								height={700}
+								class="image-for-hero-effect w-full h-auto object-cover filter grayscale contrast-125 brightness-90 transition-all duration-300 group-hover:filter-none"
+							/>
+							{/* Duotone Overlay - Reduced intensity and added animation class */}
+							<div class="absolute inset-0 bg-brand-primary/50 mix-blend-multiply pointer-events-none animate-cycle-colors group-hover:hidden"></div>
 						</div>
 					</div>
 				</div>
 
-				<!-- Right Column - Creative Profile Display -->
-				<div class="md:w-1/2 w-full md:mt-0 mt-12 relative max-h-[500px] md:max-h-none ">					<!-- Stacked cards effect -->
-					<div class="relative mx-auto max-w-sm">
-						<!-- Background card -->
-						<div class="absolute -top-4 -right-4 w-full h-full bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-lg transform rotate-6"></div>
-						<div class="absolute -bottom-4 -left-4 w-full h-full bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-lg transform -rotate-3"></div>
-
-						<!-- Main card with terminal styling -->
-						<div class="relative bg-gray-800/70 backdrop-blur-sm border border-gray-700/80 rounded-lg overflow-hidden shadow-2xl">
-							<!-- Terminal header -->
-							<div class="bg-gray-900 border-b border-gray-700/80 px-4 py-2 flex items-center">
-								<div class="flex space-x-1.5">
-									<div class="w-3 h-3 rounded-full bg-red-500/70"></div>
-									<div class="w-3 h-3 rounded-full bg-yellow-500/70"></div>
-									<div class="w-3 h-3 rounded-full bg-green-500/70"></div>
-								</div>
-								<div class="flex-1 text-center">
-									<div class="inline-flex items-center px-2 py-1 mx-auto bg-gray-800/80 rounded text-xs text-gray-400">
-										<span class="text-primary mr-1.5">~</span> paolo-papania.dev
-									</div>
-								</div>
-								<div class="w-8"></div> <!-- Spacer for balance -->
-							</div>
-
-							<!-- Terminal content with image -->
-							<div class="p-1">
-								<div class="relative rounded overflow-hidden">
-									<Image
-										src={profileImage}
-										alt="Paolo Papania"
-										width={600}
-										height={700}
-										class="w-full h-auto object-cover"
-									/>
-
-
-									<!-- Overlay gradient -->
-									<div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
-								</div>
-
-								<!-- Terminal command line at bottom -->
-								<div class="px-4 py-3 flex items-center text-sm font-mono">
-									<span class="text-green-400 mr-1.5">➜</span>
-									<span class="text-blue-400 mr-1.5">portfolio</span>
-									<span class="text-primary mr-2">$</span>
-									<span class="text-gray-300">npm run design</span>
-									<span class="ml-2 h-4 w-1 bg-white animate-pulse"></span>
-								</div>
-							</div>
-
-							<!-- Status bar -->
-							<div class="absolute bottom-14 left-4 right-4 bg-gray-900/90 backdrop-blur-sm border border-gray-700/80 rounded px-3 py-2 text-xs flex justify-between items-center">
-								<div class="flex items-center">
-									<div class="w-2 h-2 bg-green-500 rounded-full animate-pulse mr-2"></div>
-									<span class="text-gray-300">Looking for internship</span>
-								</div>
-								<div class="text-gray-500">Frontend • UX/UI Design </div>
-							</div>
-						</div>
-
-						<!-- Decorative floating elements -->
-						<div class="absolute -top-4 -left-4 w-12 h-12 bg-primary/10 border border-primary/30 rounded-lg transform rotate-12 flex items-center justify-center">
-							<svg aria-hidden="true" class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-							</svg>
-						</div>
-						<div class="absolute -bottom-6 -right-2 w-10 h-10 bg-blue-500/10 border border-blue-500/30 rounded-full flex items-center justify-center">
-							<svg aria-hidden="true" class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-							</svg>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
+		<!-- End Two Column Hero Layout -->
 	</AnimatedSection>
 
-	<!-- Core Skills Section (Twingate-inspired styling) -->
-	<AnimatedSection client:load id="skills" className="py-20 relative overflow-hidden">
+	<!-- Core Skills Section -->
+	<AnimatedSection client:load id="skills" className="py-16 relative overflow-hidden">
 		<div class="absolute inset-0 z-0">
-			<div class="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[80px]"></div>
+			{/* Subtle grid background (this might be redundant if Layout has it) */}
+			{/* <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-brand-primary/5 rounded-full blur-[120px]"></div> */}
 		</div>
 
-		<div class="container mx-auto px-4 relative z-10">
+		<div class="container mx-auto px-6 relative z-10">
 			<div class="max-w-5xl mx-auto">
 				<div class="text-left mb-16">
-					<div class="text-xs font-medium text-primary uppercase tracking-wider mb-3">Core Competencies</div>
-					<h2 class="text-3xl md:text-4xl font-bold text-white mb-5">Skills & Superpowers</h2>
-					<p class="text-gray-400 max-w-2xl">
-						I use UX thinking to design digital experiences that solve real problems — blending research, empathy, and clean UI into every solution.					</p>
+					<div class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-brand-primary bg-brand-primary/10 rounded-full mb-3">Core Competencies</div>
+					<h2 class="text-4xl font-semibold text-text-primary tracking-tight mb-4">Skills & Superpowers</h2>
+					<p class="text-lg text-text-secondary max-w-2xl">
+						I use UX thinking to design digital experiences that solve real problems — blending research, empathy, and clean UI into every solution.
+					</p>
 				</div>
 
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 					{skillAreas.map((area, index) => (
-						<div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1 group">
+						<div class="bg-surface shadow-card-light border border-border-primary rounded-xl overflow-hidden transition-all duration-300 hover:shadow-glow-sm hover:border-border-accent hover:scale-[1.02] group">
 							<div class="p-6">
-								<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors duration-300">
-									<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-brand-primary/20 transition-colors duration-300">
+									<svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 										<Fragment set:html={area.icon} />
 									</svg>
 								</div>
-								<h3 class="text-xl font-semibold text-white mb-3">{area.title}</h3>
-								<p class="text-gray-400 mb-5">{area.description}</p>
+								<h3 class="text-xl font-semibold text-text-primary mb-3">{area.title}</h3>
+								<p class="text-text-secondary mb-5 leading-relaxed">{area.description}</p>
 								<div class="flex flex-wrap gap-2">
 									{area.skills.map(skill => (
-										<span class="inline-flex px-3 py-1 text-xs text-primary bg-primary/10 rounded-full">{skill}</span>
+										<span class="inline-flex px-3 py-1 text-xs text-text-muted bg-surface-accent rounded-full border border-border-primary/50">{skill}</span>
 									))}
 								</div>
 							</div>
@@ -306,25 +199,25 @@ const skillAreas = [
 		</div>
 	</AnimatedSection>
 
-	<!-- Featured Projects (Twingate-inspired UI) -->
-	<AnimatedSection client:load id="projects" className="py-20 relative overflow-hidden">
+	<!-- Featured Projects -->
+	<AnimatedSection client:load id="projects" className="py-16 relative overflow-hidden">
 		<div class="absolute inset-0 z-0">
-			<div class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-[80px]"></div>
+			{/* <div class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-brand-accent/5 rounded-full blur-[120px]"></div> */}
 		</div>
 
-		<div class="container mx-auto px-4 relative z-10">
+		<div class="container mx-auto px-6 relative z-10">
 			<div class="max-w-5xl mx-auto">
 				<div class="text-left mb-16">
-					<div class="text-xs font-medium text-primary uppercase tracking-wider mb-3">Portfolio</div>
-					<h2 class="text-3xl md:text-4xl font-bold text-white mb-5">Featured Projects</h2>
-					<p class="text-gray-400 max-w-2xl">
+					<div class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-brand-primary bg-brand-primary/10 rounded-full mb-3">Portfolio</div>
+					<h2 class="text-4xl font-semibold text-text-primary tracking-tight mb-4">Featured Projects</h2>
+					<p class="text-lg text-text-secondary max-w-2xl">
 						Explore featured projects that showcase my ability to solve complex problems through design and development
 					</p>
 				</div>
 
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 					{featuredProjects.map((project, index) => (
-						<div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1 group">
+						<div class="bg-surface shadow-card-light border border-border-primary rounded-xl overflow-hidden transition-all duration-300 hover:shadow-glow-sm hover:border-border-accent hover:scale-[1.02] group">
 							<div class="relative aspect-video">
 								<Image
 									src={project.image}
@@ -333,21 +226,21 @@ const skillAreas = [
 									height={675}
 									class="w-full h-full object-cover"
 								/>
-								<div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
+								<div class="absolute inset-0 bg-gradient-to-t from-surface/90 via-surface/30 to-transparent"></div>
 								<div class="absolute bottom-4 left-4 flex flex-wrap gap-2">
 									{project.tags.map(tag => (
-										<span class="px-2 py-1 text-xs bg-gray-900/80 backdrop-blur-sm text-white rounded-full border border-gray-700/50">
+										<span class="px-3 py-1 text-xs bg-surface/90 backdrop-blur-sm text-text-secondary rounded-full border border-border-primary/50">
 											{tag}
 										</span>
 									))}
 								</div>
 							</div>
 							<div class="p-6">
-								<h3 class="text-xl font-semibold text-white mb-3">{project.title}</h3>
-								<p class="text-gray-400 mb-4">{project.description}</p>
+								<h3 class="text-xl font-semibold text-text-primary mb-3">{project.title}</h3>
+								<p class="text-text-secondary mb-4 leading-relaxed">{project.description}</p>
 								<a
 									href={project.link}
-									class="inline-flex items-center text-primary hover:text-blue-400 transition-colors"
+									class="inline-flex items-center text-brand-primary hover:text-brand-accent transition-colors"
 									aria-label={`View ${project.title} project details`}
 								>
 									{project.linkText}
@@ -360,11 +253,12 @@ const skillAreas = [
 					))}
 				</div>
 
-				<div class="mt-12">
+				<div class="mt-12 text-center">
 					<Button
 						href="/projects"
 						variant="secondary"
-						size="md"
+						size="lg"
+						class="bg-surface shadow-card-light border border-border-primary hover:border-border-accent hover:shadow-glow-sm transition-all duration-300"
 					>
 						View All Projects
 						<svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -376,71 +270,72 @@ const skillAreas = [
 		</div>
 	</AnimatedSection>
 
-	<!-- Connect Section (Twingate-inspired styling) -->
-	<AnimatedSection client:load id="connect" className="py-20 relative overflow-hidden" id="contact-section">
+	<!-- Connect Section -->
+	<AnimatedSection client:load id="connect" className="py-16 relative overflow-hidden">
 		<div class="absolute inset-0 z-0">
-			<div class="absolute top-1/3 right-1/3 w-96 h-96 bg-indigo-500/5 rounded-full blur-[80px]"></div>
+			{/* Subtle grid background (this might be redundant if Layout has it) */}
+			{/* <div class="absolute top-1/3 right-1/3 w-96 h-96 bg-brand-accent/5 rounded-full blur-[120px]"></div> */}
 		</div>
 
-		<div class="container mx-auto px-4 relative z-10">
+		<div class="container mx-auto px-6 relative z-10">
 			<div class="max-w-5xl mx-auto">
 				<div class="text-left mb-16">
-					<div class="text-xs font-medium text-primary uppercase tracking-wider mb-3">Connect</div>
-					<h2 class="text-3xl md:text-4xl font-bold text-white mb-5">Let's create something<br />amazing together</h2>
-					<p class="text-gray-400 max-w-2xl">
+					<div class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-brand-primary bg-brand-primary/10 rounded-full mb-3">Connect</div>
+					<h2 class="text-4xl font-semibold text-text-primary tracking-tight mb-4">Let's create something<br />amazing together</h2>
+					<p class="text-lg text-text-secondary max-w-2xl">
 						I'm always excited to collaborate on new projects and bring innovative ideas to life. Whether you have a specific project in mind or just want to explore possibilities, I'd love to hear from you.
 					</p>
 				</div>
 
-				<div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-8 md:p-12">
+				<div class="bg-surface shadow-card-light border border-border-primary rounded-xl p-8 md:p-12">
 					<div class="flex flex-col gap-10">
 						<div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
 							<div class="flex-1">
-								<h3 class="text-2xl font-bold text-white mb-4">Ready to start?</h3>
-								<p class="text-gray-400 mb-6">Let's discuss how we can work together to bring your vision to life.</p>
+								<h3 class="text-2xl font-semibold text-text-primary mb-4">Ready to start?</h3>
+								<p class="text-text-secondary mb-6">Let's discuss how we can work together to bring your vision to life.</p>
 
-								<div class="inline-flex items-center px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-8">
-									<div class="w-2 h-2 bg-green-500 rounded-full animate-pulse mr-3"></div>
-									<span class="text-sm text-primary">Looking for fall internship</span>
+								<div class="inline-flex items-center px-4 py-2 bg-brand-primary/10 border border-brand-primary/20 rounded-full mb-8">
+									<div class="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-3"></div>
+									<span class="text-sm text-brand-primary">Looking for fall internship</span>
 								</div>
 							</div>
 
 							<div class="flex-1">
-								<div class="bg-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
+								<div class="bg-surface-accent shadow-card-light border border-border-primary rounded-xl p-6">
 									<div class="flex flex-col gap-6">
-										<a href="mailto:papaniap11@gmail.com" class="group flex items-center gap-4 transition-colors hover:text-primary">
-											<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-colors group-hover:bg-primary/20">
-												<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<a href="mailto:papaniap11@gmail.com" class="group flex items-center gap-4 transition-all duration-300 hover:scale-[1.02]">
+											<div class="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center flex-shrink-0 transition-colors duration-300 group-hover:bg-brand-primary/20">
+												<svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
 												</svg>
 											</div>
 											<div>
-												<div class="text-sm text-gray-400 group-hover:text-gray-300">Email me at</div>
-												<div class="text-white group-hover:text-primary">papaniap11@gmail.com</div>
+												<div class="text-sm text-text-secondary group-hover:text-text-primary transition-colors">Email me at</div>
+												<div class="text-text-primary group-hover:text-brand-primary transition-colors">papaniap11@gmail.com</div>
 											</div>
 										</a>
 
-										<a href="https://linkedin.com/in/paolo-papania" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 transition-colors hover:text-primary">
-											<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-colors group-hover:bg-primary/20">
-												<svg class="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="currentColor">
+										<a href="https://linkedin.com/in/paolo-papania" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 transition-all duration-300 hover:scale-[1.02]">
+											<div class="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center flex-shrink-0 transition-colors duration-300 group-hover:bg-brand-primary/20">
+												<svg class="w-6 h-6 text-brand-primary" viewBox="0 0 24 24" fill="currentColor">
 													<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
 												</svg>
 											</div>
 											<div>
-												<div class="text-sm text-gray-400 group-hover:text-gray-300">Connect on</div>
-												<div class="text-white group-hover:text-primary">LinkedIn</div>
+												<div class="text-sm text-text-secondary group-hover:text-text-primary transition-colors">Connect on</div>
+												<div class="text-text-primary group-hover:text-brand-primary transition-colors">LinkedIn</div>
 											</div>
 										</a>
 
-										<a href="https://github.com/PapaniaP" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 transition-colors hover:text-primary">
-											<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-colors group-hover:bg-primary/20">
-												<svg class="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="currentColor">
+										<a href="https://github.com/PapaniaP" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 transition-all duration-300 hover:scale-[1.02]">
+											<div class="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center flex-shrink-0 transition-colors duration-300 group-hover:bg-brand-primary/20">
+												<svg class="w-6 h-6 text-brand-primary" viewBox="0 0 24 24" fill="currentColor">
 													<path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/>
 												</svg>
 											</div>
 											<div>
-												<div class="text-sm text-gray-400 group-hover:text-gray-300">Follow on</div>
-												<div class="text-white group-hover:text-primary">GitHub</div>
+												<div class="text-sm text-text-secondary group-hover:text-text-primary transition-colors">Follow on</div>
+												<div class="text-text-primary group-hover:text-brand-primary transition-colors">GitHub</div>
 											</div>
 										</a>
 									</div>

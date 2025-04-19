@@ -12,7 +12,7 @@ const skills = [
     },
     {
         category: "Frontend Development",
-        items: ["HTML", "CSS", "JavaScript", "React", "Astro", "TailwindCSS", "Version Control"]
+        items: ["HTML", "CSS", "JavaScript", "React", "Next.js", "Astro", "TailwindCSS", "Version Control"]
     },
     {
         category: "Tools & Other",
@@ -57,17 +57,17 @@ const experience = [
 <Layout title="About Me" description="Learn more about Paolo Papania - UX/UI Designer and Frontend Developer based in Aarhus, Denmark.">
     <div class="container mx-auto px-4 py-20">
         <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8 animate-fadeIn">
+            <h1 class="text-4xl md:text-5xl font-bold text-text-primary mb-8 animate-fadeIn">
                 About Me
             </h1>
 
             <!-- Bio Section -->
             <div class="grid md:grid-cols-2 gap-12 mb-16 animate-fadeIn animation-delay-100">
                 <div class="order-2 md:order-1">
-                    <h2 class="text-2xl font-bold text-white mb-4 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
+                    <h2 class="text-2xl font-bold text-text-primary mb-4 bg-gradient-primary bg-clip-text text-transparent">
                         Hello, I'm Paolo Papania
                     </h2>
-                    <div class="space-y-4 text-gray-300">
+                    <div class="space-y-4 text-text-secondary">
                         <p>
                             I'm a UX/UI Designer with frontend development skills based in Aarhus, Denmark. I'm passionate about creating intuitive, accessible, and user-centered digital experiences that solve real problems.
                         </p>
@@ -78,9 +78,9 @@ const experience = [
                             My approach to design is deeply rooted in understanding user behavior and needs, always striving to create experiences that are both functional and delightful to use.
                         </p>
                         <div class="mt-8">
-                            <a
-                                href="/cv.pdf"
-                                class="inline-flex items-center px-5 py-3 bg-gradient-to-r from-primary to-primary-light text-white rounded-lg hover:shadow-glow-sm transition-all"
+                            <Button
+                                href="/cv_Paolo.pdf"
+                                variant="primary"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
@@ -88,7 +88,7 @@ const experience = [
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                 </svg>
                                 Download CV
-                            </a>
+                            </Button>
                         </div>
                     </div>
                 </div>
@@ -102,7 +102,7 @@ const experience = [
                         <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10 rounded-xl"></div>
 
                         <!-- Image container -->
-                        <div class="bg-gray-800/60 rounded-xl overflow-hidden shadow-glow-md border border-gray-700">
+                        <div class="bg-surface rounded-xl overflow-hidden shadow-glow-md border border-border-secondary">
                             <Image
                                 src={profileImage}
                                 alt="Paolo Papania"
@@ -117,17 +117,17 @@ const experience = [
 
             <!-- Skills Section -->
             <div class="mb-16 animate-fadeIn animation-delay-200">
-                <h2 class="text-2xl font-bold text-white mb-6 inline-flex items-center">
-                    <span class="bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">Skills & Expertise</span>
-                    <div class="ml-3 h-px w-20 bg-gradient-to-r from-primary to-transparent"></div>
+                <h2 class="text-2xl font-bold text-text-primary mb-6 inline-flex items-center">
+                    <span class="bg-gradient-primary bg-clip-text text-transparent">Skills & Expertise</span>
+                    <div class="ml-3 h-px w-20 bg-gradient-primary"></div>
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {skills.map((skillGroup, index) => (
-                        <div class="bg-gray-800/60 backdrop-blur-sm rounded-xl overflow-hidden shadow-glow-sm hover:shadow-glow-md transition-all duration-300 border border-gray-700 group"
+                        <div class="bg-surface backdrop-blur-sm rounded-xl overflow-hidden shadow-glow-sm hover:shadow-glow-md transition-all duration-300 border border-border-secondary group"
                             style={`animation-delay: ${200 + (index * 100)}ms`}>
                             <!-- Gradient header -->
-                            <div class="bg-gradient-to-r from-primary to-primary-light/70 p-4 group-hover:from-primary-light group-hover:to-primary transition-all duration-500">
-                                <h3 class="text-xl font-semibold text-white">
+                            <div class="bg-gradient-primary p-4">
+                                <h3 class="text-xl font-semibold text-text-inverted">
                                     {skillGroup.category}
                                 </h3>
                             </div>
@@ -135,10 +135,10 @@ const experience = [
                                 <ul class="space-y-3">
                                     {skillGroup.items.map((skill) => (
                                         <li class="flex items-center">
-                                            <svg class="w-5 h-5 text-primary-light mr-2 transition-transform duration-300 group-hover:scale-110" fill="currentColor" viewBox="0 0 20 20">
+                                            <svg class="w-5 h-5 text-brand-primary-light mr-2 transition-transform duration-300 group-hover:scale-110" fill="currentColor" viewBox="0 0 20 20">
                                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                                             </svg>
-                                            <span class="text-gray-300">{skill}</span>
+                                            <span class="text-text-secondary">{skill}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -152,24 +152,24 @@ const experience = [
             <div class="grid md:grid-cols-2 gap-12 mb-16 animate-fadeIn animation-delay-300">
                 <!-- Education -->
                 <div>
-                    <h2 class="text-2xl font-bold text-white mb-6 inline-flex items-center">
-                        <span class="bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">Education</span>
-                        <div class="ml-3 h-px w-20 bg-gradient-to-r from-primary to-transparent"></div>
+                    <h2 class="text-2xl font-bold text-text-primary mb-6 inline-flex items-center">
+                        <span class="bg-gradient-primary bg-clip-text text-transparent">Education</span>
+                        <div class="ml-3 h-px w-20 bg-gradient-primary"></div>
                     </h2>
                     <div class="space-y-8">
                         {education.map((item, index) => (
-                            <div class="relative pl-8 border-l-2 border-gray-700 group" style={`animation-delay: ${300 + (index * 100)}ms`}>
-                                <div class="absolute w-4 h-4 bg-gradient-to-r from-primary to-primary-light rounded-full -left-[9px] top-1 shadow-glow-sm group-hover:shadow-glow-md transition-all duration-300"></div>
-                                <h3 class="text-xl font-semibold text-white group-hover:text-primary-light transition-colors duration-300">
+                            <div class="relative pl-8 border-l-2 border-border-secondary group" style={`animation-delay: ${300 + (index * 100)}ms`}>
+                                <div class="absolute w-4 h-4 bg-gradient-primary rounded-full -left-[9px] top-1 shadow-glow-sm group-hover:shadow-glow-md transition-all duration-300"></div>
+                                <h3 class="text-xl font-semibold text-text-primary group-hover:text-brand-primary-light transition-colors duration-300">
                                     {item.degree}
                                 </h3>
-                                <p class="text-primary-light mb-1">
+                                <p class="text-brand-primary-light mb-1">
                                     {item.institution}
                                 </p>
-                                <p class="text-sm text-gray-500 mb-2">
+                                <p class="text-sm text-text-muted mb-2">
                                     {item.year}
                                 </p>
-                                <p class="text-gray-300">
+                                <p class="text-text-secondary">
                                     {item.description}
                                 </p>
                             </div>
@@ -179,24 +179,24 @@ const experience = [
 
                 <!-- Experience -->
                 <div>
-                    <h2 class="text-2xl font-bold text-white mb-6 inline-flex items-center">
-                        <span class="bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">Experience</span>
-                        <div class="ml-3 h-px w-20 bg-gradient-to-r from-primary to-transparent"></div>
+                    <h2 class="text-2xl font-bold text-text-primary mb-6 inline-flex items-center">
+                        <span class="bg-gradient-primary bg-clip-text text-transparent">Experience</span>
+                        <div class="ml-3 h-px w-20 bg-gradient-primary"></div>
                     </h2>
                     <div class="space-y-8">
                         {experience.map((item, index) => (
-                            <div class="relative pl-8 border-l-2 border-gray-700 group" style={`animation-delay: ${300 + (index * 100)}ms`}>
-                                <div class="absolute w-4 h-4 bg-gradient-to-r from-primary to-primary-light rounded-full -left-[9px] top-1 shadow-glow-sm group-hover:shadow-glow-md transition-all duration-300"></div>
-                                <h3 class="text-xl font-semibold text-white group-hover:text-primary-light transition-colors duration-300">
+                            <div class="relative pl-8 border-l-2 border-border-secondary group" style={`animation-delay: ${300 + (index * 100)}ms`}>
+                                <div class="absolute w-4 h-4 bg-gradient-primary rounded-full -left-[9px] top-1 shadow-glow-sm group-hover:shadow-glow-md transition-all duration-300"></div>
+                                <h3 class="text-xl font-semibold text-text-primary group-hover:text-brand-primary-light transition-colors duration-300">
                                     {item.position}
                                 </h3>
-                                <p class="text-primary-light mb-1">
+                                <p class="text-brand-primary-light mb-1">
                                     {item.company}
                                 </p>
-                                <p class="text-sm text-gray-500 mb-2">
+                                <p class="text-sm text-text-muted mb-2">
                                     {item.period}
                                 </p>
-                                <p class="text-gray-300">
+                                <p class="text-text-secondary">
                                     {item.description}
                                 </p>
                             </div>
@@ -207,15 +207,15 @@ const experience = [
 
             <!-- Personal Interests -->
             <div class="mb-16 animate-fadeIn animation-delay-400">
-                <h2 class="text-2xl font-bold text-white mb-6 inline-flex items-center">
-                    <span class="bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">Beyond Work</span>
-                    <div class="ml-3 h-px w-20 bg-gradient-to-r from-primary to-transparent"></div>
+                <h2 class="text-2xl font-bold text-text-primary mb-6 inline-flex items-center">
+                    <span class="bg-gradient-primary bg-clip-text text-transparent">Beyond Work</span>
+                    <div class="ml-3 h-px w-20 bg-gradient-primary"></div>
                 </h2>
-                <div class="bg-gray-800/60 backdrop-blur-sm rounded-xl p-8 border border-gray-700 shadow-glow-sm overflow-hidden relative">
+                <div class="bg-surface backdrop-blur-sm rounded-xl p-8 border border-border-secondary shadow-glow-sm overflow-hidden relative">
                     <!-- Decorative gradient accent -->
-                    <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-primary/20 to-transparent rounded-bl-full -z-1"></div>
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-primary/20 rounded-bl-full -z-1"></div>
 
-                    <div class="text-gray-300 space-y-4 relative z-10">
+                    <div class="text-text-secondary space-y-4 relative z-10">
                         <p>
                             When I'm not designing or coding, you can find me immersed in video games or cheering for my favorite rugby team. I'm also passionate about ergonomic computing, using a custom low-profile Ferris Sweep split keyboard as my daily driver.
                         </p>
@@ -270,10 +270,10 @@ const experience = [
 
             <!-- Contact CTA -->
             <div class="text-center animate-fadeIn animation-delay-500">
-                <h2 class="text-2xl font-bold text-white mb-4 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent inline-block">
+                <h2 class="text-2xl font-bold text-text-primary mb-4 bg-gradient-primary bg-clip-text text-transparent inline-block">
                     Let's Connect
                 </h2>
-                <p class="text-gray-300 mb-6">
+                <p class="text-text-secondary mb-6">
                     Interested in working together or just want to say hello?
                 </p>
                 <Button
