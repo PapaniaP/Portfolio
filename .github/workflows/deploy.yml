@@ -50,6 +50,6 @@ jobs:
             # Assumes public_html is /home/user/public_html. Adjust target path if needed.
             # The trailing slash on ./dist/ is important!
             # --delete flag removes files from public_html that are not in dist
-            rsync -avz --delete ./dist/ /home/${{ secrets.SSH_USER }}/public_html/
+            rsync -avz --delete ./dist/ /var/www/papaniap.dk/public_html/
 
             echo "Deployment complete!"
