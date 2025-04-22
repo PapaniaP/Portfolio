@@ -37,6 +37,12 @@ export default {
           "hsl(var(--color-brand-accent) / <alpha-value>)",
         "brand-accent-hover":
           "hsl(var(--color-brand-accent-hover) / <alpha-value>)",
+        "accent-amber":
+          "hsl(var(--color-accent-amber) / <alpha-value>)",
+        "accent-emerald":
+          "hsl(var(--color-accent-emerald) / <alpha-value>)",
+        "accent-purple":
+          "hsl(var(--color-accent-purple) / <alpha-value>)",
       },
       fontFamily: {
         heading: ['"Archiv Grotesk"', "sans-serif"],

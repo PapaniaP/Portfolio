@@ -53,11 +53,12 @@ const { title, description, coverImage, sections, showTableOfContents = true } =
   </style>
 
   <div class="relative min-h-screen bg-background pb-24">
-    <div class="w-full h-[30vh] md:h-[35vh] relative mb-12">
+    <div class="w-full h-[40vh] md:h-[45vh] relative mb-24">
       <Image
         src={coverImage}
         alt={`Cover image for ${title}`}
-        class="w-full h-full object-cover"
+        class="w-full h-full object-cover "
+        style="object-position: 50% 60%;"
         widths={[400, 800, 1200, 1600, 2000]}
         sizes="100vw"
         loading="eager"

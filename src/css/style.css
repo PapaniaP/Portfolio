@@ -23,6 +23,11 @@
   --color-brand-accent: 20 100% 85%; /* soft peach */
   --color-brand-accent-hover: 20 100% 75%;
 
+  /* Supporting Colors */
+  --color-accent-amber: 43 96% 45%; /* Darker amber (amber-600 equivalent) */
+  --color-accent-emerald: 160 84% 39%; /* fresh green */
+  --color-accent-purple: 270 70% 60%; /* rich purple */
+
   /* Other variables from original file - kept for potential use */
   --font-size-base: 1rem;
   --line-height-base: 1.5;
