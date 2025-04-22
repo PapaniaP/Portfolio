@@ -21,35 +21,41 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # Navigate to the user's home directory (optional, adjust if needed)
-            cd /home/${{ secrets.SSH_USER }}
+            # Navigate to the web directory where the repo should live
+            cd /var/www/${{ secrets.SSH_USER }} || exit 1 # Exit if cd fails
+
+            # Configure SSH to automatically accept GitHub\'s host key for this session
+            mkdir -p ~/.ssh # Ensure .ssh directory exists
+            chmod 700 ~/.ssh # Ensure correct permissions
+            echo "Host github.com\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null" >> ~/.ssh/config # Add github.com rule, avoid saving key
 
             # Check if the repository directory exists
-            if [ ! -d "repo" ] ; then
-              echo "Cloning repository..."
+            REPO_DIR="repo" # Define repo directory name
+            if [ ! -d "$REPO_DIR" ] ; then
+              echo "Cloning repository into $(pwd)/$REPO_DIR ..."
               # Clone the repository using the deploy key
-              git clone git@github.com:${{ github.repository }}.git repo
-              cd repo
+              git clone git@github.com:${{ github.repository }}.git "$REPO_DIR" || exit 1 # Exit if clone fails
+              cd "$REPO_DIR" || exit 1
             else
-              echo "Repository exists, pulling changes..."
-              cd repo
+              echo "Repository exists in $(pwd)/$REPO_DIR, pulling changes..."
+              cd "$REPO_DIR" || exit 1
               # Ensure we are on the correct branch and reset if needed
-              git fetch origin
-              git checkout ${{ github.ref_name }}
-              git reset --hard origin/${{ github.ref_name }}
-              git pull origin ${{ github.ref_name }}
+              git fetch origin || exit 1
+              git checkout ${{ github.ref_name }} || exit 1
+              git reset --hard origin/${{ github.ref_name }} || exit 1
+              git pull origin ${{ github.ref_name }} || exit 1
             fi
 
             echo "Installing dependencies..."
-            npm install
+            npm install || exit 1 # Exit on failure
 
             echo "Building website..."
-            npm run build
+            npm run build || exit 1 # Exit on failure
 
             echo "Deploying build files to public_html..."
-            # Assumes public_html is /home/user/public_html. Adjust target path if needed.
-            # The trailing slash on ./dist/ is important!
-            # --delete flag removes files from public_html that are not in dist
-            rsync -avz --delete ./dist/ /var/www/papaniap.dk/public_html/
+            # Using absolute path for destination is clearer
+            DEST_PATH="/var/www/${{ secrets.SSH_USER }}/public_html/"
+            echo "Syncing ./dist/ to $DEST_PATH"
+            rsync -avz --delete ./dist/ "$DEST_PATH" || exit 1 # Exit on failure
 
             echo "Deployment complete!"
