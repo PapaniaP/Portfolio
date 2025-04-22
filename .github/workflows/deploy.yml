@@ -1,61 +1,41 @@
-name: Deploy to Simply.com
+name: Deploy to Simply.com via Web Deploy
 
 on:
   push:
     branches:
-      - feature/astro-migration # Or your default branch (e.g., master)
+      - feature/astro-migration # Or your default branch
 
 jobs:
-  deploy:
-    name: Deploy Website
-    runs-on: ubuntu-latest
+  build_and_deploy:
+    name: Build and Deploy Website
+    runs-on: windows-latest # Required by the Web Deploy action
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy to Server
-        uses: appleboy/ssh-action@v1.0.3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            # Navigate to the web directory where the repo should live
-            cd /var/www/${{ secrets.SSH_USER }} || exit 1 # Exit if cd fails
+          node-version: "20" # Specify your Node.js version, adjust if needed
+          cache: "npm"
 
-            # Configure SSH to automatically accept GitHub\'s host key for this session
-            mkdir -p ~/.ssh # Ensure .ssh directory exists
-            chmod 700 ~/.ssh # Ensure correct permissions
-            echo "Host github.com\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null" >> ~/.ssh/config # Add github.com rule, avoid saving key
+      - name: Install dependencies
+        run: npm install
 
-            # Check if the repository directory exists
-            REPO_DIR="repo" # Define repo directory name
-            if [ ! -d "$REPO_DIR" ] ; then
-              echo "Cloning repository into $(pwd)/$REPO_DIR ..."
-              # Clone the repository using the deploy key
-              git clone git@github.com:${{ github.repository }}.git "$REPO_DIR" || exit 1 # Exit if clone fails
-              cd "$REPO_DIR" || exit 1
-            else
-              echo "Repository exists in $(pwd)/$REPO_DIR, pulling changes..."
-              cd "$REPO_DIR" || exit 1
-              # Ensure we are on the correct branch and reset if needed
-              git fetch origin || exit 1
-              git checkout ${{ github.ref_name }} || exit 1
-              git reset --hard origin/${{ github.ref_name }} || exit 1
-              git pull origin ${{ github.ref_name }} || exit 1
-            fi
+      - name: Build website
+        run: npm run build
+        # If your build needs environment variables, add them here:
+        # env:
+        #   PUBLIC_URL: '/' # Example environment variable
 
-            echo "Installing dependencies..."
-            npm install || exit 1 # Exit on failure
-
-            echo "Building website..."
-            npm run build || exit 1 # Exit on failure
-
-            echo "Deploying build files to public_html..."
-            # Using absolute path for destination is clearer
-            DEST_PATH="/var/www/${{ secrets.SSH_USER }}/public_html/"
-            echo "Syncing ./dist/ to $DEST_PATH"
-            rsync -avz --delete ./dist/ "$DEST_PATH" || exit 1 # Exit on failure
-
-            echo "Deployment complete!"
+      - name: Deploy to Simply.com
+        uses: rasmusbuchholdt/simply-web-deploy@2.2.0
+        with:
+          website-name: ${{ secrets.WEBSITE_NAME }}
+          server-computer-name: ${{ secrets.SERVER_COMPUTER_NAME }}
+          server-username: ${{ secrets.SERVER_USERNAME }}
+          server-password: ${{ secrets.SERVER_PASSWORD }}
+          source-path: '\dist\' # Path to built files (use backslashes on Windows)
+          # target-path: '/sub-directory/' # Optional: Deploy to a subdirectory within the website root
+          target-delete: true # Delete files on the server that are not in the source path
