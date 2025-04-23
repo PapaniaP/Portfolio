@@ -48,6 +48,7 @@ export default {
         heading: ['"Archiv Grotesk"', "sans-serif"],
         display: ['"Archiv Grotesk"', "sans-serif"],
         sans: ['"IBM Plex Sans"', "sans-serif"],
+        virgil: ['"Virgil"', "cursive"],
       },
       spacing: {
         "8xl": "96rem",

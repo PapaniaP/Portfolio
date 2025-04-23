@@ -49,6 +49,74 @@
   color: hsl(var(--color-text-primary));
 }
 
+/* Font Face Declarations */
+
+/* --- Archiv Grotesk --- */
+@font-face {
+  font-family: "Archiv Grotesk"; /* Matches tailwind.config.mjs */
+  src: url("/fonts/ArchivGrotesk-Hairline.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Archiv Grotesk";
+  src: url("/fonts/ArchivGrotesk-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Archiv Grotesk";
+  src: url("/fonts/ArchivGrotesk-Regular.otf") format("opentype"); /* Using Regular over Normal */
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Optional: If you specifically need the 'Normal' file as a distinct weight, add another rule */
+/* @font-face {
+  font-family: 'Archiv Grotesk';
+  src: url('/fonts/ArchivGrotesk-Normal.otf') format('opentype');
+  font-weight: 400; // Or assign a different weight if it's distinct
+  font-style: normal;
+  font-display: swap;
+} */
+
+@font-face {
+  font-family: "Archiv Grotesk";
+  src: url("/fonts/ArchivGrotesk-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Archiv Grotesk";
+  src: url("/fonts/ArchivGrotesk-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- Virgil --- */
+@font-face {
+  font-family: "Virgil";
+  src: url("/fonts/Virgil font.ttf") format("truetype");
+  font-weight: normal; /* Assuming 400 */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- Logo Font Style (if not already present) --- */
+.logo-font {
+  font-family: "Virgil", sans-serif; /* Apply Virgil, fallback to sans-serif */
+  font-size: 1.5rem; /* Example size, adjust as needed */
+  /* Add other fine-tuning styles */
+}
+
 /* Reset & Base Styles */
 *,
 *::before,
