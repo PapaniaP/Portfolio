@@ -1,4 +1,4 @@
-name: Deploy to Simply.com via Web Deploy
+name: Deploy to Simply.com via FTP
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 jobs:
   build_and_deploy:
     name: Build and Deploy Website
-    runs-on: windows-latest # Required by the Web Deploy action
+    runs-on: ubuntu-latest # Switch back to ubuntu
 
     steps:
       - name: Checkout code
@@ -29,13 +29,15 @@ jobs:
         # env:
         #   PUBLIC_URL: '/' # Example environment variable
 
-      - name: Deploy to Simply.com
-        uses: rasmusbuchholdt/simply-web-deploy@2.2.0
+      - name: Deploy to Simply.com via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5 # Use a specific version
         with:
-          website-name: ${{ secrets.WEBSITE_NAME }}
-          server-computer-name: ${{ secrets.SERVER_COMPUTER_NAME }}
-          server-username: ${{ secrets.SERVER_USERNAME }}
-          server-password: ${{ secrets.SERVER_PASSWORD }}
-          source-path: '\dist\' # Path to built files (use backslashes on Windows)
-          # target-path: '/sub-directory/' # Optional: Deploy to a subdirectory within the website root
-          target-delete: true # Delete files on the server that are not in the source path
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # port: 21 # Optional: Default is 21
+          local-dir: ./dist/ # Path to the built files (note the trailing slash)
+          server-dir: /var/www/papaniap.dk/public_html/ # Target directory on server
+          # Optional: Recommended settings
+          dangerous-clean-slate: true # Deletes existing files on the server not in local-dir
+          timeout: 30000 # Increase timeout to 30 seconds
