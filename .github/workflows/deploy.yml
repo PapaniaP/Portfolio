@@ -37,7 +37,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           # port: 21 # Optional: Default is 21
           local-dir: ./dist/ # Path to the built files (note the trailing slash)
-          server-dir: /www/papaniap.dk/public_html/ # Target directory on server
+          server-dir: /public_html/ # Target directory on server
           # Optional: Recommended settings
           dangerous-clean-slate: true # Deletes existing files on the server not in local-dir
           timeout: 30000 # Increase timeout to 30 seconds
