@@ -17,30 +17,35 @@ const galleryItems = [
     alt: "Harmony UI Component Library",
     width: harmonyUICover.width,
     height: harmonyUICover.height,
+    description: "A comprehensive design system with reusable components and pattern library for consistent user experience across RaskRask platforms."
   },
   {
     src: image1.src,
     alt: "Harmony UI Mobile Design",
     width: image1.width,
     height: image1.height,
+    description: "Responsive mobile interface designs following the Harmony design language, optimized for touch interactions."
   },
   {
     src: image2.src,
     alt: "Harmony UI Design Workshop",
     width: image2.width,
     height: image2.height,
+    description: "Collaborative workshop session with stakeholders to define the core principles and visual direction of the Harmony UI system."
   },
   {
     src: image3.src,
     alt: "Harmony UI User Experience Persona",
     width: image3.width,
     height: image3.height,
+    description: "User persona development to ensure the design system addresses the needs of both internal developers and end users."
   },
   {
     src: harmonyUICover.src, // Using cover again for variety
     alt: "Harmony UI Development Guidelines",
     width: harmonyUICover.width,
     height: harmonyUICover.height,
+    description: "Technical documentation and implementation guidelines for frontend developers working with the Harmony component library."
   }
 ];
 ---
@@ -68,51 +73,64 @@ const galleryItems = [
     </div>
   </section>
 
-  <!-- Keep the Lightbox modal HTML -->
-  <div id="gallery-lightbox" class="fixed inset-0 z-50 hidden bg-black/90 flex items-center justify-center p-4">
+  <!-- Lightbox modal with description -->
+  <div id="gallery-lightbox" class="fixed inset-0 z-50 bg-black/90 items-center justify-center p-4" style="display: none;">
     <button id="close-lightbox" class="absolute top-4 right-4 text-white p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
       </svg>
     </button>
-    <div class="max-w-screen-xl max-h-screen overflow-auto">
-      <img id="lightbox-img" src="" alt="" class="mx-auto max-h-[90vh] max-w-full" />
+    <div class="max-w-screen-xl max-h-screen flex flex-col items-center">
+      <div class="relative max-h-[80vh] overflow-hidden">
+        <img id="lightbox-img" src="" alt="" class="mx-auto max-h-[80vh] max-w-full rounded-lg shadow-2xl" />
+      </div>
+      <!-- Image description container -->
+      <div id="lightbox-description" class="mt-4 bg-black/50 rounded-lg p-4 max-w-2xl text-center opacity-90">
+        <h3 id="lightbox-title" class="text-white text-lg font-medium mb-1"></h3>
+        <p id="lightbox-desc" class="text-white/90 text-sm"></p>
+      </div>
     </div>
   </div>
 </GalleryLayout>
 
 <script>
-  // Tell TypeScript that we are adding this function to the window
-  declare global {
-    interface Window {
-      openGalleryLightbox: (src: string, alt: string) => void;
-    }
-  }
-
   // Function to handle opening the lightbox (called from React component)
-  function openGalleryLightbox(src: string, alt: string) {
+  function openGalleryLightbox(src: string, alt: string, description?: string): void {
     const lightbox = document.getElementById('gallery-lightbox');
     const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDesc = document.getElementById('lightbox-desc');
 
     if (lightboxImg && src) {
+      // Set image
       lightboxImg.src = src;
       lightboxImg.alt = alt || '';
-      lightbox?.classList.remove('hidden');
-      lightbox?.classList.add('flex');
+
+      // Set description
+      if (lightboxTitle && lightboxDesc) {
+        lightboxTitle.textContent = alt || '';
+        lightboxDesc.textContent = description || '';
+      }
+
+      // Show lightbox
+      if (lightbox) {
+        lightbox.style.display = 'flex';
+      }
       document.body.classList.add('overflow-hidden');
     }
   }
 
   // Function to handle closing the lightbox
-  function closeGalleryLightbox() {
+  function closeGalleryLightbox(): void {
     const lightbox = document.getElementById('gallery-lightbox');
-    lightbox?.classList.add('hidden');
-    lightbox?.classList.remove('flex');
+    if (lightbox) {
+      lightbox.style.display = 'none';
+    }
     document.body.classList.remove('overflow-hidden');
   }
 
   // Initialize lightbox closing functionality
-  function initLightboxControls() {
+  function initLightboxControls(): void {
     const lightbox = document.getElementById('gallery-lightbox');
     const closeBtn = document.getElementById('close-lightbox');
 
@@ -120,15 +138,15 @@ const galleryItems = [
     closeBtn?.addEventListener('click', closeGalleryLightbox);
 
     // Close lightbox on click outside the image
-    lightbox?.addEventListener('click', (e) => {
+    lightbox?.addEventListener('click', (e: Event) => {
       if (e.target === lightbox) {
         closeGalleryLightbox();
       }
     });
 
     // Close on escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !lightbox?.classList.contains('hidden')) {
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && lightbox?.style.display === 'flex') {
         closeGalleryLightbox();
       }
     });
@@ -142,4 +160,11 @@ const galleryItems = [
 
   // For Astro view transitions, also initialize when the navigation is complete
   document.addEventListener('astro:page-load', initLightboxControls);
+</script>
+
+<script>
+  // TypeScript interface declaration - separate from runtime code
+  interface Window {
+    openGalleryLightbox: (src: string, alt: string, description?: string) => void;
+  }
 </script>

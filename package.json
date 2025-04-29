@@ -7,6 +7,8 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "build:css": "tailwindcss -i ./src/css/style.css -o ./dist/output.css --minify",
+    "build:prod": "npm run build:css && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -30,6 +32,7 @@
     "@astrojs/mdx": "^4.2.0",
     "@astrojs/react": "^4.2.4",
     "@astrojs/tailwind": "^5.1.0",
+    "@lucide/astro": "^0.503.0",
     "astro": "^5.5.2",
     "framer-motion": "^12.6.2",
     "lucide-react": "^0.488.0",

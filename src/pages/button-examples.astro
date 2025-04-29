@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/ui/Button.astro';
+import { Icon } from '@lucide/astro';
+---
+
+<Layout title="Button Examples with Icons">
+  <div class="container mx-auto px-6 py-12">
+    <h1 class="text-4xl font-bold mb-8">Button Examples with Icons</h1>
+
+    <!-- Directly render a Lucide icon for comparison -->
+    <section class="mb-12 p-6 border border-gray-200 rounded-md">
+      <h2 class="text-2xl font-semibold mb-4">Raw Lucide Icon Reference</h2>
+      <div class="flex flex-wrap gap-8 items-center">
+        <div>
+          <p class="text-sm mb-2">Default Icon:</p>
+          <Icon name="home" />
+        </div>
+        <div>
+          <p class="text-sm mb-2">With Size & Color:</p>
+          <Icon name="home" size={24} color="red" />
+        </div>
+        <div>
+          <p class="text-sm mb-2">With Custom Stroke:</p>
+          <Icon name="home" size={24} color="blue" stroke-width={3} />
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Standard Variants with Icons</h2>
+      <div class="flex flex-wrap gap-4">
+        <Button variant="primary" icon="home">Home</Button>
+        <Button variant="secondary" icon="settings">Settings</Button>
+        <Button variant="outline" icon="download">Download</Button>
+        <Button variant="ghost" icon="info">Info</Button>
+        <Button variant="terminal" icon="terminal">Terminal</Button>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Icon Position</h2>
+      <div class="flex flex-wrap gap-4">
+        <Button variant="primary" icon="arrow-left" iconPosition="left">Previous</Button>
+        <Button variant="primary" icon="arrow-right" iconPosition="right">Next</Button>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Size Variations</h2>
+      <div class="flex flex-wrap items-center gap-4">
+        <Button variant="primary" size="sm" icon="plus">Small</Button>
+        <Button variant="primary" size="md" icon="plus">Medium</Button>
+        <Button variant="primary" size="lg" icon="plus">Large</Button>
+        <Button variant="primary" size="icon" icon="plus"></Button>
+      </div>
+    </section>
+
+    <section class="mb-12 p-6 border border-gray-200 rounded-md">
+      <h2 class="text-2xl font-semibold mb-4">Debug: Icons in Different Backgrounds</h2>
+      <div class="flex flex-wrap gap-4">
+        <div class="p-4 bg-white rounded">
+          <Button variant="primary" icon="sun">Light Bg</Button>
+        </div>
+        <div class="p-4 bg-gray-800 rounded">
+          <Button variant="primary" icon="moon">Dark Bg</Button>
+        </div>
+        <div class="p-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded">
+          <Button variant="secondary" icon="zap">Gradient Bg</Button>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Common Use Cases</h2>
+      <div class="flex flex-wrap gap-4">
+        <Button variant="primary" icon="send">Submit</Button>
+        <Button variant="outline" icon="trash-2">Delete</Button>
+        <Button variant="secondary" icon="refresh-cw">Refresh</Button>
+        <Button variant="ghost" icon="x">Cancel</Button>
+      </div>
+    </section>
+
+    <div class="mt-8">
+      <Button href="/" variant="primary" icon="chevron-left">Back to Home</Button>
+    </div>
+  </div>
+</Layout>

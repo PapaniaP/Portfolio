@@ -203,62 +203,46 @@ const experience = [
                         </p>
                     </div>
 
-                    <!-- Fun interactive element - Kept unique style -->
-                    <div class="mt-12 relative z-10">
-                        <div class="fun-fact-terminal">
-                            <!-- Terminal Header -->
-                            <div class="terminal-header">
-                                <div class="terminal-buttons">
-                                    <span class="terminal-button close"></span>
-                                    <span class="terminal-button minimize"></span>
-                                    <span class="terminal-button zoom"></span>
-                                </div>
-                                <div class="terminal-title">fun_facts.sh</div>
-                            </div>
 
-                            <!-- Terminal Content -->
-                            <div class="terminal-content">
-                                <div class="command-line">
-                                    <span class="prompt">visitor@portfolio</span>
-                                    <span class="separator">:</span>
-                                    <span class="directory">~/fun-facts</span>
-                                    <span class="separator">$</span>
-                                    <span class="command">get_random_fact</span>
-                                </div>
-                                <div class="output-line">
-                                    <span class="output-prefix">[OUTPUT] </span>
-                                    <span id="fun-fact" class="fact-text">I use a custom low-profile Ferris Sweep split keyboard, which has helped me maintain better ergonomics while coding.</span>
-                                </div>
-                                <div class="command-line">
-                                    <Button
-                                        id="new-fact-btn"
-                                        variant="terminal"
-                                        size="sm"
-                                    >
-                                        $ generate_new_fact
-                                    </Button>
-                                </div>
+                </div>
+                 <!-- Fun interactive element - Kept unique style -->
+                 <div class="mt-12 relative z-10">
+                    <div class="fun-fact-terminal">
+                        <!-- Terminal Header -->
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <span class="terminal-button close"></span>
+                                <span class="terminal-button minimize"></span>
+                                <span class="terminal-button zoom"></span>
+                            </div>
+                            <div class="terminal-title">fun_facts.sh</div>
+                        </div>
+
+                        <!-- Terminal Content -->
+                        <div class="terminal-content">
+                            <div class="command-line">
+                                <span class="prompt">visitor@portfolio</span>
+                                <span class="separator">:</span>
+                                <span class="directory">~/fun-facts</span>
+                                <span class="separator">$</span>
+                                <span class="command">get_random_fact</span>
+                            </div>
+                            <div class="output-line">
+                                <span class="output-prefix">[OUTPUT] </span>
+                                <span id="fun-fact" class="fact-text">I use a custom low-profile Ferris Sweep split keyboard, which has helped me maintain better ergonomics while coding.</span>
+                            </div>
+                            <div class="command-line">
+                                <Button
+                                    id="new-fact-btn"
+                                    variant="terminal"
+                                    size="sm"
+                                >
+                                    $ generate_new_fact
+                                </Button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Contact CTA -->
-            <div class="text-center animate-fadeIn animation-delay-500">
-                <h2 class="text-2xl font-bold text-text-primary mb-4 bg-gradient-primary bg-clip-text text-transparent inline-block">
-                    Let's Connect
-                </h2>
-                <p class="text-text-secondary mb-6">
-                    Interested in working together or just want to say hello?
-                </p>
-                <Button
-                    href="/#contact-section"
-                    variant="primary"
-                    size="lg"
-                >
-                    Get in Touch
-                </Button>
             </div>
         </div>
     </div>

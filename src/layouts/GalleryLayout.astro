@@ -20,10 +20,7 @@ const { title, description } = Astro.props;
         <h1 class="text-4xl md:text-5xl font-bold font-heading text-text-primary mb-4">{title}</h1>
         <p class="text-lg text-text-secondary max-w-2xl">{description}</p>
       </header>
-      <Button href="/projects" variant="secondary" size="sm" class="mb-10">
-        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-        </svg>
+      <Button href="/projects" variant="secondary" size="sm" class="mb-10" icon="arrow-left">
         Back to Projects
       </Button>
       <main class="flex-1">

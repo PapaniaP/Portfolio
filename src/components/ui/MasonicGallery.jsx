@@ -7,7 +7,22 @@ const GalleryItemCard = ({ data }) => {
   // Function to call the global lightbox opener
   const handleImageClick = () => {
     if (window.openGalleryLightbox) {
-      window.openGalleryLightbox(data.src, data.alt);
+      // Check if the openGalleryLightbox function accepts 3 parameters by checking its length
+      try {
+        if (window.openGalleryLightbox.length === 3) {
+          window.openGalleryLightbox(
+            data.src,
+            data.alt,
+            data.description || data.alt
+          );
+        } else {
+          // Fallback to the original version with 2 parameters
+          window.openGalleryLightbox(data.src, data.alt);
+        }
+      } catch (e) {
+        // If there's any error, use the most basic version
+        window.openGalleryLightbox(data.src, data.alt);
+      }
     }
   };
 
@@ -24,7 +39,19 @@ const GalleryItemCard = ({ data }) => {
         loading="lazy"
         className="block w-full h-auto transition-transform duration-300 group-hover:scale-105"
       />
-      <div className="overlay absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
+      {/* Overlay with caption on hover */}
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-end justify-start p-4 opacity-0 group-hover:opacity-100">
+        <div className="text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+          <h3 className="font-medium text-sm md:text-base">
+            {data.alt}
+          </h3>
+          {data.description && (
+            <p className="text-xs md:text-sm text-white/80 mt-1 line-clamp-2">
+              {data.description}
+            </p>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
