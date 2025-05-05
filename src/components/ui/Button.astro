@@ -9,7 +9,7 @@
   <Button icon="arrow-right" iconPosition="right" variant="secondary">Next</Button>
 
   Props:
-  - variant: "primary" | "secondary" | "outline" | "ghost" | "terminal" (default: "primary")
+  - variant: "primary" | "secondary" | "outline" | "ghost" | "terminal" | "link" (default: "primary")
   - size: "sm" | "md" | "lg" | "icon" (default: "md")
   - href: string (optional - if provided, renders as <a>, otherwise as <button>)
   - class: string (optional - additional classes)
@@ -85,7 +85,7 @@ const iconMap = {
 type IconName = keyof typeof iconMap;
 
 export interface Props {
-  variant?: "primary" | "secondary" | "outline" | "ghost" | "terminal";
+  variant?: "primary" | "secondary" | "outline" | "ghost" | "terminal" | "link";
   size?: "sm" | "md" | "lg" | "icon";
   href?: string;
   class?: string;
@@ -107,14 +107,16 @@ const {
 } = Astro.props;
 
 // Base classes for all buttons
-const baseClasses = "inline-flex items-center justify-center font-medium transition-all duration-200 select-none rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-primary/50 focus-visible:ring-offset-background disabled:opacity-50 disabled:pointer-events-none hover:shadow-md";
+const baseClasses = variant === "link"
+  ? "inline-flex items-center font-medium bg-transparent border-none p-0 m-0 shadow-none rounded-none transition-colors duration-200 focus-visible:outline-none focus-visible:underline focus-visible:text-brand-dark hover:underline hover:text-brand-dark text-brand-primary underline-offset-2"
+  : "inline-flex items-center justify-center font-medium transition-all duration-200 select-none rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-primary/50 focus-visible:ring-offset-background disabled:opacity-50 disabled:pointer-events-none hover:shadow-md";
 
 // Size variations
 const sizeClasses = {
-  sm: "h-9 px-3 text-sm",
-  md: "h-10 py-2 px-4",
-  lg: "h-11 px-6 text-base",
-  icon: "h-10 w-10"
+  sm: variant === "link" ? "text-sm" : "h-9 px-3 text-sm",
+  md: variant === "link" ? "text-base" : "h-10 py-2 px-4",
+  lg: variant === "link" ? "text-lg" : "h-11 px-6 text-base",
+  icon: variant === "link" ? "" : "h-10 w-10"
 };
 
 // Variant styles
@@ -123,6 +125,7 @@ const variantClasses = {
   secondary: "bg-surface border border-border-secondary text-text-primary hover:bg-surface-accent active:bg-surface-transparent shadow-sm",
   outline: "border border-brand-primary text-brand-primary hover:bg-brand-primary/10 active:scale-[0.98]",
   ghost: "text-text-secondary hover:text-text-primary hover:bg-surface-accent",
+  link: "bg-transparent border-none p-0 m-0 shadow-none rounded-none text-brand-primary underline-offset-2"
 };
 
 // Size for icons
@@ -192,5 +195,14 @@ const IconComponent = icon ? iconMap[icon] : null;
   button:focus-visible, a:focus-visible {
     outline: 2px solid theme('colors.brand-primary');
     outline-offset: 2px;
+  }
+  /* Remove button-like focus/active for link variant */
+  a[variant-link]:focus-visible, a[variant-link]:active {
+    outline: none;
+    box-shadow: none;
+    text-decoration: underline;
+    text-decoration-thickness: .5px;
+    color: var(--color-brand-dark);
+    transform: none;
   }
 </style>

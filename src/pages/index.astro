@@ -227,26 +227,27 @@ const skillAreas = [
 									height={675}
 									class="w-full h-full object-cover"
 								/>
-								<div class="absolute inset-0 bg-gradient-to-t from-surface/90 via-surface/30 to-transparent"></div>
+								<div class="absolute inset-0 bg-gradient-to-t from-surface/70 via-surface/15 to-transparent"></div>
 								<div class="absolute bottom-4 left-4 flex flex-wrap gap-2">
 									{project.tags.map(tag => (
-										<Tag text={tag} variant="surface" />
+										<Tag text={tag} />
 									))}
 								</div>
 							</div>
 							<div class="p-6">
 								<h3 class="text-xl font-semibold text-text-primary mb-3">{project.title}</h3>
-								<p class="text-text-secondary mb-4 leading-relaxed">{project.description}</p>
-								<a
+								<p class="text-text-secondary mb-4 leading-relaxed line-clamp-3 max-w-[80%]">{project.description}</p>
+								<Button
 									href={project.link}
-									class="inline-flex items-center text-brand-primary hover:text-brand-accent transition-colors"
+									variant="link"
+									size="md"
+									icon="arrow-right"
+									iconPosition="right"
+									class="inline-flex items-center"
 									aria-label={`View ${project.title} project details`}
 								>
 									{project.linkText}
-									<svg class="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-									</svg>
-								</a>
+								</Button>
 							</div>
 						</div>
 					))}
