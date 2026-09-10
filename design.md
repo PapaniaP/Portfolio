@@ -293,3 +293,32 @@ Toolbar z-index 20; skip-link z-index 100. The reference's 120/145/155px anchor 
 - Do not add a large hero, image-heavy card grid or oversized section typography from the earlier variants.
 - Choose responsive units that preserve the reference at normal settings and remain usable with increased text size.
 - The copy, final project selection, exact icons, production theme controls and case-study presentation can evolve separately from these tokens.
+
+## Planned interaction: inline emoji reactions
+
+Added 10 September 2026 following Paolo's reference to [Rare UI — Emoji reaction](https://www.rareui.com/components/emojireaction).
+
+Status: desired interaction direction, not yet implemented in the prototype. Exact phrase, emoji set and animation values remain open. This section extends the design reference without changing the approved base tokens.
+
+### Reference behaviour
+
+Rare UI describes a tapback-style picker: click a trigger to open an emoji bar, choose an emoji to send copies floating upward, and show the last selection on the trigger. Its implementation also supports press-and-drag selection, repeated emission while held, keyboard navigation, Escape/outside-click dismissal and repositioning when space is limited.
+
+The `asChild` option allows a custom trigger, making an inline word or short phrase possible. Its documented dependencies are React, Motion, react-apple-emojis, lucide-react and Radix Slot. These are reference implementation dependencies, not a decision to add them all to the portfolio.
+
+### Proposed portfolio treatment
+
+- Start with one playful trigger inside a sentence, for example “the little details” in the introduction or beside a personal interest. These are candidate placements, not final copy.
+- Match the surrounding 14px text and approved inline styling. A small emoji or subtle accent should signal that the phrase is interactive.
+- Use a semantic button with an accessible name and visible keyboard focus. Do not intercept a phrase that already navigates somewhere.
+- Reuse the surface, border, text and accent tokens for the picker. Keep it within the viewport on mobile and layer it above the text without changing paragraph layout.
+- Prefer a brief user-triggered burst. Hold-to-repeat is optional; do not treat every feature of the reference as required.
+- Keep the selection local to the interaction initially. No public counts, analytics event or stored visitor reaction is specified.
+- Support touch and keyboard activation, dismissal with Escape and outside click, and appropriate focus handling.
+- Under reduced motion, show a static selected emoji instead of floating, shrinking or blurring particles.
+
+### Implementation decisions to resolve
+
+Use the original React component as an Astro island, or implement a small equivalent with browser-native code after reviewing the source. Decide during implementation based on fidelity and dependencies already required by the site.
+
+Do not invent particle timing, count, trajectory, z-index or picker dimensions as approved tokens yet; derive and review them with a working example. If reusing Rare UI code, review its current usage terms and retain relevant attribution.
