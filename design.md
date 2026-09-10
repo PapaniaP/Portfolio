@@ -7,7 +7,7 @@ Target branch: `portfolio-sept-2026`
 ## Source of truth
 
 - [Approved prototype](https://paolo-portfolio-directions.papaniap11.chatgpt.site/?direction=compact)
-- Prototype revision: `12b0d34a4d46b0bf3355490aa254a2d307d48501` (saved version 4).
+- Current prototype revision: `f6d6224af3a5df444f7c63c236d656f4bbd31ac1` (palette and CV refinement).
 - Source styles: `dist/compact.css`, with inherited base styles from `dist/style.css`.
 - Inspiration: [Daniel White](https://www.danielwhite.uk/), particularly the compact reading column, restrained headings and small inline details.
 
@@ -29,7 +29,7 @@ Semantic token names below are the documented implementation vocabulary. Most pr
 
 ## Colour tokens
 
-Dark is the reference's initial mode. Both modes are approved. The background remains unchanged from the selected Compact version; the accents below include the final saturation adjustment.
+Dark is the reference's initial mode. The base direction is approved; the blue/orange refinements below are the current preview requested on 10 September 2026. The background remains unchanged from the selected Compact version.
 
 | Semantic token | Prototype alias | Dark | Light | Usage |
 | --- | --- | --- | --- | --- |
@@ -37,13 +37,13 @@ Dark is the reference's initial mode. Both modes are approved. The background re
 | `--color-text-primary` | `--ink` | `#F2E5C4` | `#3C3836` | Name, headings, stronger words |
 | `--color-text-secondary` | `--muted` | `#D0C3A6` | `#665C54` | Body copy and metadata |
 | `--color-border` | `--line` | `#55534C` | `#D5C4A1` | Rules, work rail, inline badges |
-| `--color-accent-primary` | `--blue` | `#62DABB` | `#087663` | Teal links, emphasis, focus, icons |
-| `--color-accent-secondary` | `--rust` | `#FFA35C` | `#B4430C` | Orange accents and underlines |
+| `--color-accent-primary` | `--blue` | `#8B9BFF` | `#1536d8` | Blue links, emphasis, focus, icons |
+| `--color-accent-secondary` | `--rust` | `#FF791F` | `#C14300` | Orange accents and underlines |
 | `--color-accent-tertiary` | `--olive` | `#C8D65B` | `#626F07` | Occasional olive icons |
 | `--color-surface` | `--panel` | `#42433C` | `#EBDFBB` | Inline badge background, image preview surface |
 | `--color-surface-soft` | `--soft` | `#41423B` | `#F0E7C8` | Secondary supporting surface |
 
-The prototype alias `--blue` means teal in this direction. Use the semantic name in new styles.
+The primary accent now returns to a Klein-inspired blue direction. The original Astro stylesheet uses `hsl(223 84% 50%)` (its nearby hex comment is inconsistent); the new light-mode blue is deeper. Dark-mode text uses a brighter blue for contrast, while saturated fills use `--blue-solid: #2440ED` (light: `#1536D8`). The Studiz badge uses this fill with white text. Small blue glyphs on the dark badge surface use `#A3B0FF`.
 
 Derived states:
 
@@ -60,7 +60,7 @@ Derived states:
 | Strong text | Primary text |
 | Logo punctuation | Primary accent |
 
-Reference contrast checks for accents against the page background: dark teal 7.06:1, orange 6.13:1, olive 7.61:1; light teal 4.92:1, orange 4.97:1, olive 4.91:1. These are colour-pair checks, not a full accessibility audit.
+Reference contrast checks for accents against the page background: dark blue 4.74:1, orange 4.61:1, olive 7.61:1; light blue 7.30:1, orange 4.58:1, olive 4.91:1. These are colour-pair checks, not a full accessibility audit.
 
 ### Copyable theme values
 
@@ -72,8 +72,8 @@ Reference contrast checks for accents against the page background: dark teal 7.0
   --color-text-primary: #f2e5c4;
   --color-text-secondary: #d0c3a6;
   --color-border: #55534c;
-  --color-accent-primary: #62dabb;
-  --color-accent-secondary: #ffa35c;
+  --color-accent-primary: #8b9bff;
+  --color-accent-secondary: #ff791f;
   --color-accent-tertiary: #c8d65b;
   --color-surface: #42433c;
   --color-surface-soft: #41423b;
@@ -85,8 +85,8 @@ Reference contrast checks for accents against the page background: dark teal 7.0
   --color-text-primary: #3c3836;
   --color-text-secondary: #665c54;
   --color-border: #d5c4a1;
-  --color-accent-primary: #087663;
-  --color-accent-secondary: #b4430c;
+  --color-accent-primary: #1536d8;
+  --color-accent-secondary: #c14300;
   --color-accent-tertiary: #626f07;
   --color-surface: #ebdfbb;
   --color-surface-soft: #f0e7c8;
@@ -323,3 +323,16 @@ The `asChild` option allows a custom trigger, making an inline word or short phr
 Use the original React component as an Astro island, or implement a small equivalent with browser-native code after reviewing the source. Decide during implementation based on fidelity and dependencies already required by the site.
 
 Do not invent particle timing, count, trajectory, z-index or picker dimensions as approved tokens yet; derive and review them with a working example. If reusing Rare UI code, review its current usage terms and retain relevant attribution.
+
+## Digital CV layout — current preview
+
+The `/cv/` route uses a traditional document layout, distinct from the compact portfolio. Career wording is still a draft.
+
+- Screen sheet: maximum 820px including a 1px border; 44px top, 48px side/bottom padding. At widths up to 600px remove the sheet border/padding and keep 24px page gutters.
+- Centre the full name, professional focus and contact details. Name: Archiv bold, 30px, line-height 1.25, tracking -0.025em (27px on mobile). Virgil remains on the portfolio; the CV name uses conventional typography.
+- Header bottom rule: 2px primary accent; section rules: 1px border colour. No eyebrow text.
+- Sections: 24px top gap; 14px bold primary-text headings, 1.5 line-height, 6px bottom padding, 13px bottom margin.
+- Experience and education: full-width entries; organisation/qualification left, 12px dates right on the first row. Roles use italic body text; bullets span the available width. Entry gap: 20px. Mobile places dates beneath the heading, before the role.
+- Keep body type at 14px / 1.6 with -0.012em tracking. Contact details, dates and stack metadata use 12px.
+- Print: A4, 15mm vertical and 17mm horizontal margins; white background, dark text, no sheet border, navigation, controls or draft note. Body: 10pt / 1.4; name: 22pt; metadata: 9pt. Keep individual entries together where possible and keep section headings with following content.
+- Theme switching and native Print / Save PDF remain available. Do not add animations or decorative badges inside the CV document.
