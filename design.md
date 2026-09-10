@@ -20,6 +20,7 @@ Semantic token names below are the documented implementation vocabulary. Most pr
 - Lead with frontend engineering, supported by UX/UI development, product development and product design.
 - Use a centred, narrow reading column with comfortable side margins.
 - Keep the main content at 14px. Section headings stay at reading size; only the name is larger.
+- No eyebrow text: do not place small introductory labels, uppercase kickers, numbered overlines or decorative category labels above headings. Start sections directly with their heading or body copy. Ordinary section headings and useful metadata (such as work dates) remain distinct from eyebrow text.
 - Let concise writing carry the page. Work entries expand to explain a contribution; strong screenshots are optional.
 - Add personality to selected words through weight, handwriting, small icons, restrained tilts and brief motion.
 - Use Virgil for the name and occasional short accents, not whole paragraphs.
