@@ -17,7 +17,7 @@
 .compact-section{margin-top:39px}
 .compact-section h2{font-size:14px;font-weight:400;color:var(--ink);margin-bottom:14px;line-height:1.5}
 .compact-studiz{color:var(--blue);transform:rotate(-3deg);transition:transform .2s;margin:0 2px}
-.compact-studiz:hover,.compact-studiz:focus-visible{transform:rotate(0)}
+.compact-studiz:hover,.compact-studiz:focus-visible{transform:rotate(0);color:#fff}
 .compact-studiz>span{font-weight:700;font-size:13px}
 .compact-section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:16px}
 .compact-section-heading>span{font-size:12px;color:var(--muted)}

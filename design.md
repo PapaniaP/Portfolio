@@ -37,13 +37,13 @@ Dark is the reference's initial mode. The base direction is approved; the blue/o
 | `--color-text-primary` | `--ink` | `#F2E5C4` | `#3C3836` | Name, headings, stronger words |
 | `--color-text-secondary` | `--muted` | `#D0C3A6` | `#665C54` | Body copy and metadata |
 | `--color-border` | `--line` | `#55534C` | `#D5C4A1` | Rules, work rail, inline badges |
-| `--color-accent-primary` | `--blue` | `#1536D8` | `#1536d8` | Blue links, emphasis, focus, icons |
+| `--color-accent-primary` | `--blue` | `#A3B0FF` | `#1536d8` | Blue links, emphasis, focus, icons |
 | `--color-accent-secondary` | `--rust` | `#FF791F` | `#C14300` | Orange accents and underlines |
 | `--color-accent-tertiary` | `--olive` | `#C8D65B` | `#626F07` | Occasional olive icons |
 | `--color-surface` | `--panel` | `#42433C` | `#EBDFBB` | Inline badge background, image preview surface |
 | `--color-surface-soft` | `--soft` | `#41423B` | `#F0E7C8` | Secondary supporting surface |
 
-The primary accent now returns to a Klein-inspired blue direction. The original Astro stylesheet uses `hsl(223 84% 50%)` (its nearby hex comment is inconsistent); the new light-mode blue is deeper. Both modes now use the exact same Klein blue, `#1536D8`, for primary accents and filled badges, as requested. Dark-mode glyph overrides are removed. The Studiz badge uses this fill with white text.
+The primary accent now returns to a Klein-inspired blue direction. The original Astro stylesheet uses `hsl(223 84% 50%)` (its nearby hex comment is inconsistent); the new light-mode blue is deeper. Klein blue `#1536D8` remains the brand fill in both modes. Text, icons and focus use `#A3B0FF` in dark mode and `#1536D8` in light mode. This separates the saturated brand fill from readable foreground colour. Filled badges keep white text in default, hover and focus states.
 
 Derived states:
 
@@ -60,7 +60,7 @@ Derived states:
 | Strong text | Primary text |
 | Logo punctuation | Primary accent |
 
-Reference contrast checks for accents against the page background: dark blue 1.47:1, orange 4.61:1, olive 7.61:1; light blue 7.30:1, orange 4.58:1, olive 4.91:1. These are colour-pair checks, not a full accessibility audit.
+Reference contrast checks for accents against the page background: dark blue 5.88:1, orange 4.61:1, olive 7.61:1; light blue 7.30:1, orange 4.58:1, olive 4.91:1. These are colour-pair checks, not a full accessibility audit.
 
 ### Copyable theme values
 
@@ -72,7 +72,7 @@ Reference contrast checks for accents against the page background: dark blue 1.4
   --color-text-primary: #f2e5c4;
   --color-text-secondary: #d0c3a6;
   --color-border: #55534c;
-  --color-accent-primary: #1536d8;
+  --color-accent-primary: #a3b0ff;
   --color-accent-secondary: #ff791f;
   --color-accent-tertiary: #c8d65b;
   --color-surface: #42433c;
@@ -351,4 +351,4 @@ Implementation choices resolved for this draft:
 - Existing case studies and legacy routes retain their previous layouts in this first draft. Their Tailwind 3 support uses PostCSS because the old Astro integration does not support Astro 7.
 - The draft branch gets a build-only GitHub workflow. The existing FTP workflow continues to target only `feature/astro-migration`.
 
-Palette refinement: the matching blue in both modes is an explicit visual preference. Its dark-background contrast is lower than the prior brighter blue and does not meet normal-text contrast requirements.
+Accessibility correction: using the same deep blue for text on charcoal was unreadable. The dark foreground token is now distinct from the brand fill; its contrast on the dark panel is 4.86:1. Keep all normal text colour pairs at least 4.5:1.
