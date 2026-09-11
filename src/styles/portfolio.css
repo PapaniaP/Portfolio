@@ -55,5 +55,4 @@
 /* Saturated brand fills retain the blue identity in dark mode. */
 .compact-studiz{background:var(--blue-solid);border-color:var(--blue-solid);color:#fff}
 @media(max-width:700px){.compact-page{margin-top:42px;width:calc(100% - 48px)}.compact-header{gap:12px;margin-bottom:27px;flex-wrap:wrap}.compact-header h1{font-size:21px}.compact-section{margin-top:32px}.compact-section-heading{display:block}.compact-section-heading h2{margin-bottom:4px}.compact-section-heading>span{display:block;margin-bottom:12px}.compact-work-group{grid-template-columns:42px minmax(0,1fr);gap:8px}.compact-entries{padding-left:10px}.compact-entry summary{flex-wrap:wrap;column-gap:6px}.compact-tag{display:none}.compact-expand{margin-left:auto}.compact-entry-body{padding-left:0}.compact-footer{flex-direction:column;gap:5px}}
-:root[data-theme=dark] .compact-code>span,:root[data-theme=dark] .compact-keyboard>span{color:#a3b0ff}
 .portfolio-nav{display:flex;justify-content:flex-end;align-items:center;gap:20px;margin-bottom:28px;font-size:12px}.portfolio-nav>a{min-height:44px;display:flex;align-items:center;color:var(--muted)}
