@@ -1,6 +1,11 @@
 ---
+interface Props { collection?: 'original' | 'explore'; }
+const { collection = 'original' } = Astro.props;
+const exploring = collection === 'explore';
+const sectionId = exploring ? 'accent-exploration' : 'colour-sampler';
+const titleId = exploring ? 'exploration-title' : 'sampler-title';
 // Deliberately isolated samples: these do not change the site's chosen tokens.
-const themes = [
+const originalThemes = [
   { name: 'Light mode', id: 'light', background: '#fbf1d3', ink: '#3c3836', muted: '#665c54', line: '#d5c4a1', colours: [
     ['Blue 1 · Klein', '#1536d8'],
     ['Blue 2 · Electric', '#0048ff'],
@@ -20,6 +25,25 @@ const themes = [
     ['Raspberry', '#ff79ad'],
   ]},
 ];
+const alternatives = [
+  ['1 · Emerald', '#087f5b', '#36d399'],
+  ['2 · Forest', '#286044', '#70c994'],
+  ['3 · Teal', '#007d80', '#27d6c5'],
+  ['4 · Cyan', '#006e9a', '#36c9f0'],
+  ['5 · Olive', '#626f07', '#c8d65b'],
+  ['6 · Lime', '#587500', '#b8e336'],
+  ['7 · Gold', '#946000', '#ffd24a'],
+  ['8 · Coral', '#c23d35', '#ff8c78'],
+  ['9 · Rose', '#b52d54', '#ff80a2'],
+  ['10 · Magenta', '#a62288', '#ef88d4'],
+  ['11 · Violet', '#743ac8', '#ba9cff'],
+  ['12 · Plum', '#7f386b', '#d699c9'],
+];
+const themes = exploring ? originalThemes.map((theme, index) => ({
+  ...theme,
+  id: `explore-${theme.id}`,
+  colours: alternatives.map(([name, light, dark]) => [name, index === 0 ? light : dark]),
+})) : originalThemes;
 function luminance(hex: string) {
   const channels = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255);
   return channels.reduce((total, value, i) => total + (value <= .04045 ? value / 12.92 : ((value + .055) / 1.055) ** 2.4) * [.2126, .7152, .0722][i], 0);
@@ -29,9 +53,9 @@ function contrast(a: string, b: string) {
   return (high + .05) / (low + .05);
 }
 ---
-<section id="colour-sampler" class="colour-sampler" aria-labelledby="sampler-title">
-  <h2 id="sampler-title">Let’s compare colours</h2>
-  <p class="sampler-intro">The same sample links on both backgrounds. These examples won’t navigate or change your palette. Text needs 4.5:1 contrast; lower-contrast options are included so you can see the difference.</p>
+<section id={sectionId} class="colour-sampler" aria-labelledby={titleId}>
+  <h2 id={titleId}>{exploring ? "A different accent altogether" : "Let’s compare colours"}</h2>
+  <p class="sampler-intro">{exploring ? "Twelve new colour families, each with a shade for light and dark backgrounds. Compare the same number in both panels to find a direction you like. These are visual samples only." : "The same sample links on both backgrounds. These examples won’t navigate or change your palette. Text needs 4.5:1 contrast; lower-contrast options are included so you can see the difference."}</p>
   {themes.map(theme => (
     <section class="sample-panel" aria-labelledby={`samples-${theme.id}`} style={`--sample-paper:${theme.background};--sample-ink:${theme.ink};--sample-muted:${theme.muted};--sample-line:${theme.line}`}>
       <h3 id={`samples-${theme.id}`}>{theme.name}</h3>
@@ -55,7 +79,7 @@ function contrast(a: string, b: string) {
       </ul>
     </section>
   ))}
-  <p class="sampler-note">“Original” uses the blue from your Astro stylesheet. Raspberry is a fresh alternative to the blues and oranges. Contrast labels apply to these colour pairs only.</p>
+  <p class="sampler-note">{exploring ? "Use the names or numbers to shortlist your favourites. A colour can work differently as a link and as a filled badge; contrast labels are for these examples at normal text size." : "“Original” uses the blue from your Astro stylesheet. Raspberry is a fresh alternative to the blues and oranges. Contrast labels apply to these colour pairs only."}</p>
 </section>
 <style>
   .colour-sampler{width:100%;flex-basis:100%;margin-top:24px;scroll-margin-top:24px}
