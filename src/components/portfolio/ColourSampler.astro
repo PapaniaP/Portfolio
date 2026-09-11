@@ -1,0 +1,79 @@
+---
+// Deliberately isolated samples: these do not change the site's chosen tokens.
+const themes = [
+  { name: 'Light mode', id: 'light', background: '#fbf1d3', ink: '#3c3836', muted: '#665c54', line: '#d5c4a1', colours: [
+    ['Blue 1 · Klein', '#1536d8'],
+    ['Blue 2 · Electric', '#0048ff'],
+    ['Blue 3 · Original', '#1451eb'],
+    ['Blue 4 · Cobalt', '#315fb0'],
+    ['Orange 1 · Burnt', '#c14300'],
+    ['Orange 2 · Vivid', '#e85d04'],
+    ['Raspberry', '#b62467'],
+  ]},
+  { name: 'Dark mode', id: 'dark', background: '#373633', ink: '#f2e5c4', muted: '#d0c3a6', line: '#55534c', colours: [
+    ['Blue 1 · Klein', '#1536d8'],
+    ['Blue 2 · Electric', '#0048ff'],
+    ['Blue 3 · Brighter', '#527fff'],
+    ['Blue 4 · Readable', '#739bff'],
+    ['Orange 1 · Vivid', '#ff791f'],
+    ['Orange 2 · Amber', '#ff9c32'],
+    ['Raspberry', '#ff79ad'],
+  ]},
+];
+function luminance(hex: string) {
+  const channels = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255);
+  return channels.reduce((total, value, i) => total + (value <= .04045 ? value / 12.92 : ((value + .055) / 1.055) ** 2.4) * [.2126, .7152, .0722][i], 0);
+}
+function contrast(a: string, b: string) {
+  const [high, low] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+  return (high + .05) / (low + .05);
+}
+---
+<section id="colour-sampler" class="colour-sampler" aria-labelledby="sampler-title">
+  <h2 id="sampler-title">Let’s compare colours</h2>
+  <p class="sampler-intro">The same sample links on both backgrounds. These examples won’t navigate or change your palette. Text needs 4.5:1 contrast; lower-contrast options are included so you can see the difference.</p>
+  {themes.map(theme => (
+    <section class="sample-panel" aria-labelledby={`samples-${theme.id}`} style={`--sample-paper:${theme.background};--sample-ink:${theme.ink};--sample-muted:${theme.muted};--sample-line:${theme.line}`}>
+      <h3 id={`samples-${theme.id}`}>{theme.name}</h3>
+      <ul class="sample-list">
+        {theme.colours.map(([name, colour]) => {
+          const ratio = contrast(colour, theme.background);
+          const badgeText = contrast('#ffffff', colour) >= contrast('#282828', colour) ? '#ffffff' : '#282828';
+          const badgeRatio = contrast(badgeText, colour);
+          return <li class="sample-row" style={`--sample-accent:${colour};--sample-badge-text:${badgeText}`}>
+            <div class="sample-name"><span>{name}</span><code>{colour.toUpperCase()}</code></div>
+            <div class="sample-example">
+              <a role="link" aria-disabled="true" tabindex="0" class="sample-link" aria-label={`${name}, sample link only`}>View a project <span aria-hidden="true">↗</span></a>
+              <small>{ratio.toFixed(2)}:1 · {ratio >= 4.5 ? 'Pass' : 'Low contrast'}</small>
+            </div>
+            <div class="sample-example">
+              <a role="link" aria-disabled="true" tabindex="0" class="sample-badge" aria-label={`${name}, filled sample link only`}>Say hello</a>
+              <small>{badgeRatio.toFixed(2)}:1 · {badgeRatio >= 4.5 ? 'Pass' : 'Low contrast'}</small>
+            </div>
+          </li>;
+        })}
+      </ul>
+    </section>
+  ))}
+  <p class="sampler-note">“Original” uses the blue from your Astro stylesheet. Raspberry is a fresh alternative to the blues and oranges. Contrast labels apply to these colour pairs only.</p>
+</section>
+<style>
+  .colour-sampler{width:100%;flex-basis:100%;margin-top:24px;scroll-margin-top:24px}
+  .colour-sampler h2{font-size:14px;font-weight:400;line-height:1.5;color:var(--ink);margin:0 0 12px}
+  .colour-sampler .sampler-intro,.colour-sampler .sampler-note{font-size:12px;line-height:1.6;color:var(--muted)}
+  .sample-panel{background:var(--sample-paper);color:var(--sample-ink);border:1px solid var(--sample-line);border-radius:4px;padding:20px;margin-top:20px}
+  .sample-panel h3{font-size:14px;font-weight:700;line-height:1.5;color:var(--sample-ink);margin-bottom:8px}
+  .sample-list{list-style:none;padding:0;margin:0}
+  .sample-row{display:grid;grid-template-columns:minmax(100px,1fr) minmax(120px,1fr) 100px;gap:12px;align-items:center;border-top:1px solid var(--sample-line);padding:14px 0}
+  .sample-row:first-child{border-top:0}.sample-row:last-child{padding-bottom:0}
+  .sample-name{display:flex;flex-direction:column;gap:3px;color:var(--sample-ink);font-size:12px}
+  .sample-name code{font-family:monospace;font-size:12px;color:var(--sample-muted)}
+  .sample-example{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-width:0}
+  .sample-example small{font-size:12px;line-height:1.5;color:var(--sample-muted)}
+  .sample-link,.sample-link:hover{display:inline-flex;align-items:center;gap:5px;min-height:32px;color:var(--sample-accent);font-size:14px;text-decoration:underline;text-underline-offset:4px;cursor:default}
+  .sample-badge,.sample-badge:hover{display:inline-flex;align-items:center;min-height:32px;padding:3px 9px;border-radius:4px;background:var(--sample-accent);color:var(--sample-badge-text);font-size:14px;text-decoration:none;cursor:default}
+  .sample-link:focus-visible,.sample-badge:focus-visible{outline:2px solid var(--sample-ink);outline-offset:4px}
+  .colour-sampler .sampler-note{margin-top:16px}
+  @media(max-width:520px){.sample-panel{padding:16px}.sample-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 16px}.sample-name{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;justify-content:space-between;gap:8px}.sample-link,.sample-badge{min-height:36px}}
+  @media print{.colour-sampler{display:none}}
+</style>

@@ -3,6 +3,7 @@ import PortfolioLayout from '../layouts/PortfolioLayout.astro';
 import ThemeToggle from '../components/portfolio/ThemeToggle.astro';
 import EmojiReaction from '../components/portfolio/EmojiReaction.astro';
 import ProjectPreview from '../components/portfolio/ProjectPreview.astro';
+import ColourSampler from '../components/portfolio/ColourSampler.astro';
 import '../styles/portfolio.css';
 ---
 <PortfolioLayout>
@@ -26,7 +27,7 @@ import '../styles/portfolio.css';
     <section class="compact-section"><h2>Things I care about</h2><p>Interfaces that <span class="compact-underline">make sense.</span> Code someone else can read. A button that responds just right. Understanding why we’re building something before deciding how.</p><p>I’m interested in the space between <span class="compact-thin">the big picture</span> and <strong class="compact-weight">the small details.</strong></p></section>
     <section class="compact-section"><h2>Off screen</h2><p>Usually somewhere between a <span class="compact-inline compact-keyboard"><span aria-hidden="true">⌨</span> split keyboard</span>, a rugby pitch <span class="compact-rugby" aria-hidden="true">🏉</span>, and family life. South African, with Italian roots, now based in Denmark.</p></section>
     <section class="compact-section compact-connect"><h2>Connect</h2><p>For a little more background, <a href="/cv/">read my CV <span aria-hidden="true">↗</span></a>.</p><p>Have something in mind? Say hello by <a href="mailto:papaniap11@gmail.com">email</a>, or find my code on <a href="https://github.com/PapaniaP" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>.</p></section>
-    <footer class="compact-footer"><span>Paolo Papania © {new Date().getFullYear()}</span><span>Thought through. Built with care.</span></footer>
+    <footer class="compact-footer" style="flex-wrap:wrap"><span>Paolo Papania © {new Date().getFullYear()}</span><span>Thought through. Built with care.</span><ColourSampler /></footer>
   </main>
 <ProjectPreview />
 <script>
