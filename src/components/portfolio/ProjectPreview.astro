@@ -1,0 +1,38 @@
+---
+import recharge from '../../assets/projects/raskrask/recharge/recharge-cover.webp';
+import harmony from '../../assets/projects/raskrask/harmony/harmonyUI-cover.webp';
+const projects = [
+  { title:'RaskRask Recharge', description:'A thesis project connecting UX research, user flows and interface design to explore a better wellness booking experience.', image:recharge.src, href:'/projects/raskrask-recharge/' },
+  { title:'Harmony UI', description:'Visual foundations and reusable interface components for a shared language across RaskRask’s digital products.', image:harmony.src, href:'/projects/harmony-ui/' }
+];
+---
+<dialog id="project-dialog" aria-labelledby="project-title" data-projects={JSON.stringify(projects)}>
+  <form method="dialog"><button type="submit">Close ×</button></form>
+  <h2 id="project-title"></h2><p data-description></p><img data-image alt="" />
+  <a data-case-study>Read the existing case study ↗</a>
+</dialog>
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('#project-dialog');
+  if (dialog) {
+    const projects = JSON.parse(dialog.dataset.projects ?? '[]');
+    document.querySelectorAll<HTMLButtonElement>('[data-project]').forEach(button => button.addEventListener('click', () => {
+      const project = projects[Number(button.dataset.project)];
+      if (!project) return;
+      dialog.querySelector('h2')!.textContent = project.title;
+      dialog.querySelector('[data-description]')!.textContent = project.description;
+      const image = dialog.querySelector<HTMLImageElement>('[data-image]')!;
+      image.src = project.image; image.alt = `${project.title} project preview`;
+      dialog.querySelector<HTMLAnchorElement>('[data-case-study]')!.href = project.href;
+      dialog.showModal();
+    }));
+    dialog.addEventListener('click', event => {
+      const rect = dialog.getBoundingClientRect();
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+    });
+  }
+</script>
+<style>
+  dialog{width:min(800px,calc(100% - 32px));max-height:90dvh;padding:24px;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:6px}
+  dialog::backdrop{background:#141414bb}form{text-align:right}button{min-height:44px;padding:8px 12px;background:var(--soft);border-radius:4px}
+  h2{font-size:22px;line-height:1.4;margin-top:12px}p{margin:16px 0;color:var(--muted)}img{width:100%;max-height:55vh;object-fit:contain}a{display:inline-block;margin-top:16px;padding:10px 0;color:var(--blue);text-decoration:underline;text-underline-offset:4px}
+</style>

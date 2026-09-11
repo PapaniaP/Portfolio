@@ -336,3 +336,17 @@ The `/cv/` route uses a traditional document layout, distinct from the compact p
 - Keep body type at 14px / 1.6 with -0.012em tracking. Contact details, dates and stack metadata use 12px.
 - Print: A4, 15mm vertical and 17mm horizontal margins; white background, dark text, no sheet border, navigation, controls or draft note. Body: 10pt / 1.4; name: 22pt; metadata: 9pt. Keep individual entries together where possible and keep section headings with following content.
 - Theme switching and native Print / Save PDF remain available. Do not add animations or decorative badges inside the CV document.
+
+## First Astro implementation — 11 September 2026
+
+The approved design is now implemented on `portfolio-sept-2026` in the homepage and `/cv/` route. Shared semantic colours live in `src/styles/tokens.css`, with base typography in `src/styles/base.css` and separate portfolio/CV stylesheets. The earlier comparison prototype remains a visual reference.
+
+Implementation choices resolved for this draft:
+
+- Astro 7.3.2 with compatible official React and MDX integrations. Existing npm lockfile is regenerated for the major upgrade; Node 24 is used for local development and CI.
+- Dark initial theme, with an explicit light/dark choice remembered in local storage. Read the preference before rendering; storage failure leaves the toggle functional.
+- Inline emoji reactions are implemented on “the little details” using native buttons and a short Web Animations burst, without copying Rare UI code or adding React to the homepage. Picker: 44px choices, 5px padding, 2px gap, 6px radius, page background and border token. Five particles, 700ms ease-out, 35ms stagger; reduced motion only changes the selected emoji. Supports keyboard arrows, Escape, outside dismissal and focus return.
+- Native image dialog for the two existing project previews, with links to their full case studies. No eyebrow label inside the dialog.
+- The CV retains its content review note on screen and omits it in print. Formal role titles and education dates remain to confirm.
+- Existing case studies and legacy routes retain their previous layouts in this first draft. Their Tailwind 3 support uses PostCSS because the old Astro integration does not support Astro 7.
+- The draft branch gets a build-only GitHub workflow. The existing FTP workflow continues to target only `feature/astro-migration`.

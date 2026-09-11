@@ -1,0 +1,72 @@
+<span class="reaction">
+  <button type="button" class="reaction-trigger" aria-expanded="false" aria-controls="reaction-picker">the little details <span data-selected aria-hidden="true">✦</span></button>
+  <span id="reaction-picker" class="reaction-picker" role="group" aria-label="Choose a reaction" hidden>
+    <button type="button" aria-label="React with sparkles" data-emoji="✨">✨</button>
+    <button type="button" aria-label="React with applause" data-emoji="👏">👏</button>
+    <button type="button" aria-label="React with a heart" data-emoji="🧡">🧡</button>
+    <button type="button" aria-label="React with a rocket" data-emoji="🚀">🚀</button>
+  </span>
+  <span class="reaction-status" role="status"></span>
+</span>
+<script>
+  const host = document.querySelector<HTMLElement>('.reaction');
+  const trigger = host?.querySelector<HTMLButtonElement>('.reaction-trigger');
+  const picker = host?.querySelector<HTMLElement>('.reaction-picker');
+  const choices = Array.from(picker?.querySelectorAll<HTMLButtonElement>('button') ?? []);
+  function close(restoreFocus = false) {
+    if (!picker || !trigger) return;
+    picker.hidden = true;
+    trigger.setAttribute('aria-expanded', 'false');
+    if (restoreFocus) trigger.focus();
+  }
+  trigger?.addEventListener('click', () => {
+    if (!picker) return;
+    if (!picker.hidden) return close();
+    picker.hidden = false;
+    trigger.setAttribute('aria-expanded', 'true');
+    const rect = trigger.getBoundingClientRect();
+    const width = picker.offsetWidth;
+    picker.style.left = `${Math.max(12, Math.min(rect.left, innerWidth - width - 12))}px`;
+    picker.style.top = `${Math.max(12, Math.min(rect.bottom + 8, innerHeight - picker.offsetHeight - 12))}px`;
+    choices[0]?.focus();
+  });
+  choices.forEach((button) => button.addEventListener('click', () => {
+    const emoji = button.dataset.emoji ?? '✨';
+    const selected = trigger?.querySelector('[data-selected]');
+    if (selected) selected.textContent = emoji;
+    const status = host?.querySelector('[role=status]');
+    if (status) status.textContent = button.getAttribute('aria-label')?.replace('React with', 'Selected') ?? emoji;
+    close(true);
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || !trigger) return;
+    const rect = trigger.getBoundingClientRect();
+    for (let i = 0; i < 5; i++) {
+      const particle = document.createElement('span');
+      particle.textContent = emoji;
+      particle.setAttribute('aria-hidden', 'true');
+      Object.assign(particle.style, {position:'fixed',left:`${rect.right - 14}px`,top:`${rect.top}px`,pointerEvents:'none',zIndex:'50',fontSize:'20px'});
+      document.body.append(particle);
+      const animation = particle.animate([{transform:'translate(0, 0)',opacity:1},{transform:`translate(${(i - 2) * 24}px, -90px) rotate(${(i - 2) * 12}deg)`,opacity:0}],{duration:700,delay:i*35,easing:'ease-out',fill:'both'});
+      animation.onfinish = () => particle.remove();
+    }
+  }));
+  document.addEventListener('pointerdown', (event) => { if (!host?.contains(event.target as Node)) close(); });
+  document.addEventListener('keydown', (event) => {
+    if (picker?.hidden) return;
+    if (event.key === 'Escape') { event.preventDefault(); close(true); }
+    if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+      const index = choices.indexOf(document.activeElement as HTMLButtonElement);
+      if (index < 0) return;
+      event.preventDefault();
+      choices[(index + (event.key === 'ArrowRight' ? 1 : -1) + choices.length) % choices.length]?.focus();
+    }
+  });
+  host?.addEventListener('focusout', () => queueMicrotask(() => { if (!host.contains(document.activeElement)) close(); }));
+  window.addEventListener('resize', () => close());
+  window.addEventListener('scroll', () => close(), {passive:true});
+</script>
+<style>
+  .reaction-trigger{display:inline;padding:0;background:none;color:var(--blue);font:inherit;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:4px}
+  .reaction-picker{position:fixed;z-index:40;display:flex;gap:2px;padding:5px;background:var(--paper);border:1px solid var(--line);border-radius:6px}
+  .reaction-picker[hidden]{display:none}.reaction-picker button{background:none;border-radius:4px;min-width:44px;min-height:44px;font-size:20px;padding:5px}.reaction-picker button:hover{background:var(--panel)}
+  .reaction-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+</style>

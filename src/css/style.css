@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Custom Properties - Aligned with design-system.md */
 :root {
   /* Light Theme Color Variables (HSL format: H S L) - Updated from design-system.md */

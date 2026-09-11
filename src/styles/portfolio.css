@@ -1,0 +1,59 @@
+/* Compact personal portfolio: text at reading size, emphasis within sentences. */
+.compact-page{width:calc(100% - 48px);max-width:560px;margin:76px auto 48px;font-family:Archiv,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.6;letter-spacing:-.012em;font-kerning:normal}
+.compact-page p{font-size:14px;line-height:1.6;color:var(--muted)}
+.compact-page p+p{margin-top:17px}
+.compact-header{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:31px}
+.compact-header h1{font-family:Virgil,cursive;font-size:22px;line-height:1.4;letter-spacing:-.025em;font-weight:400}
+.compact-period{color:var(--blue)}
+.compact-location{font-size:12px;color:var(--muted)}
+.compact-inline{display:inline-flex;align-items:center;gap:5px;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:0 5px;font-size:13px;line-height:1.65;vertical-align:baseline;white-space:nowrap;color:var(--ink)}
+.compact-code>span{font-family:monospace;color:var(--blue);font-size:12px;font-weight:700}
+.compact-feel{display:inline-block;font-family:Virgil,cursive;font-style:normal;font-weight:400;letter-spacing:-.015em;color:var(--blue);font-size:16px;transform:rotate(-7deg);transition:transform .25s}
+.compact-feel:hover{transform:rotate(5deg)}
+.compact-design{color:var(--blue);text-decoration:underline;text-decoration-style:wavy;text-underline-offset:4px;text-decoration-thickness:1px}
+.compact-idea{font-family:Virgil,cursive;color:var(--rust);font-style:normal;font-weight:400;letter-spacing:-.015em;font-size:15px}
+.compact-built{color:var(--blue);font-weight:700;display:inline-block;animation:compact-settle .65s ease-out both}
+@keyframes compact-settle{from{transform:translateY(4px);opacity:.4}to{transform:translateY(0);opacity:1}}
+.compact-section{margin-top:39px}
+.compact-section h2{font-size:14px;font-weight:400;color:var(--ink);margin-bottom:14px;line-height:1.5}
+.compact-studiz{color:var(--blue);transform:rotate(-3deg);transition:transform .2s;margin:0 2px}
+.compact-studiz:hover,.compact-studiz:focus-visible{transform:rotate(0)}
+.compact-studiz>span{font-weight:700;font-size:13px}
+.compact-section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:16px}
+.compact-section-heading>span{font-size:12px;color:var(--muted)}
+.compact-work-group{display:grid;grid-template-columns:54px minmax(0,1fr);gap:12px;margin:10px 0 17px}
+.compact-year{font-size:12px;padding-top:10px;color:var(--muted)}
+.compact-entries{border-left:1px solid var(--line);padding-left:15px}
+.compact-entry summary{display:flex;align-items:center;gap:8px;list-style:none;cursor:pointer;min-height:44px;font-size:14px;line-height:1.5;padding:9px 0}
+.compact-entry summary::-webkit-details-marker{display:none}
+.compact-entry summary::marker{content:''}
+.compact-entry summary:hover{color:var(--blue)}
+.compact-entry summary:focus-visible{outline:2px solid var(--blue);outline-offset:4px;border-radius:3px}
+.compact-entry-icon{color:var(--blue);font-size:16px;flex-shrink:0;width:17px;text-align:center}
+.compact-entry-icon.rust{color:var(--rust)}
+.compact-entry-icon.olive{color:var(--olive)}
+.compact-tag{font-size:12px;color:var(--muted);margin-left:auto;white-space:nowrap}
+.compact-expand{color:var(--muted);font-size:16px;line-height:1;transition:transform .2s}
+.compact-entry[open] .compact-expand{transform:rotate(45deg);color:var(--blue)}
+.compact-entry-body{padding:7px 0 19px 25px}
+.compact-entry-body p{font-size:14px;line-height:1.6}
+.compact-tools{font-family:monospace;font-size:12px;color:var(--blue);display:block;margin-top:15px}
+.compact-preview{display:inline-block;padding:10px 0;margin-top:9px;background:none;color:var(--blue);font-size:14px;text-decoration:underline;text-underline-offset:4px;min-height:44px}
+.compact-underline{color:var(--ink);text-decoration:underline;text-decoration-color:var(--rust);text-decoration-thickness:1px;text-underline-offset:4px}
+.compact-thin{font-family:Georgia,serif;font-style:italic;font-size:15px;letter-spacing:.025em}
+.compact-weight{font-weight:700;color:var(--ink)}
+.compact-keyboard{transform:rotate(2deg);transition:transform .2s}
+.compact-keyboard:hover{transform:rotate(-2deg)}
+.compact-keyboard>span{color:var(--blue);font-size:16px}
+.compact-rugby{display:inline-block;transform:rotate(-15deg);transition:transform .25s;font-size:15px}
+.compact-rugby:hover{transform:rotate(15deg)}
+.compact-connect a{color:var(--blue);text-decoration:underline;text-underline-offset:4px}
+.compact-connect a:hover{color:var(--rust)}
+.compact-footer{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--line);padding-top:21px;margin-top:44px;font-size:12px;color:var(--muted)}
+@media(prefers-reduced-motion:reduce){.compact-built{animation:none}.compact-page *{transition:none!important}}
+
+/* Saturated brand fills retain the blue identity in dark mode. */
+.compact-studiz{background:var(--blue-solid);border-color:var(--blue-solid);color:#fff}
+@media(max-width:700px){.compact-page{margin-top:42px;width:calc(100% - 48px)}.compact-header{gap:12px;margin-bottom:27px;flex-wrap:wrap}.compact-header h1{font-size:21px}.compact-section{margin-top:32px}.compact-section-heading{display:block}.compact-section-heading h2{margin-bottom:4px}.compact-section-heading>span{display:block;margin-bottom:12px}.compact-work-group{grid-template-columns:42px minmax(0,1fr);gap:8px}.compact-entries{padding-left:10px}.compact-entry summary{flex-wrap:wrap;column-gap:6px}.compact-tag{display:none}.compact-expand{margin-left:auto}.compact-entry-body{padding-left:0}.compact-footer{flex-direction:column;gap:5px}}
+:root[data-theme=dark] .compact-code>span,:root[data-theme=dark] .compact-keyboard>span{color:#a3b0ff}
+.portfolio-nav{display:flex;justify-content:flex-end;align-items:center;gap:20px;margin-bottom:28px;font-size:12px}.portfolio-nav>a{min-height:44px;display:flex;align-items:center;color:var(--muted)}

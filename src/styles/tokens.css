@@ -1,0 +1,39 @@
+:root,
+:root[data-theme=dark] {
+  color-scheme: dark;
+  --color-background: #373633;
+  --color-text-primary: #f2e5c4;
+  --color-text-secondary: #d0c3a6;
+  --color-border: #55534c;
+  --color-accent-primary: #8b9bff;
+  --color-accent-secondary: #ff791f;
+  --color-accent-tertiary: #c8d65b;
+  --color-accent-fill: #2440ed;
+  --color-surface: #42433c;
+  --color-surface-soft: #41423b;
+}
+:root[data-theme=light] {
+  color-scheme: light;
+  --color-background: #fbf1d3;
+  --color-text-primary: #3c3836;
+  --color-text-secondary: #665c54;
+  --color-border: #d5c4a1;
+  --color-accent-primary: #1536d8;
+  --color-accent-secondary: #c14300;
+  --color-accent-tertiary: #626f07;
+  --color-accent-fill: #1536d8;
+  --color-surface: #ebdfbb;
+  --color-surface-soft: #f0e7c8;
+}
+:root {
+  --paper: var(--color-background);
+  --ink: var(--color-text-primary);
+  --muted: var(--color-text-secondary);
+  --line: var(--color-border);
+  --blue: var(--color-accent-primary);
+  --rust: var(--color-accent-secondary);
+  --olive: var(--color-accent-tertiary);
+  --blue-solid: var(--color-accent-fill);
+  --panel: var(--color-surface);
+  --soft: var(--color-surface-soft);
+}

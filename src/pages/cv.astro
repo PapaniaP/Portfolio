@@ -1,0 +1,67 @@
+---
+import PortfolioLayout from '../layouts/PortfolioLayout.astro';
+import ThemeToggle from '../components/portfolio/ThemeToggle.astro';
+import '../styles/cv.css';
+---
+<PortfolioLayout title="CV — Paolo Papania" description="Paolo Papania — frontend development, UX/UI and product design. Digital CV.">
+
+
+  <nav class="cv-controls" aria-label="CV controls">
+    <a href="/">← Portfolio</a>
+    <div><ThemeToggle /><button id="print" type="button">Print / Save PDF <span aria-hidden="true">↗</span></button></div>
+  </nav>
+  <main id="main-content" tabindex="-1" class="cv-sheet">
+    <header class="cv-header">
+      <h1>Paolo Antonino Papania</h1>
+      <p class="cv-focus">Frontend development <span>·</span> UX/UI <span>·</span> Product design</p>
+      <address><span>Aarhus, Denmark</span><a href="mailto:papaniap11@gmail.com">papaniap11@gmail.com</a><a href="https://github.com/PapaniaP">github.com/PapaniaP</a></address>
+    </header>
+    <section class="cv-section" aria-labelledby="profile-title">
+      <h2 id="profile-title">Profile</h2>
+      <p>Frontend engineer and product designer connecting thoughtful interfaces with the code that brings them to life. My work spans UX/UI, product development and implementation, with a focus on making digital products clear, consistent and useful.</p>
+    </section>
+    <section class="cv-section" aria-labelledby="experience-title">
+      <h2 id="experience-title">Professional experience</h2>
+      <div class="cv-entry">
+        <p class="cv-date">Nov 2025 — Present</p>
+        <div><h3>Studiz</h3><p class="cv-role">App development &amp; UX/UI</p>
+          <ul><li>Develop the student app using Angular, Ionic and Capacitor, bringing interface design and frontend implementation together.</li><li>Build and refine features and interactions in collaboration with the backend team.</li><li>Work across an app covering digital student ID, events, lending and student discounts.</li></ul>
+          <p class="cv-stack">Angular · TypeScript · Ionic · Capacitor · UX/UI</p>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <p class="cv-date">Aug — Oct 2025</p>
+        <div><h3>Studiz</h3><p class="cv-role">UX/UI design internship</p>
+          <ul><li>Worked on interface design and implementation across student services, including lending, wardrobe and scanning flows.</li><li>Refined user flows and supported feature QA, connecting design decisions with practical app behaviour.</li></ul>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <p class="cv-date">Earlier</p>
+        <div><h3>RaskRask</h3><p class="cv-role">Design internship</p>
+          <ul><li>Developed Harmony UI, a shared visual language for RaskRask’s digital products.</li><li>Created visual foundations and reusable interface components to support consistency across the product.</li></ul>
+          <p class="cv-stack">UI design · Design systems · Reusable components</p>
+        </div>
+      </div>
+    </section>
+    <section class="cv-section" aria-labelledby="skills-title">
+      <h2 id="skills-title">Skills</h2>
+      <dl class="cv-skills"><dt>Frontend</dt><dd>TypeScript, JavaScript, HTML, CSS / Sass, Angular, React, Astro</dd><dt>App development</dt><dd>Ionic, Capacitor, API integration, Git</dd><dt>Design &amp; product</dt><dd>UX/UI design, Figma, prototyping, user flows, design systems</dd></dl>
+    </section>
+    <section class="cv-section" aria-labelledby="education-title">
+      <h2 id="education-title">Education</h2>
+      <div class="cv-entry"><p class="cv-date">From 2024</p><div><h3>Digital Concept Development</h3><p>Bachelor’s top-up studies</p></div></div>
+      <div class="cv-entry"><p class="cv-date">2024</p><div><h3>Multimedia Design</h3><p>AP degree</p></div></div>
+    </section>
+    <section class="cv-section" aria-labelledby="project-title">
+      <h2 id="project-title">Selected project</h2>
+      <div class="cv-entry"><p class="cv-date">Thesis</p><div><h3>RaskRask Recharge</h3><p>Explored how a wellness service could improve its booking experience and business operations, connecting UX research, user flows and interface design.</p></div></div>
+    </section>
+  </main>
+  <aside class="draft-note" aria-label="Draft review notes">
+    <details><summary>Content draft — a few details to refine <span aria-hidden="true">+</span></summary><p>This is a first layout and wording draft. Before using it for applications, we’ll confirm your current job title, employment dates, education details and specific achievements. “App development &amp; UX/UI” describes the work rather than an official title.</p></details>
+  </aside>
+
+<script>
+  document.getElementById('print')?.addEventListener('click', () => window.print());
+</script>
+</PortfolioLayout>

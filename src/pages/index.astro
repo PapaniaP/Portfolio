@@ -1,291 +1,38 @@
 ---
-import { motion } from 'framer-motion';
-import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import AnimatedSection from '../components/AnimatedSection';
-import Button from '../components/ui/Button.astro';
-import Tag from '../components/ui/Tag.astro';
-
-// Import profile image - replace with actual image when available
-import profileImage from '../assets/profile/profile.webp';
-
-// Import images we need for featured projects
-import rechargeImage from '../assets/projects/raskrask/recharge/recharge-cover.webp';
-import harmonyImage from '../assets/projects/raskrask/harmony/harmonyUI-cover.webp';
-import swishImage from '../assets/projects/swish/swish-cover.webp';
-import maxiZooImage from '../assets/projects/maxizoo/mz-mockup.png';
-
-// Background pattern
-import bgPattern from '../assets/background.svg';
-
-// Define featured projects
-const featuredProjects = [
-	{
-		title: 'RaskRask Recharge',
-		image: rechargeImage,
-		description: 'My thesis project focused on enhancing user experience and business operations for RaskRask, a leading wellness service provider.',
-		tags: ['UX Research', 'UI Design', 'Figma'],
-		link: '/projects/raskrask-recharge',
-		linkText: 'View Case Study'
-	},
-	{
-		title: 'RaskRask Harmony UI',
-		image: harmonyImage,
-		description: 'A comprehensive design system created during my internship. Provides a consistent visual language for RaskRask\'s digital products.',
-		tags: ['Design System', 'UI Components', 'Figma'],
-		link: '/projects/harmony-ui',
-		linkText: 'View Gallery'
-	},
-	{
-		title: 'Swish Basketball App',
-		image: swishImage,
-		description: 'A pick-up basketball app that helps players find local games and connect with other enthusiasts. Focuses on intuitive UX/UI design.',
-		tags: ['React', 'Firebase', 'UX/UI Design'],
-		link: '/projects/swish',
-		linkText: 'View Case Study'
-	},
-	{
-		title: 'Maxi Zoo Rewards',
-		image: maxiZooImage,
-		description: 'A comprehensive UX case study focused on creating a digital concept for Maxi Zoo\'s loyalty program.',
-		tags: ['UX Research', 'UI Design', 'Figma'],
-		link: '/projects/maxizoo',
-		linkText: 'View Case Study'
-	}
-];
-
-// Social media links
-const socialLinks = [
-	{
-		name: 'LinkedIn',
-		url: 'https://linkedin.com/in/paolo-papania',
-		icon: '<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>'
-	},
-	{
-		name: 'GitHub',
-		url: 'https://github.com/PapaniaP',
-		icon: '<path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/>'
-	},
-	{
-		name: 'Email',
-		url: 'mailto:papaniap11@gmail.com',
-		icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>'
-	}
-];
-
-const skillAreas = [
-	{
-		title: "Frontend Development",
-		description: "Writing clean, responsive code that looks good and behaves even better. From pixels to performance — I build interfaces that users actually enjoy.",
-		skills: ["React", "JavaScript", "TypeScript", "HTML/CSS", "Astro"],
-		icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />`
-	},
-	{
-		title: "UX/UI Design",
-		description: "Designing interfaces that make sense and look great. It's all about smooth flows, pixel-perfect visuals, and happy users.",
-		skills: ["Figma", "User Research", "Wireframing", "Prototyping", "Design Systems"],
-		icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />`
-	},
-	{
-		title: "Digital Concept Development",
-		description: "Blending creativity and logic to turn vague ideas into clear, clickable concepts. Big-picture thinking meets pixel-level execution.",
-		skills: ["Concept Ideation", "Design Thinking", "Technical Feasibility", "Product Strategy"],
-		icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />`
-	}
-];
+import PortfolioLayout from '../layouts/PortfolioLayout.astro';
+import ThemeToggle from '../components/portfolio/ThemeToggle.astro';
+import EmojiReaction from '../components/portfolio/EmojiReaction.astro';
+import ProjectPreview from '../components/portfolio/ProjectPreview.astro';
+import '../styles/portfolio.css';
 ---
-
-<Layout title="Home">
-	<!-- Global background grid for entire page -->
-	<div class="fixed inset-0 z-[-1] opacity-5">
-		<div class="h-full w-full bg-[linear-gradient(#374151_0.7px,transparent_0.7px),linear-gradient(to_right,#374151_0.7px,transparent_0.7px)] [background-size:64px_64px]"></div>
-	</div>
-
-	<!-- Hero Section -->
-	<AnimatedSection client:load id="hero" className="relative overflow-hidden min-h-[85dvh] flex items-center py-20">
-		<!-- Two Column Hero Layout -->
-		<div class="container mx-auto px-6 md:px-8 relative z-10">
-			<div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-
-				<!-- Left Column: Text Content -->
-				<div class="md:w-1/2 w-full text-left">
-					<!-- Role Subtitle -->
-					<p class="text-sm font-medium text-brand-primary tracking-wider uppercase mb-4 md:mb-6">
-						Digital Concept Developer & UX Designer
-					</p>
-
-					<!-- Main Heading -->
-					<h1 class="text-5xl md:text-6xl lg:text-7xl font-bold font-heading mb-6 md:mb-8 text-text-primary leading-tight tracking-tighter">
-						Paolo Papania
-					</h1>
-
-					<!-- Tagline/Description -->
-					<p class="text-lg md:text-xl text-text-secondary max-w-xl mb-10 md:mb-12 leading-relaxed">
-						Crafting thoughtful and engaging digital experiences where design meets function.
-					</p>
-
-					<!-- Calls to Action -->
-					<div class="flex flex-wrap gap-4">
-						<Button href="/projects" variant="primary" size="lg" icon="layout-grid">
-							View My Work
-						</Button>
-						<Button href="/cv_Paolo.pdf" variant="secondary" size="lg" target="_blank" rel="noopener noreferrer" icon="download">
-							Download CV
-						</Button>
-					</div>
-				</div>
-
-				<!-- Right Column: Visual Element (Profile Image) - Remove group class here -->
-				<div class="md:w-1/2 w-full">
-					{/* Container for image styling - Add group class here */}
-					<div class="relative mx-auto max-w-sm border border-border-primary shadow-lg rounded-2xl overflow-hidden animate-cycle-shapes group">
-						{/* Wrapper for image and overlay */}
-						<div class="relative">
-							<Image
-								src={profileImage}
-								alt="Paolo Papania"
-								width={700}
-								height={700}
-								class="image-for-hero-effect w-full h-auto object-cover filter grayscale contrast-125 brightness-90 transition-all duration-300 group-hover:filter-none"
-							/>
-							{/* Duotone Overlay - Reduced intensity and added animation class */}
-							<div class="absolute inset-0 bg-brand-primary/50 mix-blend-multiply pointer-events-none animate-cycle-colors group-hover:hidden"></div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-		<!-- End Two Column Hero Layout -->
-	</AnimatedSection>
-
-	<!-- Core Skills Section -->
-	<AnimatedSection client:load id="skills" className="py-16 relative overflow-hidden">
-		<div class="absolute inset-0 z-0">
-			{/* Subtle grid background (this might be redundant if Layout has it) */}
-			{/* <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-brand-primary/5 rounded-full blur-[120px]"></div> */}
-		</div>
-
-		<div class="container mx-auto px-6 relative z-10">
-			<div class="max-w-5xl mx-auto">
-				<div class="text-left mb-16">
-					<div class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-brand-primary bg-brand-primary/10 rounded-full mb-3">Core Competencies</div>
-					<h2 class="text-4xl font-semibold text-text-primary tracking-tight mb-4">Skills & Superpowers</h2>
-					<p class="text-lg text-text-secondary max-w-2xl">
-						I use UX thinking to design digital experiences that solve real problems — blending research, empathy, and clean UI into every solution.
-					</p>
-				</div>
-
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-					{skillAreas.map((area, index) => (
-						<div class="bg-surface shadow-card-light border border-border-primary rounded-xl overflow-hidden transition-all duration-300 hover:shadow-glow-sm hover:border-border-accent hover:scale-[1.02] group">
-							<div class="p-6">
-								<div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-brand-primary/20 transition-colors duration-300">
-									<svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<Fragment set:html={area.icon} />
-									</svg>
-								</div>
-								<h3 class="text-xl font-semibold text-text-primary mb-3">{area.title}</h3>
-								<p class="text-text-secondary mb-5 leading-relaxed">{area.description}</p>
-								<div class="flex flex-wrap gap-2">
-									{area.skills.map(skill => (
-										<Tag text={skill} variant="default" />
-									))}
-								</div>
-							</div>
-						</div>
-					))}
-				</div>
-			</div>
-		</div>
-	</AnimatedSection>
-
-	<!-- Featured Projects -->
-	<AnimatedSection client:load id="projects" className="py-16 relative overflow-hidden">
-		<div class="absolute inset-0 z-0">
-			{/* <div class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-brand-accent/5 rounded-full blur-[120px]"></div> */}
-		</div>
-
-		<div class="container mx-auto px-6 relative z-10">
-			<div class="max-w-5xl mx-auto">
-				<div class="text-left mb-16">
-					<div class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-brand-primary bg-brand-primary/10 rounded-full mb-3">Portfolio</div>
-					<h2 class="text-4xl font-semibold text-text-primary tracking-tight mb-4">Featured Projects</h2>
-					<p class="text-lg text-text-secondary max-w-2xl">
-						Explore featured projects that showcase my ability to solve complex problems through design and development
-					</p>
-				</div>
-
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-					{featuredProjects.map((project, index) => (
-						<div class="bg-surface shadow-card-light border border-border-primary rounded-xl overflow-hidden transition-all duration-300 hover:shadow-glow-sm hover:border-border-accent hover:scale-[1.02] group">
-							<div class="relative aspect-video">
-								<Image
-									src={project.image}
-									alt={project.title}
-									width={1200}
-									height={675}
-									class="w-full h-full object-cover"
-								/>
-								<div class="absolute inset-0 bg-gradient-to-t from-surface/70 via-surface/15 to-transparent"></div>
-								<div class="absolute bottom-4 left-4 flex flex-wrap gap-2">
-									{project.tags.map(tag => (
-										<Tag text={tag} />
-									))}
-								</div>
-							</div>
-							<div class="p-6">
-								<h3 class="text-xl font-semibold text-text-primary mb-3">{project.title}</h3>
-								<p class="text-text-secondary mb-4 leading-relaxed line-clamp-3 max-w-[80%]">{project.description}</p>
-								<Button
-									href={project.link}
-									variant="link"
-									size="md"
-									icon="arrow-right"
-									iconPosition="right"
-									class="inline-flex items-center"
-									aria-label={`View ${project.title} project details`}
-								>
-									{project.linkText}
-								</Button>
-							</div>
-						</div>
-					))}
-				</div>
-
-				<div class="mt-12 text-center">
-					<Button
-						href="/projects"
-						variant="secondary"
-						size="lg"
-						class="bg-surface shadow-card-light border border-border-primary hover:border-border-accent hover:shadow-glow-sm transition-all duration-300"
-						icon="arrow-right"
-						iconPosition="right"
-					>
-						View All Projects
-					</Button>
-				</div>
-			</div>
-		</div>
-	</AnimatedSection>
-</Layout>
-
-<style>
-/* Gradient animations */
-@keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.gradient-text {
-  background-size: 200% 200%;
-  animation: gradientFlow 5s ease infinite;
-}
-
-/* Simple fade-in animation for content */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-</style>
+<PortfolioLayout>
+<main id="main-content" class="compact-page" tabindex="-1">
+<nav class="portfolio-nav" aria-label="Main navigation"><a href="/cv/">CV</a><ThemeToggle /></nav>
+    <header class="compact-header"><h1>Paolo Papania<span class="compact-period">.</span></h1><span class="compact-location">Aarhus, Denmark</span></header>
+    <section class="compact-intro" aria-label="Introduction">
+      <p>I’m a <span class="compact-inline compact-code"><span aria-hidden="true">&#123; &#125;</span> frontend engineer</span> who cares about how things <span class="compact-feel">feel.</span> My work brings together UX/UI development, <span class="compact-design">product design</span> and the code that makes it all work.</p>
+      <p>I like taking something from <span class="compact-idea">“what if?”</span> to <span class="compact-built">“that works.”</span> Figuring out the problem, shaping the interface, and getting <EmojiReaction /> right.</p>
+    </section>
+    <section class="compact-section" id="about"><h2>Currently</h2><p>I work on the app at <a class="compact-inline compact-studiz" href="#studiz"><span aria-hidden="true">s.</span> Studiz</a>, using Angular, Ionic and Capacitor. My role spans frontend development, interface design and the everyday decisions that turn a feature into a useful product.</p></section>
+    <section class="compact-section" id="work"><div class="compact-section-heading"><h2>A little of my work</h2><span>Open an entry to read more</span></div>
+      <div class="compact-work-group"><span class="compact-year">Now</span><div class="compact-entries">
+        <details id="studiz" class="compact-entry"><summary><span class="compact-entry-icon" aria-hidden="true">⌘</span><span>Building the Studiz app</span><span class="compact-tag">Frontend</span><span class="compact-expand" aria-hidden="true">+</span></summary><div class="compact-entry-body"><p>I’m the app developer at Studiz, working with Angular, Ionic and Capacitor. The app connects students with features including digital student ID, events, lending and discounts.</p><p>My work sits where interface design meets implementation: building features, refining interactions and working with the backend team to bring them together.</p><span class="compact-tools">Angular / Ionic / Capacitor / UX/UI</span></div></details>
+      </div></div>
+      <div class="compact-work-group"><span class="compact-year">Earlier</span><div class="compact-entries">
+        <details class="compact-entry"><summary><span class="compact-entry-icon rust" aria-hidden="true">↳</span><span>RaskRask Recharge</span><span class="compact-tag">Product</span><span class="compact-expand" aria-hidden="true">+</span></summary><div class="compact-entry-body"><p>A thesis project exploring how a wellness service could improve its booking experience and business operations. My work connected UX research, user flows and interface design.</p><button class="compact-preview" data-project="0">See the project preview <span aria-hidden="true">↗</span></button></div></details>
+        <details class="compact-entry"><summary><span class="compact-entry-icon olive" aria-hidden="true">⊞</span><span>Harmony UI</span><span class="compact-tag">Design system</span><span class="compact-expand" aria-hidden="true">+</span></summary><div class="compact-entry-body"><p>A shared visual language for RaskRask’s digital products, developed during my internship. Visual foundations and reusable interface components help the product feel consistent.</p><button class="compact-preview" data-project="1">See the project preview <span aria-hidden="true">↗</span></button></div></details>
+      </div></div>
+    </section>
+    <section class="compact-section"><h2>Things I care about</h2><p>Interfaces that <span class="compact-underline">make sense.</span> Code someone else can read. A button that responds just right. Understanding why we’re building something before deciding how.</p><p>I’m interested in the space between <span class="compact-thin">the big picture</span> and <strong class="compact-weight">the small details.</strong></p></section>
+    <section class="compact-section"><h2>Off screen</h2><p>Usually somewhere between a <span class="compact-inline compact-keyboard"><span aria-hidden="true">⌨</span> split keyboard</span>, a rugby pitch <span class="compact-rugby" aria-hidden="true">🏉</span>, and family life. South African, with Italian roots, now based in Denmark.</p></section>
+    <section class="compact-section compact-connect"><h2>Connect</h2><p>For a little more background, <a href="/cv/">read my CV <span aria-hidden="true">↗</span></a>.</p><p>Have something in mind? Say hello by <a href="mailto:papaniap11@gmail.com">email</a>, or find my code on <a href="https://github.com/PapaniaP" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>.</p></section>
+    <footer class="compact-footer"><span>Paolo Papania © {new Date().getFullYear()}</span><span>Thought through. Built with care.</span></footer>
+  </main>
+<ProjectPreview />
+<script>
+  const studiz = document.querySelector<HTMLDetailsElement>('#studiz');
+  document.querySelector('a[href="#studiz"]')?.addEventListener('click', () => {
+    if (studiz) studiz.open = true;
+  });
+</script>
+</PortfolioLayout>

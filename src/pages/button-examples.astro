@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/ui/Button.astro';
-import { Icon } from '@lucide/astro';
+import { Home } from '@lucide/astro/icons';
 ---
 
 <Layout title="Button Examples with Icons">
@@ -14,15 +14,15 @@ import { Icon } from '@lucide/astro';
       <div class="flex flex-wrap gap-8 items-center">
         <div>
           <p class="text-sm mb-2">Default Icon:</p>
-          <Icon name="home" />
+          <Home />
         </div>
         <div>
           <p class="text-sm mb-2">With Size & Color:</p>
-          <Icon name="home" size={24} color="red" />
+          <Home size={24} color="red" />
         </div>
         <div>
           <p class="text-sm mb-2">With Custom Stroke:</p>
-          <Icon name="home" size={24} color="blue" stroke-width={3} />
+          <Home size={24} color="blue" stroke-width={3} />
         </div>
       </div>
     </section>

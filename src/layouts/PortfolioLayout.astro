@@ -1,0 +1,33 @@
+---
+import '../styles/tokens.css';
+import '../styles/base.css';
+import favicon from '../assets/favicon_io/favicon-32x32.png';
+interface Props { title?: string; description?: string; }
+const {
+  title = 'Paolo Papania — Frontend engineer & product designer',
+  description = 'Frontend engineering, UX/UI development and product design. Paolo Papania, based in Aarhus, Denmark.'
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en" data-direction="compact" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/png" href={favicon.src} />
+    <title>{title}</title>
+    <script is:inline>
+      try {
+        const theme = localStorage.getItem('portfolio-theme');
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+      } catch { /* The default remains usable when storage is unavailable. */ }
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main-content">Skip to content</a>
+    <slot />
+  </body>
+</html>
