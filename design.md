@@ -389,3 +389,9 @@ Teal + orange is now the selected palette in the shared base tokens, on both the
 The introduction leads with frontend engineering, then places UX/UI and product design in support. Work entries name concrete contributions: Studiz lending, QR scanning and onboarding; the Recharge booking prototype; and Harmony UI foundations and components. These descriptions do not claim measured business results.
 
 Keep Virgil for the name and one short phrase, with the existing emoji reaction as the main playful interaction. Remove the code badge, wavy product-design emphasis, animated bold phrase, serif contrast and extra decorative tilts. The Studiz link remains a compact filled badge, without rotation; the keyboard keeps one small inline icon. Retain 14px body type, 1.6 line-height, -0.012em tracking and the 560px reading column. Earlier inline-effect recipes below/above are historical references, not a requirement to reintroduce every treatment.
+
+## Styling restored after review — 12 September 2026
+
+The quieter styling pass was too plain. Restore the previous Compact text treatments: the inline frontend/code badge, wavy product-design underline, handwritten “what if?”, animated bold “that works.”, tilted Studiz and keyboard badges, serif/weight contrast and rugby emoji. The introduction and personal sections return to the previous wording to preserve those treatments. Keep the more specific work descriptions, selected teal/orange tokens, compact typography and traditional CV. Colour comparison controls remain removed.
+
+This decision supersedes the instruction to remove decorative treatments in the preceding refinement entry. Personality within the text is part of the preferred design, not excess to strip away. Retain existing reduced-motion support and the inline emoji reaction.
