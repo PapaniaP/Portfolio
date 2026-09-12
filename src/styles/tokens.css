@@ -5,10 +5,10 @@
   --color-text-primary: #f2e5c4;
   --color-text-secondary: #d0c3a6;
   --color-border: #55534c;
-  --color-accent-primary: #a3b0ff;
+  --color-accent-primary: #27d6c5;
   --color-accent-secondary: #ff791f;
-  --color-accent-tertiary: #c8d65b;
-  --color-accent-fill: #1536d8;
+  --color-accent-tertiary: #27d6c5;
+  --color-accent-fill: #006d70;
   --color-surface: #42433c;
   --color-surface-soft: #41423b;
 }
@@ -18,10 +18,10 @@
   --color-text-primary: #3c3836;
   --color-text-secondary: #665c54;
   --color-border: #d5c4a1;
-  --color-accent-primary: #1536d8;
+  --color-accent-primary: #006b70;
   --color-accent-secondary: #c14300;
-  --color-accent-tertiary: #626f07;
-  --color-accent-fill: #1536d8;
+  --color-accent-tertiary: #006b70;
+  --color-accent-fill: #006d70;
   --color-surface: #ebdfbb;
   --color-surface-soft: #f0e7c8;
 }

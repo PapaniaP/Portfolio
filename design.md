@@ -1,19 +1,17 @@
 # Portfolio design reference
 
-Status: approved visual direction — **05 / Compact**  
-Recorded: 10 September 2026  
+Status: approved visual direction — **Compact · teal + orange**
+Updated: 12 September 2026
 Target branch: `portfolio-sept-2026`
 
 ## Source of truth
 
-- [Approved prototype](https://paolo-portfolio-directions.papaniap11.chatgpt.site/?direction=compact)
-- Current prototype revision: `f6d6224af3a5df444f7c63c236d656f4bbd31ac1` (palette and CV refinement).
-- Source styles: `dist/compact.css`, with inherited base styles from `dist/style.css`.
+- [Current draft](https://paolo-portfolio-directions.papaniap11.chatgpt.site/)
+- Implementation: `src/styles/tokens.css`, `src/styles/base.css`, `src/styles/portfolio.css` and `src/styles/cv.css`.
+- The earlier Compact prototype is preserved under `/reference/`; the current Astro implementation and tokens below take precedence.
 - Inspiration: [Daniel White](https://www.danielwhite.uk/), particularly the compact reading column, restrained headings and small inline details.
 
-This document records the latest approved colours, tighter tracking, reduced line-height and occasional Virgil accents. It describes the intended Astro rebuild; adding this file does not migrate the existing Astro styles.
-
-Semantic token names below are the documented implementation vocabulary. Most prototype measurements are currently literals; these names do not imply that corresponding CSS variables already exist in the application. Values reproduce the approved reference unless explicitly marked as supporting prototype UI or an unresolved implementation choice.
+This document records the approved teal/orange palette, compact typography and occasional Virgil accents. The dated sections at the end record earlier decisions; the current token tables take precedence over historical experiments.
 
 ## Design principles
 
@@ -29,7 +27,7 @@ Semantic token names below are the documented implementation vocabulary. Most pr
 
 ## Colour tokens
 
-Dark is the reference's initial mode. The base direction is approved; the blue/orange refinements below are the current preview requested on 10 September 2026. The background remains unchanged from the selected Compact version.
+Dark is the initial mode, with a remembered light/dark preference. Teal and orange were selected on 12 September 2026. Keep the warm backgrounds from the Compact version.
 
 | Semantic token | Prototype alias | Dark | Light | Usage |
 | --- | --- | --- | --- | --- |
@@ -37,13 +35,14 @@ Dark is the reference's initial mode. The base direction is approved; the blue/o
 | `--color-text-primary` | `--ink` | `#F2E5C4` | `#3C3836` | Name, headings, stronger words |
 | `--color-text-secondary` | `--muted` | `#D0C3A6` | `#665C54` | Body copy and metadata |
 | `--color-border` | `--line` | `#55534C` | `#D5C4A1` | Rules, work rail, inline badges |
-| `--color-accent-primary` | `--blue` | `#A3B0FF` | `#1536d8` | Blue links, emphasis, focus, icons |
+| `--color-accent-primary` | `--blue` | `#27D6C5` | `#006B70` | Teal links, emphasis, focus, icons |
 | `--color-accent-secondary` | `--rust` | `#FF791F` | `#C14300` | Orange accents and underlines |
-| `--color-accent-tertiary` | `--olive` | `#C8D65B` | `#626F07` | Occasional olive icons |
+| `--color-accent-tertiary` | `--olive` | `#27D6C5` | `#006B70` | Existing tertiary slots reuse teal |
+| `--color-accent-fill` | `--blue-solid` | `#006D70` | `#006D70` | Filled badge with white text |
 | `--color-surface` | `--panel` | `#42433C` | `#EBDFBB` | Inline badge background, image preview surface |
 | `--color-surface-soft` | `--soft` | `#41423B` | `#F0E7C8` | Secondary supporting surface |
 
-The primary accent now returns to a Klein-inspired blue direction. The original Astro stylesheet uses `hsl(223 84% 50%)` (its nearby hex comment is inconsistent); the new light-mode blue is deeper. Klein blue `#1536D8` remains the brand fill in both modes. Text, icons and focus use `#A3B0FF` in dark mode and `#1536D8` in light mode. This separates the saturated brand fill from readable foreground colour. Filled badges keep white text in default, hover and focus states.
+Teal is the main accent, with saturated orange for occasional underlines and supporting icons. Deep teal `#006D70` fills keep white badge labels readable in both themes, including hover and focus. The legacy aliases `--blue`, `--blue-solid` and `--olive` now resolve to teal; their names do not specify the displayed colour.
 
 Derived states:
 
@@ -60,36 +59,49 @@ Derived states:
 | Strong text | Primary text |
 | Logo punctuation | Primary accent |
 
-Reference contrast checks for accents against the page background: dark blue 5.88:1, orange 4.61:1, olive 7.61:1; light blue 7.30:1, orange 4.58:1, olive 4.91:1. These are colour-pair checks, not a full accessibility audit.
+Accent contrast against the page: dark teal 6.62:1 and orange 4.61:1; light teal 5.58:1 and orange 4.58:1. Teal also passes on panels (5.48:1 dark, 4.74:1 light). White on the filled badge is 6.14:1. Orange text is for the page background only. These are colour-pair checks, not a full accessibility audit.
 
 ### Copyable theme values
 
 ```css
 :root,
-[data-theme="dark"] {
+:root[data-theme=dark] {
   color-scheme: dark;
   --color-background: #373633;
   --color-text-primary: #f2e5c4;
   --color-text-secondary: #d0c3a6;
   --color-border: #55534c;
-  --color-accent-primary: #a3b0ff;
+  --color-accent-primary: #27d6c5;
   --color-accent-secondary: #ff791f;
-  --color-accent-tertiary: #c8d65b;
+  --color-accent-tertiary: #27d6c5;
+  --color-accent-fill: #006d70;
   --color-surface: #42433c;
   --color-surface-soft: #41423b;
 }
-
-[data-theme="light"] {
+:root[data-theme=light] {
   color-scheme: light;
   --color-background: #fbf1d3;
   --color-text-primary: #3c3836;
   --color-text-secondary: #665c54;
   --color-border: #d5c4a1;
-  --color-accent-primary: #1536d8;
+  --color-accent-primary: #006b70;
   --color-accent-secondary: #c14300;
-  --color-accent-tertiary: #626f07;
+  --color-accent-tertiary: #006b70;
+  --color-accent-fill: #006d70;
   --color-surface: #ebdfbb;
   --color-surface-soft: #f0e7c8;
+}
+:root {
+  --paper: var(--color-background);
+  --ink: var(--color-text-primary);
+  --muted: var(--color-text-secondary);
+  --line: var(--color-border);
+  --blue: var(--color-accent-primary);
+  --rust: var(--color-accent-secondary);
+  --olive: var(--color-accent-tertiary);
+  --blue-solid: var(--color-accent-fill);
+  --panel: var(--color-surface);
+  --soft: var(--color-surface-soft);
 }
 ```
 
@@ -288,7 +300,7 @@ Toolbar z-index 20; skip-link z-index 100. The reference's 120/145/155px anchor 
 ## Implementation boundaries
 
 - Keep the 560px column, 14px body size, 1.6 line-height and -0.012em tracking together.
-- Keep the approved saturated accents and lighter charcoal. Do not revert to earlier Studio or Prose colours.
+- Keep the approved teal/orange accents and lighter charcoal. Do not revert to earlier Studio, Prose or blue palette experiments.
 - Reuse the supplied Archiv and Virgil assets.
 - Use semantic HTML and preserve visible focus, native controls and readable content when motion is disabled.
 - Do not add a large hero, image-heavy card grid or oversized section typography from the earlier variants.
@@ -369,3 +381,11 @@ These are experiments, not a replacement for the approved base tokens. Emerald a
 - A temporary switcher appears above the portfolio and outside the CV sheet: 12px labels, minimum 44px controls, 5px radius, 8px gaps. A visible check and `aria-pressed` identify the choice independently of colour. No eyebrow label.
 - First visit defaults to teal; explicit choices persist locally. `?palette=teal`, `?palette=blue` and `?palette=violet` override the stored preference. Portfolio/CV links preserve the current variant. Theme choice stays independent.
 - Printing hides the switcher and preserves the existing monochrome CV. Earlier colour samplers remain reference material and are not affected by the switcher.
+
+## Selected draft refinement — 12 September 2026
+
+Teal + orange is now the selected palette in the shared base tokens, on both the portfolio and CV. The comparison controls and footer swatches are removed. Old palette query parameters and stored experiment preferences no longer affect either page. The comparison components and variant stylesheet remain unimported reference code.
+
+The introduction leads with frontend engineering, then places UX/UI and product design in support. Work entries name concrete contributions: Studiz lending, QR scanning and onboarding; the Recharge booking prototype; and Harmony UI foundations and components. These descriptions do not claim measured business results.
+
+Keep Virgil for the name and one short phrase, with the existing emoji reaction as the main playful interaction. Remove the code badge, wavy product-design emphasis, animated bold phrase, serif contrast and extra decorative tilts. The Studiz link remains a compact filled badge, without rotation; the keyboard keeps one small inline icon. Retain 14px body type, 1.6 line-height, -0.012em tracking and the 560px reading column. Earlier inline-effect recipes below/above are historical references, not a requirement to reintroduce every treatment.
