@@ -352,3 +352,20 @@ Implementation choices resolved for this draft:
 - The draft branch gets a build-only GitHub workflow. The existing FTP workflow continues to target only `feature/astro-migration`.
 
 Accessibility correction: using the same deep blue for text on charcoal was unreadable. The dark foreground token is now distinct from the brand fill; its contrast on the dark panel is 4.86:1. Keep all normal text colour pairs at least 4.5:1.
+
+## Colour combinations under review — 12 September 2026
+
+These are experiments, not a replacement for the approved base tokens. Emerald and coral have been rejected. `src/styles/palette-variants.css` applies three combinations across the homepage and digital CV, preserving the warm backgrounds, typography and layout.
+
+| Variant | Light primary text | Dark primary text | Light secondary | Dark secondary | Filled badge, both themes |
+| --- | --- | --- | --- | --- | --- |
+| Teal + orange | `#006b70` | `#27d6c5` | `#c14300` | `#ff791f` | `#006d70` |
+| Blue + orange | `#0048ff` | `#8aafff` | `#c14300` | `#ff791f` | `#0048ff` |
+| Violet + gold | `#743ac8` | `#bfa1ff` | `#946000` | `#ffd24a` | `#743ac8` |
+
+- Primary colours apply to links, inline emphasis, focus outlines and work icons. Secondary colours apply to occasional inline words, underlines and supporting icons. Map the previous tertiary accent to the primary in these two-colour combinations.
+- Use the deeper fill colour with white badge text in both themes. Blue keeps `#0048ff` in dark-mode fills, while small text uses a lighter blue to remain readable.
+- Primary text passes 4.5:1 on the page, surface and soft surface for every variant. Secondary text is approved on the page background only. White badge labels and selection colours also pass 4.5:1. Run `node scripts/check-contrast.mjs` to verify the actual CSS values.
+- A temporary switcher appears above the portfolio and outside the CV sheet: 12px labels, minimum 44px controls, 5px radius, 8px gaps. A visible check and `aria-pressed` identify the choice independently of colour. No eyebrow label.
+- First visit defaults to teal; explicit choices persist locally. `?palette=teal`, `?palette=blue` and `?palette=violet` override the stored preference. Portfolio/CV links preserve the current variant. Theme choice stays independent.
+- Printing hides the switcher and preserves the existing monochrome CV. Earlier colour samplers remain reference material and are not affected by the switcher.

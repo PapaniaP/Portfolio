@@ -4,11 +4,13 @@ import ThemeToggle from '../components/portfolio/ThemeToggle.astro';
 import EmojiReaction from '../components/portfolio/EmojiReaction.astro';
 import ProjectPreview from '../components/portfolio/ProjectPreview.astro';
 import ColourSampler from '../components/portfolio/ColourSampler.astro';
+import PaletteSwitcher from '../components/portfolio/PaletteSwitcher.astro';
 import '../styles/portfolio.css';
 ---
 <PortfolioLayout>
 <main id="main-content" class="compact-page" tabindex="-1">
 <nav class="portfolio-nav" aria-label="Main navigation"><a href="/cv/">CV</a><ThemeToggle /></nav>
+<PaletteSwitcher />
     <header class="compact-header"><h1>Paolo Papania<span class="compact-period">.</span></h1><span class="compact-location">Aarhus, Denmark</span></header>
     <section class="compact-intro" aria-label="Introduction">
       <p>I’m a <span class="compact-inline compact-code"><span aria-hidden="true">&#123; &#125;</span> frontend engineer</span> who cares about how things <span class="compact-feel">feel.</span> My work brings together UX/UI development, <span class="compact-design">product design</span> and the code that makes it all work.</p>

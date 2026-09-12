@@ -1,6 +1,7 @@
 ---
 import PortfolioLayout from '../layouts/PortfolioLayout.astro';
 import ThemeToggle from '../components/portfolio/ThemeToggle.astro';
+import PaletteSwitcher from '../components/portfolio/PaletteSwitcher.astro';
 import '../styles/cv.css';
 ---
 <PortfolioLayout title="CV — Paolo Papania" description="Paolo Papania — frontend development, UX/UI and product design. Digital CV.">
@@ -10,6 +11,7 @@ import '../styles/cv.css';
     <a href="/">← Portfolio</a>
     <div><ThemeToggle /><button id="print" type="button">Print / Save PDF <span aria-hidden="true">↗</span></button></div>
   </nav>
+  <div class="cv-palette"><PaletteSwitcher /></div>
   <main id="main-content" tabindex="-1" class="cv-sheet">
     <header class="cv-header">
       <h1>Paolo Antonino Papania</h1>

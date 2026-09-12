@@ -1,0 +1,37 @@
+/* Temporary, selectable colour directions. The approved base tokens stay intact. */
+:root[data-palette=teal][data-theme=light] {
+  --color-accent-primary: #006b70;
+  --color-accent-secondary: #c14300;
+  --color-accent-tertiary: #006b70;
+  --color-accent-fill: #006d70;
+}
+:root[data-palette=teal][data-theme=dark] {
+  --color-accent-primary: #27d6c5;
+  --color-accent-secondary: #ff791f;
+  --color-accent-tertiary: #27d6c5;
+  --color-accent-fill: #006d70;
+}
+:root[data-palette=blue][data-theme=light] {
+  --color-accent-primary: #0048ff;
+  --color-accent-secondary: #c14300;
+  --color-accent-tertiary: #0048ff;
+  --color-accent-fill: #0048ff;
+}
+:root[data-palette=blue][data-theme=dark] {
+  --color-accent-primary: #8aafff;
+  --color-accent-secondary: #ff791f;
+  --color-accent-tertiary: #8aafff;
+  --color-accent-fill: #0048ff;
+}
+:root[data-palette=violet][data-theme=light] {
+  --color-accent-primary: #743ac8;
+  --color-accent-secondary: #946000;
+  --color-accent-tertiary: #743ac8;
+  --color-accent-fill: #743ac8;
+}
+:root[data-palette=violet][data-theme=dark] {
+  --color-accent-primary: #bfa1ff;
+  --color-accent-secondary: #ffd24a;
+  --color-accent-tertiary: #bfa1ff;
+  --color-accent-fill: #743ac8;
+}
