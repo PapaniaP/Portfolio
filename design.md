@@ -395,3 +395,16 @@ Keep Virgil for the name and one short phrase, with the existing emoji reaction 
 The quieter styling pass was too plain. Restore the previous Compact text treatments: the inline frontend/code badge, wavy product-design underline, handwritten “what if?”, animated bold “that works.”, tilted Studiz and keyboard badges, serif/weight contrast and rugby emoji. The introduction and personal sections return to the previous wording to preserve those treatments. Keep the more specific work descriptions, selected teal/orange tokens, compact typography and traditional CV. Colour comparison controls remain removed.
 
 This decision supersedes the instruction to remove decorative treatments in the preceding refinement entry. Personality within the text is part of the preferred design, not excess to strip away. Retain existing reduced-motion support and the inline emoji reaction.
+
+## Drawably trial — 14 September 2026
+
+Use a few real Drawably sketches within the established Compact styling. Preserve the existing Virgil, tilted badges and other approved text treatments; this is a selective addition, not a wholesale hand-drawn theme.
+
+- Pinned package: `drawably@0.4.2`, vanilla API; no additional React island or font import.
+- Two text decorations: a teal sketch underline on “product design” and an orange marker wash on “make sense.” They replace the CSS decoration on those phrases after enhancement.
+- CTA treatment: outline sketches on homepage CV/email links, project-preview buttons, and the CV's print button outside the document. Navigation links retain native anchor semantics; actions remain real buttons.
+- Roughness `0.7`, boil `0`, stroke width `1.5`. No continuous stroke flicker; the library handles hover/press redraw and reduced-motion preferences.
+- Theme through Drawably custom properties: stroke = primary teal, fill = primary teal except the orange text highlight, paper = page background. Preserve Archiv through inherited font family; do not import Drawably Pen or Inter.
+- CTAs: minimum 44px height, 10px/16px padding, 14px text at 1.4 line-height, 7px internal gap. CTA group wraps with a 10px gap. Explicit 2px teal focus outline, 4px offset.
+- Attach after fonts are ready. The installed library redraws for resizing and uses one decoration per wrapped line; its ResizeObserver also redraws project buttons when their details open.
+- CV document stays traditional and prints without the controls. Homepage content and links remain usable without JavaScript.

@@ -1,0 +1,24 @@
+---
+import 'drawably/style.css';
+import '../../styles/drawn-accents.css';
+---
+<script>
+  import { drawablyButton, drawablyUnderline, drawablyHighlight } from 'drawably';
+
+  async function addSketches() {
+    await document.fonts.ready;
+    const options = { roughness: 0.7, boil: 0, width: 1.5 };
+    document.querySelectorAll<HTMLElement>('[data-drawn-underline]').forEach(el => {
+      drawablyUnderline(el, options);
+    });
+    document.querySelectorAll<HTMLElement>('[data-drawn-highlight]').forEach(el => {
+      drawablyHighlight(el, options);
+    });
+    document.querySelectorAll<HTMLElement>('[data-drawn-cta]').forEach(el => {
+      // Drawably accepts HTMLElement: links retain href and native navigation,
+      // while actions retain their existing button handlers.
+      drawablyButton(el, { ...options, variant: 'outline' });
+    });
+  }
+  addSketches();
+</script>

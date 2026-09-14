@@ -1,6 +1,7 @@
 ---
 import '../styles/tokens.css';
 import '../styles/base.css';
+import DrawnAccents from '../components/portfolio/DrawnAccents.astro';
 import favicon from '../assets/favicon_io/favicon-32x32.png';
 interface Props { title?: string; description?: string; }
 const {
@@ -29,5 +30,6 @@ const {
   <body>
     <a class="skip" href="#main-content">Skip to content</a>
     <slot />
+    <DrawnAccents />
   </body>
 </html>
