@@ -408,3 +408,7 @@ Use a few real Drawably sketches within the established Compact styling. Preserv
 - CTAs: minimum 44px height, 10px/16px padding, 14px text at 1.4 line-height, 7px internal gap. CTA group wraps with a 10px gap. Explicit 2px teal focus outline, 4px offset.
 - Attach after fonts are ready. The installed library redraws for resizing and uses one decoration per wrapped line; its ResizeObserver also redraws project buttons when their details open.
 - CV document stays traditional and prints without the controls. Homepage content and links remain usable without JavaScript.
+
+## CTA readability refinement — 14 September 2026
+
+CTA labels and their children disable text selection with `user-select: none` and the WebKit prefix. Light-mode CTAs use Drawably's solid variant, with the existing deep teal fill `#006D70` and white text (6.14:1 contrast). Dark-mode CTAs retain the outline variant. Switching themes rebuilds only CTA sketches, removing the previous SVG, observer, pointer handlers and variant classes first. Existing anchor/button semantics and focus outlines are preserved.

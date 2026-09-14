@@ -14,10 +14,19 @@ import '../../styles/drawn-accents.css';
     document.querySelectorAll<HTMLElement>('[data-drawn-highlight]').forEach(el => {
       drawablyHighlight(el, options);
     });
-    document.querySelectorAll<HTMLElement>('[data-drawn-cta]').forEach(el => {
-      // Drawably accepts HTMLElement: links retain href and native navigation,
-      // while actions retain their existing button handlers.
-      drawablyButton(el, { ...options, variant: 'outline' });
+    const buttons = [...document.querySelectorAll<HTMLElement>('[data-drawn-cta]')];
+    let sketches: ReturnType<typeof drawablyButton>[] = [];
+    const redrawButtons = () => {
+      sketches.forEach(sketch => sketch.destroy());
+      const variant = document.documentElement.dataset.theme === 'light' ? 'solid' : 'outline';
+      sketches = buttons.map(el => {
+        el.classList.remove('drawably-button--solid', 'drawably-button--outline');
+        return drawablyButton(el, { ...options, variant });
+      });
+    };
+    redrawButtons();
+    new MutationObserver(redrawButtons).observe(document.documentElement, {
+      attributes: true, attributeFilter: ['data-theme'],
     });
   }
   addSketches();
